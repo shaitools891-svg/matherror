@@ -74,6 +74,11 @@ materials_data = {
 async def get_materials():
     return materials_data
 
+# Add this code block before `app.include_router(api_router)`
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the MathError API!"}
+    
 # Include the router in the main app
 app.include_router(api_router)
 
