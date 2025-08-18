@@ -243,7 +243,7 @@ const MaterialsSection = () => {
                             Share Your Resources
                         </h3>
                         <p className="text-sm text-gray-600">
-                            Have a PDF (Google Drive) or YouTube video to add? Contact us or follow the steps below to submit your materials.
+                            Have a PDF (Google Drive) or YouTube video to add? Contact Shakib.
                         </p>
                     </div>
                 </div>
