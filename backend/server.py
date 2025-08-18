@@ -90,7 +90,7 @@ materials_data = {
             "icon": "FlaskConical",
             "chapters": [
                 {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
-                {"id": 2, "title": "Chapter 2", "driveLink": "https://www.dropbox.com/scl/fi/bj3n097v0i3p76etbuyss/organic-chemistry.xopp?rlkey=tutj2j0utl5qf8dxl8x9ocbs7&st=jwj0wc5x&dl=0", "videoLink": ""},
+                {"id": 2, "title": "Chapter 2", "driveLink": "https://www.dropbox.com/scl/fi/s2zvgfkepj74ksfmox4sg/organic-chemistry_annotated.pdf?rlkey=ahov0z578i04oecudg0yyc7f9&st=e1ydhdsg&dl=0", "videoLink": ""},
                 {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
                 {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""}
             ]
