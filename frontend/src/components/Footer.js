@@ -24,7 +24,7 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-gray-600 mb-4">
-              Your trusted partner for HSC 26 preparation. Quality study materials 
+              Your trusted Whatsapp group for HSC 26 preparation. Quality study materials 
               and video lectures for ICT and Chemistry.
             </p>
             <p className="text-sm text-gray-500">
@@ -59,11 +59,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-600">matheRROR@email.com</span>
+                <span className="text-gray-600">shshakib891gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-600">+880 1XXX-XXXXXX</span>
+                <span className="text-gray-600">Whatsapp:MathERROR</span>
               </div>
             </div>
             
