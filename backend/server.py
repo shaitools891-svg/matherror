@@ -56,17 +56,45 @@ async def get_status_checks():
 # This structure must match what your frontend expects
 materials_data = {
     "subjects": [
-        {"id": "chem", "name": "Chemistry", "fullName": "HSC Chemistry", "icon": "FlaskConical", "chapters": [
-            {"id": "chem1", "title": "First Paper", "driveLink": None, "videoLink": None},
-            {"id": "chem2", "title": "Second Paper", "driveLink": None, "videoLink": None}
-        ]},
-        {"id": "phy", "name": "Physics", "fullName": "HSC Physics", "icon": "Atom", "chapters": [
-            {"id": "phy1", "title": "First Paper", "driveLink": None, "videoLink": None},
-            {"id": "phy2", "title": "Second Paper", "driveLink": None, "videoLink": None}
-        ]},
-        {"id": "ict", "name": "ICT", "fullName": "HSC ICT", "icon": "Monitor", "chapters": [
-            {"id": "ict1", "title": "First Paper", "driveLink": None, "videoLink": None}
-        ]}
+        {
+            "id": "ict",
+            "name": "ICT",
+            "fullName": "Information and Communication Technology",
+            "icon": "Monitor",
+            "chapters": [
+                {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
+                {"id": 2, "title": "Chapter 2", "driveLink": "", "videoLink": ""},
+                {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
+                {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""},
+                {"id": 5, "title": "Chapter 5", "driveLink": "", "videoLink": ""},
+                {"id": 6, "title": "Chapter 6", "driveLink": "", "videoLink": ""}
+            ]
+        },
+        {
+            "id": "chemistry-1st",
+            "name": "Chemistry 1st Paper",
+            "fullName": "Chemistry First Paper",
+            "icon": "Atom",
+            "chapters": [
+                {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
+                {"id": 2, "title": "Chapter 2", "driveLink": "", "videoLink": ""},
+                {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
+                {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""},
+                {"id": 5, "title": "Chapter 5", "driveLink": "", "videoLink": ""}
+            ]
+        },
+        {
+            "id": "chemistry-2nd",
+            "name": "Chemistry 2nd Paper",
+            "fullName": "Chemistry Second Paper",
+            "icon": "FlaskConical",
+            "chapters": [
+                {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
+                {"id": 2, "title": "Chapter 2", "driveLink": "", "videoLink": ""},
+                {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
+                {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""}
+            ]
+        }
     ]
 }
 
@@ -74,13 +102,12 @@ materials_data = {
 async def get_materials():
     return materials_data
 
-# Add this code block before `app.include_router(api_router)`
-@app.get("/")
-async def root():
-    return {"message": "Welcome to the MathError API!"}
-    
 # Include the router in the main app
 app.include_router(api_router)
+
+@app.get("/")
+async def home():
+    return {"message": "Welcome to the MathError API!"}
 
 app.add_middleware(
     CORSMiddleware,
