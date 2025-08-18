@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Heart, Mail, Phone } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa'; // Import the WhatsApp icon
 import { mockData } from '../data/mock';
 
 const Footer = () => {
@@ -62,8 +63,16 @@ const Footer = () => {
                 <span className="text-gray-600">shshakib891gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <Phone className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-600">Whatsapp:MathERROR</span>
+                {/* Replaced Phone icon and added a link */}
+                <FaWhatsapp className="w-4 h-4 text-gray-500" />
+                <a
+                  href="https://chat.whatsapp.com/IzZiXBiXaEz8nVG4UQjCel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:underline"
+                >
+                  Whatsapp: MathERROR
+                </a>
               </div>
             </div>
             
