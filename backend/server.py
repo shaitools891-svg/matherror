@@ -62,12 +62,12 @@ materials_data = {
             "fullName": "Information and Communication Technology",
             "icon": "Monitor",
             "chapters": [
-                {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
-                {"id": 2, "title": "Chapter 2", "driveLink": "", "videoLink": ""},
-                {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
-                {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""},
-                {"id": 5, "title": "Chapter 5", "driveLink": "", "videoLink": ""},
-                {"id": 6, "title": "Chapter 6", "driveLink": "", "videoLink": ""}
+                {"id": 1, "title": "Chapter 1", "driveLinks": [], "videoLinks": []},
+                {"id": 2, "title": "Chapter 2", "driveLinks": [], "videoLinks": []},
+                {"id": 3, "title": "Chapter 3", "driveLinks": [], "videoLinks": []},
+                {"id": 4, "title": "Chapter 4", "driveLinks": [], "videoLinks": []},
+                {"id": 5, "title": "Chapter 5", "driveLinks": [], "videoLinks": []},
+                {"id": 6, "title": "Chapter 6", "driveLinks": [], "videoLinks": []}
             ]
         },
         {
@@ -76,11 +76,11 @@ materials_data = {
             "fullName": "Chemistry First Paper",
             "icon": "Atom",
             "chapters": [
-                {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
-                {"id": 2, "title": "Chapter 2", "driveLink": "", "videoLink": ""},
-                {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
-                {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""},
-                {"id": 5, "title": "Chapter 5", "driveLink": "", "videoLink": ""}
+                {"id": 1, "title": "Chapter 1", "driveLinks": [], "videoLinks": []},
+                {"id": 2, "title": "Chapter 2", "driveLinks": [], "videoLinks": []},
+                {"id": 3, "title": "Chapter 3", "driveLinks": [], "videoLinks": []},
+                {"id": 4, "title": "Chapter 4", "driveLinks": [], "videoLinks": []},
+                {"id": 5, "title": "Chapter 5", "driveLinks": [], "videoLinks": []}
             ]
         },
         {
@@ -89,10 +89,12 @@ materials_data = {
             "fullName": "Chemistry Second Paper",
             "icon": "FlaskConical",
             "chapters": [
-                {"id": 1, "title": "Chapter 1", "driveLink": "", "videoLink": ""},
-                {"id": 2, "title": "Chapter 2", "driveLink": "https://www.dropbox.com/scl/fi/s2zvgfkepj74ksfmox4sg/organic-chemistry_annotated.pdf?rlkey=ahov0z578i04oecudg0yyc7f9&st=e1ydhdsg&dl=0", "videoLink": ""},
-                {"id": 3, "title": "Chapter 3", "driveLink": "", "videoLink": ""},
-                {"id": 4, "title": "Chapter 4", "driveLink": "", "videoLink": ""}
+                {"id": 1, "title": "Chapter 1", "driveLinks": [], "videoLinks": []},
+                {"id": 2, "title": "Chapter 2", "driveLinks": [
+                    {"name": "PDF 1", "url": "https://www.dropbox.com/scl/fi/s2zvgfkepj74ksfmox4sg/organic-chemistry_annotated.pdf?rlkey=ahov0z578i04oecudg0yyc7f9&st=e1ydhdsg&dl=0"}
+                ], "videoLinks": []},
+                {"id": 3, "title": "Chapter 3", "driveLinks": [], "videoLinks": []},
+                {"id": 4, "title": "Chapter 4", "driveLinks": [], "videoLinks": []}
             ]
         }
     ]
