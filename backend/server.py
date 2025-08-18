@@ -91,8 +91,8 @@ materials_data = {
             "chapters": [
                 {"id": 1, "title": "Chapter 1", "driveLinks": [], "videoLinks": []},
                 {"id": 2, "title": "Chapter 2", "driveLinks": [
-                    {"name": "PDF 1", "url": "https://www.dropbox.com/scl/fi/s2zvgfkepj74ksfmox4sg/organic-chemistry_annotated.pdf?rlkey=ahov0z578i04oecudg0yyc7f9&st=e1ydhdsg&dl=0"}
-                ], "videoLinks": []},
+                    {"name": "Class note(annoted)", "url": "https://www.dropbox.com/scl/fi/s2zvgfkepj74ksfmox4sg/organic-chemistry_annotated.pdf?rlkey=ahov0z578i04oecudg0yyc7f9&st=e1ydhdsg&dl=0"}
+                ], "videoLinks": [{"name": "Organic chemistry one shot MCQ", "url": "https://youtu.be/cfLiNLdZ2dg?si=XBuWhrnTNLCRsiFt"}]},
                 {"id": 3, "title": "Chapter 3", "driveLinks": [], "videoLinks": []},
                 {"id": 4, "title": "Chapter 4", "driveLinks": [], "videoLinks": []}
             ]
