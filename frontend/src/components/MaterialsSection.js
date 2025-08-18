@@ -54,7 +54,7 @@ const MaterialsSection = () => {
 
     const handleLinkClick = (url, type) => {
         if (!url) {
-            alert(`${type} link not available yet. Please add the link to make it functional.`);
+            alert(`${type} link is not ready yet. Please reach out to Shakib and notify him.`);
             return;
         }
         window.open(url, '_blank');
@@ -240,10 +240,10 @@ const MaterialsSection = () => {
                 <div className="mt-12 text-center">
                     <div className="bg-gray-50 p-6 rounded-xl max-w-2xl mx-auto">
                         <h3 className="font-semibold mb-2" style={{ color: currentTheme.text }}>
-                            Adding Your Links
+                            Share Your Resources
                         </h3>
                         <p className="text-sm text-gray-600">
-                            To add your Google Drive PDF links and YouTube video URLs, edit the materials_data in your server.py file.
+                            Have a PDF (Google Drive) or YouTube video to add? Contact us or follow the steps below to submit your materials.
                         </p>
                     </div>
                 </div>
