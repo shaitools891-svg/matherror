@@ -3,7 +3,7 @@ export const mockData = {
   siteInfo: {
     name: "Math ERROR",
     tagline: "Study Materials – Updated Regularly",
-    description: "HSC 26 preparation materials for ICT and Chemistry"
+    description: "HSC 26 preparation materials for HSC 26"
   },
   
   subjects: [
