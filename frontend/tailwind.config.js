@@ -14,6 +14,7 @@ module.exports = {
         'scale-in': 'scaleIn 0.2s ease-out',
         'bounce-subtle': 'bounceSubtle 0.6s ease-out',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        'pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite', // Added pulse animation
       },
       // Custom keyframes for animations
       keyframes: {
@@ -42,11 +43,20 @@ module.exports = {
           '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
           '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' },
         },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
       },
       // Add transition durations
       transitionDuration: {
         '400': '400ms',
         '600': '600ms',
+      },
+      // Add backdrop blur utilities if not already present
+      backdropBlur: {
+        xs: '2px',
+        sm: '4px',
       }
     },
   },
