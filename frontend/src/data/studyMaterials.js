@@ -232,12 +232,11 @@ export const studyMaterialsData = {
                 {
                   name: "PDF 1",
                   url: "https://drive.google.com/file/d/11BBR0MGIg5BHVvfIws440tnYjqlKF9YS/view?usp=drive_link"
-                } , 
+                },
                 {
                   name: "PDF 2",
                   url: "https://drive.google.com/file/d/10Fkg1accBOu8hT7-5jeHcRkWp7KHRUvs/view?usp=drive_link"
                 }
-                
               ],
               videoLinks: [
                 {
@@ -245,19 +244,19 @@ export const studyMaterialsData = {
                   url: "https://youtube.com/your-link-here"
                 }
               ]
-
+            },
+            {
               id: 13,
               title: "Chapter 3",
               driveLinks: [
                 {
                   name: "PDF 1",
                   url: "https://drive.google.com/file/d/1TH5zYb46KB-ShqJrUxx_ErJACvpHdKCi/view?usp=drive_link"
-                } , 
+                },
                 {
                   name: "PDF 2",
                   url: "https://drive.google.com/file/d/1w3TnKe9Z0Mh1l_5pujFulyY_K3HXRePP/view?usp=drive_link"
                 }
-                
               ],
               videoLinks: [
                 {
@@ -265,7 +264,6 @@ export const studyMaterialsData = {
                   url: "https://youtube.com/your-link-here"
                 }
               ]
-              
             }
           ]
         }
