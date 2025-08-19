@@ -4,6 +4,8 @@ import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MaterialsSection from './components/MaterialsSection';
+import AboutSection from './components/AboutSection';
+import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
@@ -20,7 +22,7 @@ const ScrollRestoration = () => {
   return null;
 };
 
-// Background pattern component for visual appeal (moved inside ThemeProvider)
+// Background pattern component for visual appeal
 const BackgroundPattern = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -33,7 +35,7 @@ const BackgroundPattern = () => {
   );
 };
 
-// Main Home component (simplified - theme will be handled by individual components)
+// Main Home component
 const Home = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -42,13 +44,15 @@ const Home = () => {
       <main className="relative z-10">
         <Hero />
         <MaterialsSection />
+        <AboutSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
   );
 };
 
-// Loading component (simplified)
+// Loading component
 const AppLoading = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 transition-colors duration-300">
