@@ -12,7 +12,7 @@ const ContactSection = () => {
         </p>
         <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
           <p className="text-gray-600 dark:text-gray-300 mb-4">
-            Email: <span className="text-blue-600 dark:text-blue-400">contact@matherror.com</span>
+            Email: <span className="text-blue-600 dark:text-blue-400">shshakib891@gmail.com</span>
           </p>
           <p className="text-gray-600 dark:text-gray-300">
             Reach out for support, suggestions, or to contribute resources.
