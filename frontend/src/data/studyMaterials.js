@@ -211,11 +211,11 @@ export const studyMaterialsData = {
           chapters: [
             {
               id: 11,
-              title: "Programming",
+              title: "Chapter 1",
               driveLinks: [
                 {
-                  name: "Python Basics",
-                  url: "https://drive.google.com/your-link-here"
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1N_3IVjVlyUL79WzEjz2druqtEnhGnn_5/view?usp=drive_link"
                 }
               ],
               videoLinks: [
@@ -227,12 +227,17 @@ export const studyMaterialsData = {
             },
             {
               id: 12,
-              title: "Database",
+              title: "Chapter 2",
               driveLinks: [
                 {
-                  name: "SQL Notes",
-                  url: "https://drive.google.com/your-link-here"
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/11BBR0MGIg5BHVvfIws440tnYjqlKF9YS/view?usp=drive_link"
+                } , 
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/10Fkg1accBOu8hT7-5jeHcRkWp7KHRUvs/view?usp=drive_link"
                 }
+                
               ],
               videoLinks: [
                 {
@@ -240,6 +245,27 @@ export const studyMaterialsData = {
                   url: "https://youtube.com/your-link-here"
                 }
               ]
+
+              id: 13,
+              title: "Chapter 3",
+              driveLinks: [
+                {
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1TH5zYb46KB-ShqJrUxx_ErJACvpHdKCi/view?usp=drive_link"
+                } , 
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/1w3TnKe9Z0Mh1l_5pujFulyY_K3HXRePP/view?usp=drive_link"
+                }
+                
+              ],
+              videoLinks: [
+                {
+                  name: "Database Tutorial",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+              
             }
           ]
         }
