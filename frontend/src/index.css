@@ -16,8 +16,6 @@ code {
         monospace;
 }
 
-
-
 @layer base {
   :root {
         --background: 0 0% 100%;
@@ -74,11 +72,9 @@ code {
     }
 }
 
-
-
 @layer base {
   * {
-    @apply border-border;
+    @apply border; /* Changed from border-border to border */
     }
   body {
     @apply bg-background text-foreground;
