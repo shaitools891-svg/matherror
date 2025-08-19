@@ -1,11 +1,55 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Heart, Mail, Phone } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa'; // Import the WhatsApp icon
+import { FaWhatsapp } from 'react-icons/fa';
 import { mockData } from '../data/mock';
+
+// Import your materials data structure
+import { staticMaterialsData } from './MaterialsSection'; // Adjust the path as needed
 
 const Footer = () => {
   const { currentTheme } = useTheme();
+
+  // Calculate total chapters across all subjects and papers
+  const calculateTotalChapters = () => {
+    let totalChapters = 0;
+    
+    if (staticMaterialsData && staticMaterialsData.subjects) {
+      staticMaterialsData.subjects.forEach(subject => {
+        if (subject.papers) {
+          subject.papers.forEach(paper => {
+            totalChapters += paper.chapters ? paper.chapters.length : 0;
+          });
+        }
+      });
+    }
+    
+    return totalChapters;
+  };
+
+  // Get subjects with their chapter counts
+  const getSubjectsWithCounts = () => {
+    if (!staticMaterialsData || !staticMaterialsData.subjects) return [];
+    
+    return staticMaterialsData.subjects.map(subject => {
+      let chapterCount = 0;
+      
+      if (subject.papers) {
+        subject.papers.forEach(paper => {
+          chapterCount += paper.chapters ? paper.chapters.length : 0;
+        });
+      }
+      
+      return {
+        id: subject.id,
+        name: subject.name,
+        chapterCount: chapterCount
+      };
+    });
+  };
+
+  const subjectsWithCounts = getSubjectsWithCounts();
+  const totalChapters = calculateTotalChapters();
 
   return (
     <footer className="bg-gray-50 border-t border-gray-200 py-12 px-4 sm:px-6 lg:px-8">
@@ -26,10 +70,13 @@ const Footer = () => {
             </div>
             <p className="text-gray-600 mb-4">
               Your trusted Whatsapp group for HSC 26 preparation. Quality study materials 
-              and video lectures for ICT and Chemistry.
+              and video lectures for all subjects.
             </p>
             <p className="text-sm text-gray-500">
               {mockData.siteInfo.tagline}
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              {totalChapters}+ chapters across all subjects
             </p>
           </div>
 
@@ -39,13 +86,13 @@ const Footer = () => {
               Subjects
             </h4>
             <ul className="space-y-2">
-              {mockData.subjects.map((subject) => (
+              {subjectsWithCounts.map((subject) => (
                 <li key={subject.id}>
                   <a 
                     href="#materials" 
                     className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
                   >
-                    {subject.name} ({subject.chapters.length} chapters)
+                    {subject.name} ({subject.chapterCount} chapters)
                   </a>
                 </li>
               ))}
@@ -63,7 +110,6 @@ const Footer = () => {
                 <span className="text-gray-600">shshakib891gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                {/* Replaced Phone icon and added a link */}
                 <FaWhatsapp className="w-4 h-4 text-gray-500" />
                 <a
                   href="https://chat.whatsapp.com/IzZiXBiXaEz8nVG4UQjCel"
