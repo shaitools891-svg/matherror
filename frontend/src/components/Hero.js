@@ -25,11 +25,11 @@ const Hero = () => {
                         <span 
                             className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent animate-glow"
                         >
-                            Master HSC
+                            Study Materials
                         </span>
                         <br />
                         <span className="text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                            Mathematics
+                            Made Simple
                         </span>
                     </h1>
 
