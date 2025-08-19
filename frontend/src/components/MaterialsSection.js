@@ -55,14 +55,14 @@ const MaterialsSection = () => {
   };
 
   return (
-    <section id="materials" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="materials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: currentTheme.text }}>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300">
             Study Materials
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
             Access comprehensive notes and video lectures for HSC 26 preparation
           </p>
         </div>
@@ -70,16 +70,25 @@ const MaterialsSection = () => {
         {/* View Toggle */}
         <div className="flex justify-center mb-8">
           <Tabs value={activeView} onValueChange={setActiveView} className="w-full max-w-md">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="all" className="flex items-center gap-2">
+            <TabsList className="grid w-full grid-cols-3 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg transition-colors duration-300">
+              <TabsTrigger 
+                value="all" 
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 transition-all duration-300"
+              >
                 <FileText className="w-4 h-4" />
                 All
               </TabsTrigger>
-              <TabsTrigger value="pdfs" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="pdfs" 
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 transition-all duration-300"
+              >
                 <Download className="w-4 h-4" />
                 PDFs
               </TabsTrigger>
-              <TabsTrigger value="videos" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="videos" 
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 transition-all duration-300"
+              >
                 <Video className="w-4 h-4" />
                 Videos
               </TabsTrigger>
@@ -90,7 +99,10 @@ const MaterialsSection = () => {
         {/* Materials Grid */}
         <div className="grid lg:grid-cols-1 gap-8">
           {materialsData?.subjects.map((subject) => (
-            <Card key={subject.id} className="border border-gray-200 hover:shadow-md transition-shadow">
+            <Card 
+              key={subject.id} 
+              className="border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-gray-800/30 transition-all duration-300 bg-white dark:bg-gray-800"
+            >
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <div
@@ -102,17 +114,16 @@ const MaterialsSection = () => {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold" style={{ color: currentTheme.text }}>
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">
                       {subject.name}
                     </h3>
-                    <p className="text-sm text-gray-600">{subject.fullName}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                      {subject.fullName}
+                    </p>
                   </div>
                   <Badge
                     variant="secondary"
-                    style={{
-                      backgroundColor: `${currentTheme.primary}10`,
-                      color: currentTheme.primary
-                    }}
+                    className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
                   >
                     {subject.papers.length} {subject.papers.length === 1 ? 'Paper' : 'Papers'}
                   </Badge>
@@ -127,25 +138,41 @@ const MaterialsSection = () => {
                     const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
                     
                     return (
-                      <div key={paper.id} className="border border-gray-200 rounded-lg p-4">
+                      <div 
+                        key={paper.id} 
+                        className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 transition-colors duration-300"
+                      >
                         <div 
                           className="flex justify-between items-center cursor-pointer"
                           onClick={() => togglePaperExpansion(subject.id, paper.id)}
                         >
-                          <h4 className="font-semibold text-lg" style={{ color: currentTheme.text }}>
+                          <h4 className="font-semibold text-lg text-gray-800 dark:text-gray-100 transition-colors duration-300">
                             {paper.name}
                           </h4>
                           <div className="flex items-center gap-2">
-                            <Badge variant="outline" className="mr-2">
+                            <Badge 
+                              variant="outline" 
+                              className="mr-2 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 transition-colors duration-300"
+                            >
                               {totalChapters} {totalChapters === 1 ? 'Chapter' : 'Chapters'}
                             </Badge>
-                            <Badge variant="outline" style={{ backgroundColor: `${currentTheme.primary}10`, color: currentTheme.primary }}>
+                            <Badge 
+                              variant="outline" 
+                              className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
+                            >
                               {totalPdfs} PDFs
                             </Badge>
-                            <Badge variant="outline" style={{ backgroundColor: `${currentTheme.accent}10`, color: currentTheme.accent }}>
+                            <Badge 
+                              variant="outline" 
+                              className="bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300 transition-colors duration-300"
+                            >
                               {totalVideos} Videos
                             </Badge>
-                            <Button variant="ghost" size="sm">
+                            <Button 
+                              variant="ghost" 
+                              size="sm"
+                              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
+                            >
                               {isExpanded ? '▲' : '▼'}
                             </Button>
                           </div>
@@ -154,8 +181,11 @@ const MaterialsSection = () => {
                         {isExpanded && (
                           <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {paper.chapters.map((chapter) => (
-                              <div key={chapter.id} className="p-4 rounded-lg bg-gray-50 border border-gray-100">
-                                <h5 className="font-semibold mb-3 text-gray-800">
+                              <div 
+                                key={chapter.id} 
+                                className="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 transition-colors duration-300"
+                              >
+                                <h5 className="font-semibold mb-3 text-gray-800 dark:text-gray-100 transition-colors duration-300">
                                   {chapter.title}
                                 </h5>
 
@@ -168,12 +198,8 @@ const MaterialsSection = () => {
                                           key={index}
                                           variant="outline"
                                           size="sm"
-                                          className="w-full justify-start gap-2 hover:scale-105 transition-transform"
+                                          className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30"
                                           onClick={() => handleLinkClick(link.url, 'PDF')}
-                                          style={{
-                                            borderColor: currentTheme.primary,
-                                            color: currentTheme.primary
-                                          }}
                                         >
                                           <Download className="w-4 h-4" />
                                           {link.name}
@@ -184,12 +210,8 @@ const MaterialsSection = () => {
                                       <Button
                                         variant="outline"
                                         size="sm"
-                                        className="w-full justify-start gap-2 hover:scale-105 transition-transform"
+                                        className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
                                         onClick={() => handleLinkClick(null, 'PDF')}
-                                        style={{
-                                          borderColor: '#d1d5db',
-                                          color: '#6b7280'
-                                        }}
                                       >
                                         <Plus className="w-4 h-4" />
                                         Add PDF Link
@@ -206,12 +228,8 @@ const MaterialsSection = () => {
                                           key={index}
                                           variant="outline"
                                           size="sm"
-                                          className="w-full justify-start gap-2 hover:scale-105 transition-transform"
+                                          className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30"
                                           onClick={() => handleLinkClick(link.url, 'Video')}
-                                          style={{
-                                            borderColor: currentTheme.accent,
-                                            color: currentTheme.accent
-                                          }}
                                         >
                                           <Play className="w-4 h-4" />
                                           {link.name}
@@ -222,12 +240,8 @@ const MaterialsSection = () => {
                                       <Button
                                         variant="outline"
                                         size="sm"
-                                        className="w-full justify-start gap-2 hover:scale-105 transition-transform"
+                                        className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
                                         onClick={() => handleLinkClick(null, 'Video')}
-                                        style={{
-                                          borderColor: '#d1d5db',
-                                          color: '#6b7280'
-                                        }}
                                       >
                                         <Plus className="w-4 h-4" />
                                         Add Video Link
@@ -251,11 +265,11 @@ const MaterialsSection = () => {
         
         {/* Help Text */}
         <div className="mt-12 text-center">
-          <div className="bg-gray-50 p-6 rounded-xl max-w-2xl mx-auto">
-            <h3 className="font-semibold mb-2" style={{ color: currentTheme.text }}>
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl max-w-2xl mx-auto transition-colors duration-300">
+            <h3 className="font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300">
               Share Your Resources
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
               Have a PDF (Google Drive) or YouTube video to add? Contact Shakib.
             </p>
           </div>
