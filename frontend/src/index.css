@@ -72,9 +72,23 @@ code {
     }
 }
 
+@layer utilities {
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+  
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+}
+
 @layer base {
   * {
-    @apply border; /* Changed from border-border to border */
+    @apply border-border;
     }
   body {
     @apply bg-background text-foreground;
