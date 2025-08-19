@@ -147,25 +147,136 @@ export const studyMaterialsData = {
           id: 5,
           name: "1st Paper",
           chapters: [
+            
             {
-              id: 8,
-              title: "Calculus",
+              id: 16,
+              title: "Chapter 1",
               driveLinks: [
                 {
-                  name: "Differentiation",
-                  url: "https://drive.google.com/your-link-here"
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/13hSTEK4C6zTeEjnQ8JztgBDzQp2Rp1yM/view?usp=drive_link"
                 },
                 {
-                  name: "Integration",
-                  url: "https://drive.google.com/your-link-here"
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/170QWMr1KJsq4a95tfTmRp9579y3HmArj/view?usp=drive_link"
                 }
               ],
-              videoLinks: [
+              videoLinks: []
+            },
+            {
+              id: 17,
+              title: "Chapter 3",
+              driveLinks: [
                 {
-                  name: "Calculus Fundamentals",
-                  url: "https://youtube.com/your-link-here"
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1ca4zL1v60R3aBU0j0xOXVWxGcf2If-Zc/view?usp=sharing"
+                },
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/1_pv1AxrO7gyog_yaQjd_LQzhEUIZEJij/view?usp=sharing"
+                },
+                {
+                  name: "PDF 3",
+                  url: "https://drive.google.com/file/d/1JMuK_XTVhVYk77GLClmQtDnBlMc4Ylt8/view?usp=sharing"
+                },
+                {
+                  name: "PDF 4",
+                  url: "https://drive.google.com/file/d/1LTFac_CQQuCNpda7_PotEFHLMckCAfYE/view?usp=sharing"
                 }
-              ]
+              ],
+              videoLinks: []
+            },
+            {
+              id: 18,
+              title: "Chapter 4",
+              driveLinks: [
+                {
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1ZtWMvZ0_rOOiMZxgzNR88ZQtYlrMCxfH/view?usp=sharing"
+                },
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/1CaPVO8AnaaTbVHKo8R4qsDuMmdkNYfRa/view?usp=sharing"
+                }
+              ],
+              videoLinks: []
+            },
+            {
+              id: 19,
+              title: "Chapter 7",
+              driveLinks: [
+                {
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1PL_fjQvC4edl5QeGgbFOm8uax4gQx8rA/view?usp=sharing"
+                },
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/1wMm7NJbY6blKYkSVWN_Mq8YGzBcsNAq9/view?usp=sharing"
+                },
+                {
+                  name: "PDF 3",
+                  url: "https://drive.google.com/file/d/16uqSrXQV0QNfLaJdTKT0hA1elm8HuYod/view?usp=sharing"
+                },
+                {
+                  name: "PDF 4",
+                  url: "https://drive.google.com/file/d/1Wug7H-ybBuT1Okbu5m4erZTGwI7hjW8V/view?usp=sharing"
+                },
+                {
+                  name: "PDF 5",
+                  url: "https://drive.google.com/file/d/1oHduHfYfGBqIonIVeieysK8Yb1RMAIPs/view?usp=sharing"
+                },
+                {
+                  name: "PDF 6",
+                  url: "https://drive.google.com/file/d/1W6yfmhJI2yuw-m3tBGFa3oRZ48zyxfCX/view?usp=sharing"
+                }
+              ],
+              videoLinks: []
+            },
+            {
+              id: 20,
+              title: "Chapter 9",
+              driveLinks: [
+                {
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1u18LNbiZY5sX4rcB5V6AbJFxPfPKEADD/view?usp=sharing"
+                },
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/1Q3cto4a4xbaHA58heG4IhTDhKx9Nma5Y/view?usp=sharing"
+                },
+                {
+                  name: "PDF 3",
+                  url: "https://drive.google.com/file/d/1uOzNvvImDjGvBwX0_AdDDDMi1SIt35a2/view?usp=sharing"
+                },
+                {
+                  name: "PDF 4",
+                  url: "https://drive.google.com/file/d/1wgSseudnzM_aUTCT6ZDtxeDI51XgvQTc/view?usp=sharing"
+                }
+              ],
+              videoLinks: []
+            },
+            {
+              id: 21,
+              title: "Chapter 10",
+              driveLinks: [
+                {
+                  name: "PDF 1",
+                  url: "https://drive.google.com/file/d/1eQgZUp0RRyAOxuVWNRDMXpuJ2aduMMBR/view?usp=sharing"
+                },
+                {
+                  name: "PDF 2",
+                  url: "https://drive.google.com/file/d/1xaO93KI_oSDwgTXAxGnJLZEBUHiygSHh/view?usp=sharing"
+                },
+                {
+                  name: "PDF 3",
+                  url: "https://drive.google.com/file/d/1RYjTNs6E6cGNiOQDUangYsJzPf8tBJJn/view?usp=sharing"
+                },
+                {
+                  name: "PDF 4",
+                  url: "https://drive.google.com/file/d/1wt6IymqHSNsq5eRTcV-KXhnhadlZfFTz/view?usp=sharing"
+                }
+              ],
+              videoLinks: []
             }
           ]
         },
