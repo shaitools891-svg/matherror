@@ -1,157 +1,249 @@
-import React from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { Heart, Mail, Phone } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-import { mockData } from '../data/mock';
-
-// Import your materials data structure
-import { staticMaterialsData } from './MaterialsSection'; // Adjust the path as needed
-
-const Footer = () => {
-  const { currentTheme } = useTheme();
-
-  // Calculate total chapters across all subjects and papers
-  const calculateTotalChapters = () => {
-    let totalChapters = 0;
-    
-    if (staticMaterialsData && staticMaterialsData.subjects) {
-      staticMaterialsData.subjects.forEach(subject => {
-        if (subject.papers) {
-          subject.papers.forEach(paper => {
-            totalChapters += paper.chapters ? paper.chapters.length : 0;
-          });
+// src/data/studyMaterials.js
+export const studyMaterialsData = {
+  subjects: [
+    {
+      id: 1,
+      name: "Physics",
+      fullName: "HSC Physics",
+      icon: "Atom",
+      papers: [
+        {
+          id: 1,
+          name: "1st Paper",
+          chapters: [
+            {
+              id: 1,
+              title: "Mechanics",
+              driveLinks: [
+                {
+                  name: "Chapter 1 - Motion",
+                  url: "https://drive.google.com/your-link-here"
+                },
+                {
+                  name: "Chapter 2 - Forces", 
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Motion Basics",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            },
+            {
+              id: 2,
+              title: "Thermodynamics",
+              driveLinks: [
+                {
+                  name: "Heat and Temperature",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Thermodynamics Explained",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: "2nd Paper",
+          chapters: [
+            {
+              id: 3,
+              title: "Waves and Optics",
+              driveLinks: [
+                {
+                  name: "Wave Properties",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Optics Fundamentals",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            },
+            {
+              id: 4,
+              title: "Modern Physics",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
         }
-      });
+      ]
+    },
+    {
+      id: 2,
+      name: "Chemistry",
+      fullName: "HSC Chemistry",
+      icon: "FlaskConical",
+      papers: [
+        {
+          id: 3,
+          name: "1st Paper",
+          chapters: [
+            {
+              id: 5,
+              title: "Organic Chemistry",
+              driveLinks: [
+                {
+                  name: "Organic Compounds",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Organic Chemistry Basics",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 4,
+          name: "2nd Paper",
+          chapters: [
+            {
+              id: 6,
+              title: "Inorganic Chemistry",
+              driveLinks: [
+                {
+                  name: "Periodic Table",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: []
+            },
+            {
+              id: 7,
+              title: "Physical Chemistry",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "Chemical Kinetics",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: "Mathematics",
+      fullName: "HSC Mathematics",
+      icon: "Monitor",
+      papers: [
+        {
+          id: 5,
+          name: "1st Paper",
+          chapters: [
+            {
+              id: 8,
+              title: "Calculus",
+              driveLinks: [
+                {
+                  name: "Differentiation",
+                  url: "https://drive.google.com/your-link-here"
+                },
+                {
+                  name: "Integration",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Calculus Fundamentals",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 6,
+          name: "2nd Paper",
+          chapters: [
+            {
+              id: 9,
+              title: "Algebra",
+              driveLinks: [
+                {
+                  name: "Linear Equations",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Algebraic Methods",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            },
+            {
+              id: 10,
+              title: "Geometry",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 4,
+      name: "ICT",
+      fullName: "Information and Communication Technology",
+      icon: "Calculator",
+      papers: [
+        {
+          id: 7,
+          name: "Full Syllabus",
+          chapters: [
+            {
+              id: 11,
+              title: "Programming",
+              driveLinks: [
+                {
+                  name: "Python Basics",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Programming Concepts",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            },
+            {
+              id: 12,
+              title: "Database",
+              driveLinks: [
+                {
+                  name: "SQL Notes",
+                  url: "https://drive.google.com/your-link-here"
+                }
+              ],
+              videoLinks: [
+                {
+                  name: "Database Tutorial",
+                  url: "https://youtube.com/your-link-here"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
-    
-    return totalChapters;
-  };
-
-  // Get subjects with their chapter counts
-  const getSubjectsWithCounts = () => {
-    if (!staticMaterialsData || !staticMaterialsData.subjects) return [];
-    
-    return staticMaterialsData.subjects.map(subject => {
-      let chapterCount = 0;
-      
-      if (subject.papers) {
-        subject.papers.forEach(paper => {
-          chapterCount += paper.chapters ? paper.chapters.length : 0;
-        });
-      }
-      
-      return {
-        id: subject.id,
-        name: subject.name,
-        chapterCount: chapterCount
-      };
-    });
-  };
-
-  const subjectsWithCounts = getSubjectsWithCounts();
-  const totalChapters = calculateTotalChapters();
-
-  return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand Section */}
-          <div className="col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div 
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold"
-                style={{ backgroundColor: currentTheme.primary }}
-              >
-                ME
-              </div>
-              <h3 className="text-xl font-bold" style={{ color: currentTheme.text }}>
-                {mockData.siteInfo.name}
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-4">
-              Your trusted Whatsapp group for HSC 26 preparation. Quality study materials 
-              and video lectures for all subjects.
-            </p>
-            <p className="text-sm text-gray-500">
-              {mockData.siteInfo.tagline}
-            </p>
-            <p className="text-sm text-gray-500 mt-2">
-              {totalChapters}+ chapters across all subjects
-            </p>
-          </div>
-
-          {/* Subjects */}
-          <div className="col-span-1">
-            <h4 className="font-semibold mb-4" style={{ color: currentTheme.text }}>
-              Subjects
-            </h4>
-            <ul className="space-y-2">
-              {subjectsWithCounts.map((subject) => (
-                <li key={subject.id}>
-                  <a 
-                    href="#materials" 
-                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
-                  >
-                    {subject.name} ({subject.chapterCount} chapters)
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="col-span-1">
-            <h4 className="font-semibold mb-4" style={{ color: currentTheme.text }}>
-              Get in Touch
-            </h4>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm">
-                <Mail className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-600">shshakib891@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <FaWhatsapp className="w-4 h-4 text-gray-500" />
-                <a
-                  href="https://chat.whatsapp.com/IzZiXBiXaEz8nVG4UQjCel"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:underline"
-                >
-                  Whatsapp: MathERROR
-                </a>
-              </div>
-            </div>
-            
-            <div className="mt-6">
-              <p className="text-xs text-gray-500 mb-2">Available Themes:</p>
-              <div className="flex gap-2">
-                {mockData.colorThemes.map((theme) => (
-                  <div
-                    key={theme.id}
-                    className="w-4 h-4 rounded-full border border-gray-300"
-                    style={{ backgroundColor: theme.primary }}
-                    title={theme.name}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-500">
-            © 2024 {mockData.siteInfo.name}. Made with passion for HSC students.
-          </p>
-          <div className="flex items-center gap-1 text-sm text-gray-500 mt-2 md:mt-0">
-            <span>Built with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
-            <span>for better education</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+  ]
 };
-
-export default Footer;
