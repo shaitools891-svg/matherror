@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MaterialsSection from './components/MaterialsSection';
@@ -20,37 +20,23 @@ const ScrollRestoration = () => {
   return null;
 };
 
-// Background pattern component for visual appeal
+// Background pattern component for visual appeal (moved inside ThemeProvider)
 const BackgroundPattern = () => {
-  const { isDarkMode } = useTheme();
-  
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      <div className={`absolute top-0 left-0 w-full h-full ${
-        isDarkMode 
-          ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' 
-          : 'bg-gradient-to-br from-blue-50 via-white to-gray-50'
-      } transition-all duration-500`}></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500"></div>
       <div className="absolute top-0 left-0 w-full h-full opacity-10">
-        <div className={`absolute top-20 left-10 w-64 h-64 rounded-full ${
-          isDarkMode ? 'bg-blue-600' : 'bg-blue-300'
-        } blur-3xl animate-pulse transition-colors duration-500`}></div>
-        <div className={`absolute bottom-20 right-10 w-80 h-80 rounded-full ${
-          isDarkMode ? 'bg-purple-600' : 'bg-purple-300'
-        } blur-3xl animate-pulse transition-colors duration-500 delay-700`}></div>
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-300 dark:bg-blue-600 blur-3xl animate-pulse transition-colors duration-500"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-purple-300 dark:bg-purple-600 blur-3xl animate-pulse transition-colors duration-500 delay-700"></div>
       </div>
     </div>
   );
 };
 
-// Main Home component
+// Main Home component (simplified - theme will be handled by individual components)
 const Home = () => {
-  const { isDarkMode } = useTheme();
-
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-white'
-    }`}>
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <BackgroundPattern />
       <Header />
       <main className="relative z-10">
@@ -62,14 +48,10 @@ const Home = () => {
   );
 };
 
-// Loading component
+// Loading component (simplified)
 const AppLoading = () => {
-  const { isDarkMode } = useTheme();
-
   return (
-    <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-white'
-    }`}>
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <LoadingSpinner />
     </div>
   );
@@ -87,15 +69,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Show loading spinner while app is initializing
-  if (loading) {
-    return (
-      <ThemeProvider>
-        <AppLoading />
-      </ThemeProvider>
-    );
-  }
-
   return (
     <ThemeProvider>
       <HashRouter>
@@ -103,7 +76,7 @@ function App() {
           <ScrollRestoration />
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={loading ? <AppLoading /> : <Home />} />
             {/* Add other routes here if needed */}
             <Route path="*" element={<NotFound />} />
           </Routes>
