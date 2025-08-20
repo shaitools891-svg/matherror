@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
 import { ArrowRight, BookOpen, Users, Target } from 'lucide-react';
-import ShinyText from './reactbits/TextAnimations/ShinyText/ShinyText';
+import GradientText from './reactbits/TextAnimations/GradientText/GradientText';
 
 const Hero = () => {
     const { currentTheme } = useTheme();
@@ -29,12 +29,11 @@ const Hero = () => {
                             Study Materials
                         </span>
                         <br />
-                        {/* Apply ShinyText here */}
-                        <ShinyText 
+                        {/* Apply GradientText here */}
+                        <GradientText 
                             text="Made Simple" 
-                            // You can add props like speed, className, etc. here if needed
-                            // For example: speed={3} className="inline-block"
-                            className="text-gray-800 dark:text-gray-100 transition-colors duration-300"
+                            colors="from-pink-500 via-red-500 to-yellow-500 dark:from-pink-400 dark:via-red-400 dark:to-yellow-400"
+                            className="font-extrabold"
                         />
                     </h1>
 
