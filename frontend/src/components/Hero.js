@@ -2,9 +2,8 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
 import { ArrowRight, BookOpen, Users, Target } from 'lucide-react';
-// Import the ShinyText component from its new location
-// It will be a sibling directory to Hero.js within 'frontend/src/components'
-import { ShinyText } from './reactbits/ShinyText'; 
+// Corrected import path for ShinyText based on its actual location
+import { ShinyText } from './reactbits/TextAnimations/ShinyText/ShinyText'; 
 
 const Hero = () => {
     const { currentTheme } = useTheme();
