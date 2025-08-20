@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Badge } from './ui/badge';
-import { Input } from './ui/input';
+import { Input } from './ui/input'; // Make sure this component exists
 import {
   Monitor,
   Atom,
