@@ -20,7 +20,7 @@ const AboutSection = () => {
               <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center mb-6 shadow-lg overflow-hidden">
                 {!imageError ? (
                   <img 
-                    src="https://example.com/your-profile-picture.jpg" // Replace with your image URL
+                    src="https://github.com/shaitools891-svg/matherror/blob/50ed9a9e85078fc8f080c629572e53769fab85bf/frontend/src/assets/profile-picture.jpg" // Replace with your image URL
                     alt="Shakib" 
                     className="w-full h-full object-cover"
                     onError={() => setImageError(true)}
