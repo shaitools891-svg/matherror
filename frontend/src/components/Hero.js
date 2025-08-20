@@ -3,7 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
 import { ArrowRight, BookOpen, Users, Target } from 'lucide-react';
 // Corrected import path for ShinyText based on its actual location
-import { ShinyText } from './reactbits/TextAnimations/ShinyText/ShinyText'; 
+import { ShinyText } from './reactbits/TextAnimations/ShinyText'; 
 
 const Hero = () => {
     const { currentTheme } = useTheme();
