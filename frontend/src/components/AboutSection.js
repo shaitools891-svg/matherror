@@ -13,7 +13,7 @@ const AboutSection = () => {
           </h1>
         </div>
 
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-colors duration-300">
+        <section id="about" className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-colors duration-300">
           <div className="md:flex">
             {/* Profile Section */}
             <div className="md:w-2/5 bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex flex-col justify-center items-center text-white">
