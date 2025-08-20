@@ -1,8 +1,8 @@
-// GradientText.jsx
+// Create this file: src/components/reactbits/TextAnimations/GradientText/GradientText.jsx
 const GradientText = ({ 
   text, 
   className = "",
-  colors = "from-blue-600 via-green-500 to-indigo-400"
+  colors = "from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
 }) => {
   return (
     <span
