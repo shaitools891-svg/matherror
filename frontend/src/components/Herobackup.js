@@ -2,9 +2,6 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
 import { ArrowRight, BookOpen, Users, Target } from 'lucide-react';
-// Import the ShinyText component from its new location
-// It will be a sibling directory to Hero.js within 'frontend/src/components'
-import { ShinyText } from './reactbits/ShinyText'; 
 
 const Hero = () => {
     const { currentTheme } = useTheme();
@@ -31,13 +28,9 @@ const Hero = () => {
                             Study Materials
                         </span>
                         <br />
-                        {/* Apply ShinyText here */}
-                        <ShinyText 
-                            text="Made Simple" 
-                            // You can add props like speed, className, etc. here if needed
-                            // For example: speed={3} className="inline-block"
-                            className="text-gray-800 dark:text-gray-100 transition-colors duration-300"
-                        />
+                        <span className="text-gray-800 dark:text-gray-100 transition-colors duration-300">
+                            Made Simple
+                        </span>
                     </h1>
 
                     {/* Subtitle */}
