@@ -12,7 +12,15 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
+      // Update the path for the HtmlWebpackPlugin to point to frontend/public
+      const htmlWebpackPlugin = webpackConfig.plugins.find(
+        plugin => plugin.constructor.name === 'HtmlWebpackPlugin'
+      );
       
+      if (htmlWebpackPlugin) {
+        htmlWebpackPlugin.options.template = path.resolve(__dirname, 'public/index.html');
+      }
+
       // Disable hot reload completely if environment variable is set
       if (config.disableHotReload) {
         // Remove hot reload related plugins
@@ -43,4 +51,8 @@ module.exports = {
       return webpackConfig;
     },
   },
+  // Add devServer configuration
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+  }
 };
