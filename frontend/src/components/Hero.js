@@ -29,12 +29,8 @@ const Hero = () => {
                             Study Materials
                         </span>
                         <br />
-                        {/* Apply GradientText here */}
-                        <GradientText 
-                            text="Made Simple" 
-                            colors="from-pink-500 via-red-500 to-yellow-500 dark:from-pink-400 dark:via-red-400 dark:to-yellow-400"
-                            className="font-extrabold"
-                        />
+                        {/* Apply GradientText here - simplified */}
+                        <GradientText text="Made Simple" />
                     </h1>
 
                     {/* Subtitle */}
