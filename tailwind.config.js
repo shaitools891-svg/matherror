@@ -71,13 +71,14 @@ module.exports = {
           '100%': { 'background-position': '-100%' },
         },
         "gradient-x": {
-          "0%, 100%": {
-            "background-size": "200% 200%",
-            "background-position": "left center"
+          "0%": {
+            "background-position": "0% 50%"
           },
           "50%": {
-            "background-size": "200% 200%",
-            "background-position": "right center"
+            "background-position": "100% 50%"
+          },
+          "100%": {
+            "background-position": "0% 50%"
           }
         },
       },
@@ -85,7 +86,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shine: 'shine 5s linear infinite',
-        "gradient-x": "gradient-x 15s ease infinite",
+        "gradient-x": "gradient-x 3s ease infinite",
       },
     },
   },
