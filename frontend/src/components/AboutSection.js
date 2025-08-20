@@ -1,7 +1,7 @@
 import React from 'react';
 
 // If you placed the image in src/assets/
-import profilePic from '../assets/profile-picture.jpg';
+import profilePic from '../src/assets/profile-picture.jpg';
 
 const AboutSection = () => {
   return (
