@@ -1,8 +1,7 @@
-// Create this file: src/components/reactbits/TextAnimations/GradientText/GradientText.jsx
 const GradientText = ({ 
   text, 
   className = "",
-  colors = "from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
+  colors = "from-blue-600 via-purple-600 to-pink-600"
 }) => {
   return (
     <span
@@ -15,6 +14,12 @@ const GradientText = ({
         animate-gradient-x
         ${className}
       `}
+      style={{
+        backgroundSize: '200% 200%',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+      }}
     >
       {text}
     </span>
