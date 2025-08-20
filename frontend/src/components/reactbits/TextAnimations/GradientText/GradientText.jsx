@@ -1,16 +1,17 @@
 const GradientText = ({ 
   text, 
-  className = "",
-  colors = "from-blue-600 via-purple-600 to-pink-600"
+  className = ""
 }) => {
   return (
     <span
       className={`
         inline-block
-        text-transparent 
-        bg-clip-text 
+        font-extrabold
         bg-gradient-to-r 
-        ${colors}
+        from-pink-500 via-red-500 to-yellow-500
+        dark:from-pink-400 dark:via-red-400 dark:to-yellow-400
+        bg-clip-text 
+        text-transparent
         animate-gradient-x
         ${className}
       `}
