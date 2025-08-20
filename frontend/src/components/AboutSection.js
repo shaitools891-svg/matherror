@@ -19,12 +19,12 @@ const AboutSection = () => {
             <div className="md:w-2/5 bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex flex-col justify-center items-center text-white">
               <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center mb-6 shadow-lg overflow-hidden">
                 {!imageError ? (
-                  <img 
-                    src="https://github.com/shaitools891-svg/matherror/blob/50ed9a9e85078fc8f080c629572e53769fab85bf/frontend/src/assets/profile-picture.jpg" // Replace with your image URL
-                    alt="Shakib" 
-                    className="w-full h-full object-cover"
-                    onError={() => setImageError(true)}
-                  />
+                 <img 
+  src={`${process.env.PUBLIC_URL}/images/profile-picture.jpg`}
+  alt="Shakib" 
+  className="w-full h-full object-cover"
+  onError={() => setImageError(true)}
+/>
                 ) : (
                   <svg className="w-16 h-16 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -33,7 +33,6 @@ const AboutSection = () => {
               </div>
               <h2 className="text-2xl font-bold mb-2">Shakib</h2>
               <p className="text-blue-100 mb-6">CSE Student</p>
-              /* Rest of the component remains the same */
               <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 w-full max-w-xs">
                 <h3 className="font-semibold mb-3 text-center">Quick Info</h3>
                 <div className="space-y-2">
