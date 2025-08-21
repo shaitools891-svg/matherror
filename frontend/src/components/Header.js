@@ -8,7 +8,7 @@ const Header = () => {
     const { currentTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState(0);
-    const navRef = useRef(null);
+    const gooeyNavRef = useRef(null);
 
     const navItems = [
         { label: 'Home', href: '#home' },
@@ -24,6 +24,18 @@ const Header = () => {
             element.scrollIntoView({ behavior: 'smooth' });
             setIsMenuOpen(false);
             setActiveSection(index);
+            
+            // Update GooeyNav active state if it exists
+            if (gooeyNavRef.current) {
+                const navItems = gooeyNavRef.current.querySelectorAll('li');
+                navItems.forEach((li, i) => {
+                    if (i === index) {
+                        li.classList.add('active');
+                    } else {
+                        li.classList.remove('active');
+                    }
+                });
+            }
         }
     };
 
@@ -46,26 +58,23 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Override the ReactBits GooeyNav click behavior
+    // Initialize GooeyNav after component mounts
     useEffect(() => {
-        if (navRef.current) {
-            const links = navRef.current.querySelectorAll('a');
+        if (gooeyNavRef.current) {
+            // Add click handlers to GooeyNav items
+            const links = gooeyNavRef.current.querySelectorAll('a');
             links.forEach((link, index) => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent default navigation
-                    e.stopPropagation();
+                    e.preventDefault();
                     scrollToSection(navItems[index], index);
                 });
             });
 
-            return () => {
-                links.forEach((link, index) => {
-                    link.removeEventListener('click', (e) => {
-                        e.preventDefault();
-                        scrollToSection(navItems[index], index);
-                    });
-                });
-            };
+            // Set initial active state
+            const navItemsElements = gooeyNavRef.current.querySelectorAll('li');
+            if (navItemsElements.length > activeSection) {
+                navItemsElements[activeSection].classList.add('active');
+            }
         }
     }, [activeSection]);
 
@@ -132,22 +141,26 @@ const Header = () => {
                     border: 1px solid rgba(255, 255, 255, 0.1);
                 }
 
-                /* Enhance particle effects */
-                .effect.filter {
+                /* Fix for ReactBits GooeyNav */
+                .gooey-nav-wrapper .effect.filter {
                     filter: blur(8px) contrast(120) blur(0);
                     mix-blend-mode: screen;
                 }
 
+                .gooey-nav-wrapper .effect.filter::before {
+                    background: transparent !important;
+                }
+
                 /* Better text contrast */
                 .gooey-nav-wrapper li a {
-                    color: rgba(0, 0, 0, 0.8);
+                    color: rgba(0, 0, 0, 0.8) !important;
                     font-weight: 500;
                     text-shadow: none;
                     transition: all 0.3s ease;
                 }
 
                 .dark .gooey-nav-wrapper li a {
-                    color: rgba(255, 255, 255, 0.9);
+                    color: rgba(255, 255, 255, 0.9) !important;
                 }
 
                 .gooey-nav-wrapper li.active a,
@@ -178,7 +191,7 @@ const Header = () => {
 
                         {/* Desktop Navigation - Enhanced ReactBits GooeyNav */}
                         <div className="hidden md:block">
-                            <div className="gooey-nav-wrapper" ref={navRef}>
+                            <div className="gooey-nav-wrapper" ref={gooeyNavRef}>
                                 <GooeyNav 
                                     items={navItems}
                                     initialActiveIndex={activeSection}
