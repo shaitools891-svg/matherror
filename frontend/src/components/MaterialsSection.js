@@ -1,11 +1,11 @@
-import { GlassIcons } from './components/reactbits/Components/GlassIcons/GlassIcons';
+import GlassIcons from '../../reactbits/Components/GlassIcons/GlassIcons'; // Updated import path assuming 'reactbits' is a sibling of 'components' under 'src'
 import React, { useState, useMemo } from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Badge } from './ui/badge';
-import { Input } from './ui/input'; // Make sure this component exists
+import { useTheme } from '../context/ThemeContext'; // Path remains the same, assuming 'context' is a sibling of 'components' under 'src'
+import { Button } from '../ui/button'; // Updated import path assuming 'ui' is a sibling of 'components' under 'src'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'; // Updated import path
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'; // Updated import path
+import { Badge } from '../ui/badge'; // Updated import path
+import { Input } from '../ui/input'; // Updated import path
 import {
   Monitor,
   Atom,
@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 
 // Import shared data
-import { studyMaterialsData } from '../data/studyMaterials';
+import { studyMaterialsData } from '../data/studyMaterials'; // Path remains the same, assuming 'data' is a sibling of 'components' under 'src'
 
 const MaterialsSection = () => {
   const { currentTheme } = useTheme();
@@ -31,7 +31,7 @@ const MaterialsSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   
-  // ADDED ARRAY
+  // ADDED ARRAY for GlassIcons
   const glassIconItems = [
     {
       icon: <Monitor className="w-8 h-8 text-white" />,
@@ -125,6 +125,8 @@ const MaterialsSection = () => {
 
   const handleLinkClick = (url, type) => {
     if (!url || url.includes('your-link-here')) {
+      // Using a simple alert for now as per the original code's behavior.
+      // In a real application, consider a custom modal or toast notification.
       alert(`${type} link is not ready yet. Please reach out to Shakib and notify him.`);
       return;
     }
@@ -163,7 +165,8 @@ const MaterialsSection = () => {
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
             Access comprehensive notes and video lectures for HSC 26 preparation
           </p>
-          {/* ADDED COMPONENT */}
+          
+          {/* ADDED GlassIcons COMPONENT */}
           <GlassIcons items={glassIconItems} className="mt-8" />
         </div>
 
