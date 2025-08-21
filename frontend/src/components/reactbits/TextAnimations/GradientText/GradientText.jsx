@@ -2,26 +2,33 @@ const GradientText = ({
   text, 
   className = ""
 }) => {
+  const gradientStyle = {
+    background: 'linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57, #ff9ff3, #ff6b6b)',
+    backgroundSize: '400% 400%',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    animation: 'gradientMove 4s ease infinite'
+  };
+
   return (
-    <span
-      className={`
-        inline-block
-        font-extrabold
-        text-transparent
-        animate-gradient-x
-        ${className}
-      `}
-      style={{
-        background: 'linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3)',
-        backgroundSize: '400% 400%',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-        animation: 'gradient-x 3s ease infinite'
-      }}
-    >
-      {text}
-    </span>
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `
+      }} />
+      <span 
+        className={`inline-block font-extrabold ${className}`}
+        style={gradientStyle}
+      >
+        {text}
+      </span>
+    </>
   );
 };
 
