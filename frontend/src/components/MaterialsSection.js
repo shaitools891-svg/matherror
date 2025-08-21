@@ -4,11 +4,11 @@ import React, { useState, useMemo } from 'react';
 // Path remains the same if 'context' is a sibling of 'components' under 'src'
 import { useTheme } from '../context/ThemeContext'; 
 // Updated import paths for UI components, assuming 'ui' is a sibling of 'components' under 'src'
-import { Button } from '../ui/button'; 
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'; 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'; 
-import { Badge } from '../ui/badge'; 
-import { Input } from '../ui/input'; 
+import { Button } from './ui/button'; 
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'; 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'; 
+import { Badge } from './ui/badge'; 
+import { Input } from './ui/input'; 
 import {
   Monitor,
   Atom,
