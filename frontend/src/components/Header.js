@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import DarkModeToggle from './DarkModeToggle';
-import GooeyNav from './GooeyNav';
+import GooeyNav from './reactbits/Components/GooeyNav/GooeyNav'; // Updated import path
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
     const { currentTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('Home');
+    const [activeSection, setActiveSection] = useState(0); // Changed to index for ReactBits component
 
     const navItems = [
         { label: 'Home', href: '#home' },
@@ -16,13 +16,13 @@ const Header = () => {
         { label: 'Contact', href: '#contact' }
     ];
 
-    const scrollToSection = (item) => {
+    const scrollToSection = (item, index) => {
         const sectionId = item.href.replace('#', '');
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
             setIsMenuOpen(false);
-            setActiveSection(item.label);
+            setActiveSection(index); // Update to use index
         }
     };
 
@@ -32,13 +32,10 @@ const Header = () => {
             const sections = navItems.map(item => item.href.replace('#', ''));
             const scrollPos = window.scrollY + 100;
 
-            for (const sectionId of sections.reverse()) {
-                const element = document.getElementById(sectionId);
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const element = document.getElementById(sections[i]);
                 if (element && element.offsetTop <= scrollPos) {
-                    const activeItem = navItems.find(item => item.href === `#${sectionId}`);
-                    if (activeItem) {
-                        setActiveSection(activeItem.label);
-                    }
+                    setActiveSection(i);
                     break;
                 }
             }
@@ -47,6 +44,13 @@ const Header = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Handle navigation clicks from GooeyNav
+    const handleGooeyNavClick = (event, index) => {
+        event.preventDefault();
+        const item = navItems[index];
+        scrollToSection(item, index);
+    };
 
     return (
         <header className={`
@@ -68,13 +72,26 @@ const Header = () => {
                         </h1>
                     </div>
 
-                    {/* Desktop Navigation - Now with Gooey Effect */}
+                    {/* Desktop Navigation - Official ReactBits GooeyNav */}
                     <div className="hidden md:block">
-                        <GooeyNav 
-                            items={navItems}
-                            onItemClick={scrollToSection}
-                            activeSection={activeSection}
-                        />
+                        <div 
+                            className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-1 shadow-lg"
+                            style={{
+                                background: `linear-gradient(45deg, ${currentTheme.primary}, ${currentTheme.secondary})`,
+                            }}
+                        >
+                            <GooeyNav 
+                                items={navItems.map((item, index) => ({
+                                    ...item,
+                                    // Add click handler to each item
+                                    onClick: (e) => handleGooeyNavClick(e, index)
+                                }))}
+                                initialActiveIndex={activeSection}
+                                animationTime={400}
+                                particleCount={12}
+                                colors={[1, 2, 3, 4]} // Custom color indices
+                            />
+                        </div>
                     </div>
 
                     {/* Dark Mode Toggle & Mobile Menu Button */}
@@ -112,7 +129,7 @@ const Header = () => {
                             {navItems.map((item, index) => (
                                 <button
                                     key={item.label}
-                                    onClick={() => scrollToSection(item)}
+                                    onClick={() => scrollToSection(item, index)}
                                     className={`
                                         block w-full text-left px-3 py-2 rounded-md text-base font-medium
                                         text-gray-700 dark:text-gray-300
@@ -120,7 +137,7 @@ const Header = () => {
                                         hover:bg-gray-100 dark:hover:bg-gray-800
                                         transition-all duration-300
                                         animate-slide-up
-                                        ${activeSection === item.label ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : ''}
+                                        ${activeSection === index ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : ''}
                                     `}
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
@@ -131,6 +148,16 @@ const Header = () => {
                     </div>
                 )}
             </nav>
+
+            {/* Add CSS variables for particle colors to match your theme */}
+            <style jsx>{`
+                :root {
+                    --color-1: ${currentTheme.primary};
+                    --color-2: ${currentTheme.secondary};
+                    --color-3: #ffffff;
+                    --color-4: #f0f9ff;
+                }
+            `}</style>
         </header>
     );
 };
