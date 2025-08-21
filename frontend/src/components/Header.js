@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import DarkModeToggle from './DarkModeToggle';
-import GooeyNav from './reactbits/Components/GooeyNav/GooeyNav'; // Updated import path
+import GooeyNav from './reactbits/Components/GooeyNav/GooeyNav';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
     const { currentTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState(0); // Changed to index for ReactBits component
+    const [activeSection, setActiveSection] = useState(0);
+    const navRef = useRef(null);
 
     const navItems = [
         { label: 'Home', href: '#home' },
@@ -22,7 +23,7 @@ const Header = () => {
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
             setIsMenuOpen(false);
-            setActiveSection(index); // Update to use index
+            setActiveSection(index);
         }
     };
 
@@ -45,21 +46,114 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Override the ReactBits GooeyNav click behavior
+    useEffect(() => {
+        if (navRef.current) {
+            const links = navRef.current.querySelectorAll('a');
+            links.forEach((link, index) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default navigation
+                    e.stopPropagation();
+                    scrollToSection(navItems[index], index);
+                });
+            });
+
+            return () => {
+                links.forEach((link, index) => {
+                    link.removeEventListener('click', (e) => {
+                        e.preventDefault();
+                        scrollToSection(navItems[index], index);
+                    });
+                });
+            };
+        }
+    }, [activeSection]);
+
     return (
         <>
-            {/* CSS Variables for GooeyNav particles */}
-            <style jsx>{`
+            {/* Enhanced CSS for better gooey effects */}
+            <style jsx global>{`
                 :root {
                     --color-1: ${currentTheme.primary || '#3b82f6'};
                     --color-2: ${currentTheme.secondary || '#8b5cf6'};
                     --color-3: #ffffff;
                     --color-4: #f0f9ff;
                 }
+                
                 .dark {
                     --color-1: #60a5fa;
                     --color-2: #a78bfa;
                     --color-3: #f8fafc;
                     --color-4: #dbeafe;
+                }
+
+                /* Enhanced gooey nav container */
+                .gooey-nav-wrapper {
+                    background: linear-gradient(135deg, ${currentTheme.primary || '#3b82f6'} 0%, ${currentTheme.secondary || '#8b5cf6'} 100%);
+                    border-radius: 24px;
+                    padding: 6px;
+                    box-shadow: 
+                        0 8px 32px rgba(0, 0, 0, 0.12),
+                        0 2px 8px rgba(0, 0, 0, 0.08),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                    backdrop-filter: blur(12px);
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .gooey-nav-wrapper::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(135deg, 
+                        rgba(255, 255, 255, 0.1) 0%, 
+                        rgba(255, 255, 255, 0.05) 50%, 
+                        rgba(0, 0, 0, 0.05) 100%);
+                    border-radius: inherit;
+                    pointer-events: none;
+                }
+
+                /* Override ReactBits nav styling for better integration */
+                .gooey-nav-wrapper nav {
+                    background: rgba(255, 255, 255, 0.95);
+                    border-radius: 18px;
+                    backdrop-filter: blur(8px);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .dark .gooey-nav-wrapper nav {
+                    background: rgba(0, 0, 0, 0.8);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                /* Enhance particle effects */
+                .effect.filter {
+                    filter: blur(8px) contrast(120) blur(0);
+                    mix-blend-mode: screen;
+                }
+
+                /* Better text contrast */
+                .gooey-nav-wrapper li a {
+                    color: rgba(0, 0, 0, 0.8);
+                    font-weight: 500;
+                    text-shadow: none;
+                    transition: all 0.3s ease;
+                }
+
+                .dark .gooey-nav-wrapper li a {
+                    color: rgba(255, 255, 255, 0.9);
+                }
+
+                .gooey-nav-wrapper li.active a,
+                .gooey-nav-wrapper li a:hover {
+                    color: white !important;
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
                 }
             `}</style>
 
@@ -82,20 +176,18 @@ const Header = () => {
                             </h1>
                         </div>
 
-                        {/* Desktop Navigation - Official ReactBits GooeyNav */}
+                        {/* Desktop Navigation - Enhanced ReactBits GooeyNav */}
                         <div className="hidden md:block">
-                            <div 
-                                className="rounded-2xl p-1 shadow-lg backdrop-blur-sm"
-                                style={{
-                                    background: `linear-gradient(45deg, ${currentTheme.primary || '#3b82f6'}, ${currentTheme.secondary || '#8b5cf6'})`,
-                                }}
-                            >
+                            <div className="gooey-nav-wrapper" ref={navRef}>
                                 <GooeyNav 
                                     items={navItems}
                                     initialActiveIndex={activeSection}
-                                    animationTime={400}
-                                    particleCount={12}
-                                    colors={[1, 2, 3, 4]}
+                                    animationTime={500}
+                                    particleCount={15}
+                                    particleDistances={[120, 15]}
+                                    particleR={150}
+                                    timeVariance={400}
+                                    colors={[1, 2, 3, 4, 1, 2]}
                                 />
                             </div>
                         </div>
@@ -128,7 +220,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Mobile Navigation Menu - Keep original style */}
+                    {/* Mobile Navigation Menu */}
                     {isMenuOpen && (
                         <div className="md:hidden animate-slide-down">
                             <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 mt-2">
