@@ -34,32 +34,116 @@ const MaterialsSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   
-  // ADDED ARRAY for GlassIcons
+  // Use shared data
+  const materialsData = studyMaterialsData;
+
+  // ADDED ARRAY for GlassIcons with correct subject IDs and icons matching data
   const glassIconItems = [
     {
-      icon: <Monitor className="w-8 h-8 text-white" />,
+      icon: <Atom className="w-8 h-8 text-white" />, // Physics uses Atom (matches data)
       label: "Physics",
-      color: "blue"
+      color: "blue",
+      subjectId: "1" // Physics has id: 1
     },
     {
-      icon: <Atom className="w-8 h-8 text-white" />,
+      icon: <FlaskConical className="w-8 h-8 text-white" />, // Chemistry uses FlaskConical (matches data)
       label: "Chemistry",
-      color: "purple"
+      color: "purple",
+      subjectId: "2" // Chemistry has id: 2
     },
     {
-      icon: <FlaskConical className="w-8 h-8 text-white" />,
-      label: "Biology", 
-      color: "green"
+      icon: <Monitor className="w-8 h-8 text-white" />, // Mathematics uses Monitor (matches data)
+      label: "Mathematics", 
+      color: "green",
+      subjectId: "3" // Mathematics has id: 3
     },
     {
-      icon: <Calculator className="w-8 h-8 text-white" />,
-      label: "Math",
-      color: "orange"
+      icon: <Calculator className="w-8 h-8 text-white" />, // ICT uses Calculator (matches data)
+      label: "ICT",
+      color: "orange",
+      subjectId: "4" // ICT has id: 4
     }
   ];
 
-  // Use shared data
-  const materialsData = studyMaterialsData;
+  // Scroll to subject function
+  const scrollToSubject = (subjectId) => {
+    const element = document.getElementById(`subject-${subjectId}`);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      
+      // Add a highlight effect
+      element.classList.add('ring-2', 'ring-blue-500', 'ring-opacity-50', 'transition-all', 'duration-500');
+      
+      // Remove highlight after 2 seconds
+      setTimeout(() => {
+        element.classList.remove('ring-2', 'ring-blue-500', 'ring-opacity-50');
+      }, 2000);
+    }
+  };
+
+  // Custom GlassIcons component with click handler
+  const CustomGlassIcons = ({ items, className, onItemClick }) => {
+    const getBackgroundStyle = (color) => {
+      const gradientMapping = {
+        blue: "linear-gradient(hsl(223, 90%, 50%), hsl(208, 90%, 50%))",
+        purple: "linear-gradient(hsl(283, 90%, 50%), hsl(268, 90%, 50%))",
+        red: "linear-gradient(hsl(3, 90%, 50%), hsl(348, 90%, 50%))",
+        indigo: "linear-gradient(hsl(253, 90%, 50%), hsl(238, 90%, 50%))",
+        orange: "linear-gradient(hsl(43, 90%, 50%), hsl(28, 90%, 50%))",
+        green: "linear-gradient(hsl(123, 90%, 40%), hsl(108, 90%, 40%))",
+      };
+      
+      if (gradientMapping[color]) {
+        return { background: gradientMapping[color] };
+      }
+      return { background: color };
+    };
+
+    return (
+      <div className={`grid gap-[5em] grid-cols-2 md:grid-cols-3 mx-auto py-[3em] overflow-visible ${className || ""}`}>
+        {items.map((item, index) => (
+          <button
+            key={index}
+            type="button"
+            aria-label={item.label}
+            className={`relative bg-transparent outline-none w-[4.5em] h-[4.5em] [perspective:24em] [transform-style:preserve-3d] [-webkit-tap-highlight-color:transparent] group cursor-pointer ${
+              item.customClass || ""
+            }`}
+            onClick={() => onItemClick(item.subjectId)}
+          >
+            <span
+              className="absolute top-0 left-0 w-full h-full rounded-[1.25em] block transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] origin-[100%_100%] rotate-[15deg] group-hover:[transform:rotate(25deg)_translate3d(-0.5em,-0.5em,0.5em)]"
+              style={{
+                ...getBackgroundStyle(item.color),
+                boxShadow: "0.5em -0.5em 0.75em hsla(223, 10%, 10%, 0.15)",
+              }}
+            ></span>
+
+            <span
+              className="absolute top-0 left-0 w-full h-full rounded-[1.25em] bg-[hsla(0,0%,100%,0.15)] transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] origin-[80%_50%] flex backdrop-blur-[0.75em] [-webkit-backdrop-filter:blur(0.75em)] transform group-hover:[transform:translateZ(2em)]"
+              style={{
+                boxShadow: "0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset",
+              }}
+            >
+              <span
+                className="m-auto w-[1.5em] h-[1.5em] flex items-center justify-center"
+                aria-hidden="true"
+              >
+                {item.icon}
+              </span>
+            </span>
+
+            <span className="absolute top-full left-0 right-0 text-center whitespace-nowrap leading-[2] text-base opacity-0 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-0 group-hover:opacity-100 group-hover:[transform:translateY(20%)]">
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
+    );
+  };
 
   // Flatten all materials for searching
   const allMaterials = useMemo(() => {
@@ -128,8 +212,6 @@ const MaterialsSection = () => {
 
   const handleLinkClick = (url, type) => {
     if (!url || url.includes('your-link-here')) {
-      // Using a simple alert for now as per the original code's behavior.
-      // In a real application, consider a custom modal or toast notification.
       alert(`${type} link is not ready yet. Please reach out to Shakib and notify him.`);
       return;
     }
@@ -169,8 +251,12 @@ const MaterialsSection = () => {
             Access comprehensive notes and video lectures for HSC 26 preparation
           </p>
           
-          {/* ADDED GlassIcons COMPONENT */}
-          <GlassIcons items={glassIconItems} className="mt-8" />
+          {/* UPDATED: Custom GlassIcons with click handler */}
+          <CustomGlassIcons 
+            items={glassIconItems} 
+            className="mt-8"
+            onItemClick={scrollToSubject}
+          />
         </div>
 
         {/* Search Bar */}
