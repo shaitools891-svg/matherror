@@ -7,19 +7,17 @@ const GradientText = ({
       className={`
         inline-block
         font-extrabold
-        bg-gradient-to-r 
-        from-pink-500 via-red-500 to-yellow-500
-        dark:from-pink-400 dark:via-red-400 dark:to-yellow-400
-        bg-clip-text 
         text-transparent
         animate-gradient-x
         ${className}
       `}
       style={{
-        backgroundSize: '200% 200%',
+        background: 'linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3)',
+        backgroundSize: '400% 400%',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
+        animation: 'gradient-x 3s ease infinite'
       }}
     >
       {text}
