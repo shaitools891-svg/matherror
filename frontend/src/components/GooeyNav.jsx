@@ -22,36 +22,10 @@ const GooeyNav = ({ items, onItemClick, activeSection = 'Home' }) => {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .gooey-nav {
-            filter: url(#gooey);
-          }
-          
-          .gooey-blob {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          }
-        `
-      }} />
-      
-      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-        <defs>
-          <filter id="gooey">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-              result="gooey"
-            />
-          </filter>
-        </defs>
-      </svg>
-
-      <nav className="gooey-nav relative inline-flex items-center bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full p-1 shadow-lg border border-gray-200 dark:border-gray-700">
+      <nav className="relative inline-flex items-center bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full p-1 shadow-lg border border-gray-200 dark:border-gray-700">
         {/* Gooey blob background */}
         <div
-          className="gooey-blob absolute top-1 bottom-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-500 ease-out shadow-md"
+          className="absolute top-1 bottom-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-500 ease-out shadow-md"
           style={{
             left: `${4 + activeIndex * itemWidth}px`,
             width: `${itemWidth - 8}px`,
