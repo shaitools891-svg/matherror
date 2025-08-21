@@ -1,4 +1,4 @@
-import { GlassIcons } from './components/reactbits/Components/GlassIcons';
+import { GlassIcons } from './components/reactbits/Components/GlassIcons/GlassIcons';
 import React, { useState, useMemo } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
@@ -31,6 +31,30 @@ const MaterialsSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   
+  // ADDED ARRAY
+  const glassIconItems = [
+    {
+      icon: <Monitor className="w-8 h-8 text-white" />,
+      label: "Physics",
+      color: "blue"
+    },
+    {
+      icon: <Atom className="w-8 h-8 text-white" />,
+      label: "Chemistry",
+      color: "purple"
+    },
+    {
+      icon: <FlaskConical className="w-8 h-8 text-white" />,
+      label: "Biology", 
+      color: "green"
+    },
+    {
+      icon: <Calculator className="w-8 h-8 text-white" />,
+      label: "Math",
+      color: "orange"
+    }
+  ];
+
   // Use shared data
   const materialsData = studyMaterialsData;
 
@@ -139,6 +163,8 @@ const MaterialsSection = () => {
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
             Access comprehensive notes and video lectures for HSC 26 preparation
           </p>
+          {/* ADDED COMPONENT */}
+          <GlassIcons items={glassIconItems} className="mt-8" />
         </div>
 
         {/* Search Bar */}
