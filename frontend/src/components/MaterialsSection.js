@@ -1,5 +1,5 @@
 // Corrected import path for GlassIcons, assuming it's in src/components/reactbits/Components/GlassIcons/GlassIcons.jsx
-import GlassIcons from './reactbits/Components/GlassIcons/GlassIcons.jsx'; 
+import GlassIcons from './reactbits/Components/GlassIcons/GlassIcons';
 import React, { useState, useMemo } from 'react';
 // Path remains the same if 'context' is a sibling of 'components' under 'src'
 import { useTheme } from '../context/ThemeContext'; 
