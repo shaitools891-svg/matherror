@@ -1,4 +1,4 @@
-import GlassIcons from '../../reactbits/Components/GlassIcons/GlassIcons'; // Updated import path assuming 'reactbits' is a sibling of 'components' under 'src'
+import GlassIcons from '../../reactbits/Components/GlassIcons/GlassIcons.jsx'; // Updated import path assuming 'reactbits' is a sibling of 'components' under 'src'
 import React, { useState, useMemo } from 'react';
 import { useTheme } from '../context/ThemeContext'; // Path remains the same, assuming 'context' is a sibling of 'components' under 'src'
 import { Button } from '../ui/button'; // Updated import path assuming 'ui' is a sibling of 'components' under 'src'
