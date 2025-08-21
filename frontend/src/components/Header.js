@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import DarkModeToggle from './DarkModeToggle';
+import GooeyNav from './GooeyNav';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
     const { currentTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('Home');
 
     const navItems = [
         { label: 'Home', href: '#home' },
@@ -14,13 +16,37 @@ const Header = () => {
         { label: 'Contact', href: '#contact' }
     ];
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId.replace('#', ''));
+    const scrollToSection = (item) => {
+        const sectionId = item.href.replace('#', '');
+        const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
             setIsMenuOpen(false);
+            setActiveSection(item.label);
         }
     };
+
+    // Track active section based on scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = navItems.map(item => item.href.replace('#', ''));
+            const scrollPos = window.scrollY + 100;
+
+            for (const sectionId of sections.reverse()) {
+                const element = document.getElementById(sectionId);
+                if (element && element.offsetTop <= scrollPos) {
+                    const activeItem = navItems.find(item => item.href === `#${sectionId}`);
+                    if (activeItem) {
+                        setActiveSection(activeItem.label);
+                    }
+                    break;
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <header className={`
@@ -42,29 +68,13 @@ const Header = () => {
                         </h1>
                     </div>
 
-                    {/* Desktop Navigation */}
+                    {/* Desktop Navigation - Now with Gooey Effect */}
                     <div className="hidden md:block">
-                        <div className="flex items-center space-x-8">
-                            {navItems.map((item, index) => (
-                                <button
-                                    key={item.label}
-                                    onClick={() => scrollToSection(item.href)}
-                                    className={`
-                                        text-gray-700 dark:text-gray-300 
-                                        hover:text-blue-600 dark:hover:text-blue-400
-                                        font-medium transition-all duration-300
-                                        hover:scale-105 hover:-translate-y-0.5
-                                        relative group
-                                        animate-fade-in
-                                    `}
-                                    style={{ animationDelay: `${index * 0.1}s` }}
-                                >
-                                    {item.label}
-                                    {/* Hover underline animation */}
-                                    <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 dark:bg-blue-400 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-                                </button>
-                            ))}
-                        </div>
+                        <GooeyNav 
+                            items={navItems}
+                            onItemClick={scrollToSection}
+                            activeSection={activeSection}
+                        />
                     </div>
 
                     {/* Dark Mode Toggle & Mobile Menu Button */}
@@ -95,14 +105,14 @@ const Header = () => {
                     </div>
                 </div>
 
-                {/* Mobile Navigation Menu */}
+                {/* Mobile Navigation Menu - Keep original style */}
                 {isMenuOpen && (
                     <div className="md:hidden animate-slide-down">
                         <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 mt-2">
                             {navItems.map((item, index) => (
                                 <button
                                     key={item.label}
-                                    onClick={() => scrollToSection(item.href)}
+                                    onClick={() => scrollToSection(item)}
                                     className={`
                                         block w-full text-left px-3 py-2 rounded-md text-base font-medium
                                         text-gray-700 dark:text-gray-300
@@ -110,6 +120,7 @@ const Header = () => {
                                         hover:bg-gray-100 dark:hover:bg-gray-800
                                         transition-all duration-300
                                         animate-slide-up
+                                        ${activeSection === item.label ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : ''}
                                     `}
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
