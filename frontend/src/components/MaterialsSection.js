@@ -1,11 +1,14 @@
-import GlassIcons from '../../reactbits/Components/GlassIcons/GlassIcons.jsx'; // Updated import path assuming 'reactbits' is a sibling of 'components' under 'src'
+// Corrected import path for GlassIcons, assuming it's in src/components/reactbits/Components/GlassIcons/GlassIcons.jsx
+import GlassIcons from './reactbits/Components/GlassIcons/GlassIcons.jsx'; 
 import React, { useState, useMemo } from 'react';
-import { useTheme } from '../context/ThemeContext'; // Path remains the same, assuming 'context' is a sibling of 'components' under 'src'
-import { Button } from '../ui/button'; // Updated import path assuming 'ui' is a sibling of 'components' under 'src'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'; // Updated import path
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'; // Updated import path
-import { Badge } from '../ui/badge'; // Updated import path
-import { Input } from '../ui/input'; // Updated import path
+// Path remains the same if 'context' is a sibling of 'components' under 'src'
+import { useTheme } from '../context/ThemeContext'; 
+// Updated import paths for UI components, assuming 'ui' is a sibling of 'components' under 'src'
+import { Button } from '../ui/button'; 
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'; 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'; 
+import { Badge } from '../ui/badge'; 
+import { Input } from '../ui/input'; 
 import {
   Monitor,
   Atom,
@@ -21,8 +24,8 @@ import {
   X
 } from 'lucide-react';
 
-// Import shared data
-import { studyMaterialsData } from '../data/studyMaterials'; // Path remains the same, assuming 'data' is a sibling of 'components' under 'src'
+// Path remains the same if 'data' is a sibling of 'components' under 'src'
+import { studyMaterialsData } from '../data/studyMaterials'; 
 
 const MaterialsSection = () => {
   const { currentTheme } = useTheme();
