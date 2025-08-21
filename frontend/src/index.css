@@ -262,3 +262,81 @@ code {
         opacity: 0;
     }
 }
+
+/* ===== NEW STYLES ADDED HERE ===== */
+/* Mobile-specific styles for glass icons */
+@media (max-width: 768px) {
+  .mobile-active {
+    transform: scale(0.95) !important;
+  }
+  
+  .mobile-active span:first-child {
+    transform: rotate(20deg) translate3d(-0.3em, -0.3em, 0.3em) !important;
+  }
+  
+  .mobile-active span:nth-child(2) {
+    transform: translateZ(1.5em) !important;
+  }
+  
+  .mobile-active span:last-child {
+    opacity: 1 !important;
+    transform: translateY(8px) !important;
+  }
+}
+
+/* Ensure proper touch targets */
+button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent text selection on tap */
+button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Enhanced mobile animations */
+@media (max-width: 768px) {
+  .glass-icon-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Optimize animations for mobile performance */
+  .group {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .group,
+    .group * {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Add hardware acceleration for smoother animations */
+.group {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Enhanced hover states for desktop */
+@media (min-width: 769px) {
+  .group:hover {
+    transform: translateZ(0);
+  }
+}
