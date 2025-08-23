@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://shaitools891-svg.github.io/matherror/sitemap.xml
 
-# Replace yourusername with your actual GitHub username
-# This file should be placed at: /frontend/public/robots.txt
+Sitemap: https://shaitools891-svg.github.io/matherror/sitemap.xml
