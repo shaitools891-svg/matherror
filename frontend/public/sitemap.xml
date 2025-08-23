@@ -6,28 +6,4 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Add these URLs if you create separate pages for different content -->
-  <!--
-  <url>
-    <loc>https://yourusername.github.io/matherror/hsc-26</loc>
-    <lastmod>2025-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourusername.github.io/matherror/hsc-27</loc>
-    <lastmod>2025-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourusername.github.io/matherror/intermediate</loc>
-    <lastmod>2025-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  -->
 </urlset>
-
-<!-- This file should be placed at: /frontend/public/sitemap.xml -->
-<!-- Replace yourusername with your actual GitHub username -->
