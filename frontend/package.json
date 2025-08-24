@@ -35,6 +35,7 @@
     "@radix-ui/react-tooltip": "^1.2.4",
     "@svgr/plugin-svgo": "^8.1.0",
     "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/postcss": "^4.1.12",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "axios": "^1.8.4",
@@ -81,7 +82,7 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^5.9.0",
+    "@craco/craco": "^7.1.0",
     "@eslint/js": "9.23.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.33.0",
@@ -91,7 +92,7 @@
     "gh-pages": "^6.1.1",
     "globals": "15.15.0",
     "postcss": "^8.4.49",
-    "react-scripts": "^0.0.0",
+    "react-scripts": "^5.0.1",
     "tailwindcss": "^3.4.17"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
