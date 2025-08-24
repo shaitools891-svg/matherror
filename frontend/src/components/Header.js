@@ -97,17 +97,22 @@ const Header = () => {
 
                 /* Enhanced gooey nav container */
                 .gooey-nav-wrapper {
-                    background: linear-gradient(135deg, ${currentTheme.primary || '#3b82f6'} 0%, ${currentTheme.secondary || '#8b5cf6'} 100%);
+                    background: linear-gradient(135deg,
+                        ${currentTheme.primary + 'cc' || '#3b82f6cc'} 0%,
+                        ${currentTheme.secondary + 'cc' || '#8b5cf6cc'} 100%);
                     border-radius: 24px;
                     padding: 6px;
-                    box-shadow: 
-                        0 8px 32px rgba(0, 0, 0, 0.12),
-                        0 2px 8px rgba(0, 0, 0, 0.08),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-                    backdrop-filter: blur(12px);
-                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(4px);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
                     position: relative;
-                    overflow: hidden;
+                    overflow: visible;
+                    transition: all 0.3s ease;
+                }
+
+                .gooey-nav-wrapper:hover {
+                    background: linear-gradient(135deg,
+                        ${currentTheme.primary || '#3b82f6'} 0%,
+                        ${currentTheme.secondary || '#8b5cf6'} 100%);
                 }
 
                 /* Remove all white background elements */
@@ -220,7 +225,7 @@ const Header = () => {
                     {/* Mobile Navigation Menu */}
                     {isMenuOpen && (
                         <div className="md:hidden animate-slide-down">
-                            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 mt-2">
+                            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-lg border border-gray-200/30 dark:border-gray-700/30 mt-2 shadow-none">
                                 {navItems.map((item, index) => (
                                     <button
                                         key={item.label}
