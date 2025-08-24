@@ -99,7 +99,7 @@ const ElectricBorder = ({
 
   useEffect(() => {
     updateAnim();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [speed, chaos]);
 
   useLayoutEffect(() => {
@@ -108,7 +108,7 @@ const ElectricBorder = ({
     ro.observe(rootRef.current);
     updateAnim();
     return () => ro.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
 
   const inheritRadius = {
