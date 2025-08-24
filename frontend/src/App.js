@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from './context/ThemeContext';
+import { useTheme } from './context/ThemeContext';
+import Particles from './components/Particles'; // Add this import
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MaterialsSection from './components/MaterialsSection';
@@ -14,22 +16,48 @@ import NotFound from './components/NotFound';
 // Scroll restoration component
 const ScrollRestoration = () => {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
   return null;
 };
 
-// Background pattern component for visual appeal
+// Updated Background pattern component with particles
 const BackgroundPattern = () => {
+  const { theme } = useTheme();
+  
+  // Different particle colors based on theme - using colors that work with your design system
+  const lightThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1'];
+  const darkThemeColors = ['#475569', '#64748b', '#94a3b8', '#cbd5e1'];
+  
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500"></div>
-      <div className="absolute top-0 left-0 w-full h-full opacity-10">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-300 dark:bg-blue-600 blur-3xl animate-pulse transition-colors duration-500"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-purple-300 dark:bg-purple-600 blur-3xl animate-pulse transition-colors duration-500 delay-700"></div>
+      {/* Base gradient background using your existing classes */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500"></div>
+      
+      {/* Particles layer */}
+      <div className="absolute inset-0">
+        <Particles
+          particleColors={theme === 'dark' ? darkThemeColors : lightThemeColors}
+          particleCount={100}
+          particleSpread={15}
+          speed={0.06}
+          particleBaseSize={70}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.8}
+          alphaParticles={true}
+          disableRotation={false}
+          sizeRandomness={0.6}
+          cameraDistance={30}
+          className="w-full h-full opacity-50"
+        />
+      </div>
+      
+      {/* Subtle accent orbs using your color system */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse transition-all duration-700"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-accent/10 blur-3xl animate-pulse transition-all duration-700 delay-1000"></div>
+        <div className="absolute top-3/4 left-3/4 w-64 h-64 rounded-full bg-secondary/10 blur-3xl animate-pulse transition-all duration-700 delay-500"></div>
       </div>
     </div>
   );
@@ -52,11 +80,32 @@ const Home = () => {
   );
 };
 
-// Loading component
+// Loading component with particles
 const AppLoading = () => {
+  const { theme } = useTheme();
+  const loadingColors = theme === 'dark' ? ['#64748b', '#94a3b8'] : ['#e2e8f0', '#cbd5e1'];
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen flex items-center justify-center bg-background transition-colors duration-300 relative">
+      {/* Particles for loading screen */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/50"></div>
+        <Particles
+          particleColors={loadingColors}
+          particleCount={40}
+          particleSpread={10}
+          speed={0.04}
+          particleBaseSize={50}
+          moveParticlesOnHover={false}
+          alphaParticles={true}
+          disableRotation={false}
+          className="w-full h-full opacity-30"
+        />
+      </div>
       <LoadingSpinner />
+    </div>
+  );
+};inner />
     </div>
   );
 };
@@ -69,7 +118,6 @@ function App() {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
-
     return () => clearTimeout(timer);
   }, []);
 
