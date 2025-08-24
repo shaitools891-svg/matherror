@@ -19,9 +19,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js,.jsx",
-    "lint:fix": "eslint src --ext .js,.jsx --fix"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -38,21 +36,6 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-flowtype": "^8.0.0",
-    "eslint-plugin-import": "^2.25.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.32.0",
-    "eslint-plugin-react-hooks": "^4.6.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "@testing-library/user-event": "^13.5.0"
   }
 }
