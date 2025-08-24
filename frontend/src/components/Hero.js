@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
 import { ArrowRight, BookOpen, Users, Target } from 'lucide-react';
-import GradientText from './reactbits/TextAnimations/GradientText/GradientText';
+import GradientText from '../reactbits/TextAnimations/GradientText/GradientText';
 
 const Hero = () => {
     const { currentTheme } = useTheme();
