@@ -191,6 +191,7 @@ const GooeyNav = ({
           .gooey-effect.filter {
             filter: blur(7px) contrast(100) blur(0);
             mix-blend-mode: lighten;
+            isolation: isolate;
           }
           .gooey-effect.filter::before {
             content: "";
@@ -198,6 +199,8 @@ const GooeyNav = ({
             inset: -75px;
             z-index: -2;
             background: black;
+            opacity: 0;
+            pointer-events: none;
           }
           .gooey-effect.filter::after {
             content: "";
@@ -306,7 +309,7 @@ const GooeyNav = ({
           }
         `}
       </style>
-      <div className="relative" ref={containerRef}>
+      <div className="relative overflow-hidden" ref={containerRef}>
         <nav
           className="flex relative"
           style={{ transform: "translate3d(0,0,0.01px)" }}
@@ -410,11 +413,12 @@ const Header = () => {
                     {/* Desktop Navigation with GooeyNav */}
                     <div className="hidden md:block">
                         <div 
-                            className="relative rounded-full px-2 py-1" 
+                            className="relative rounded-full px-2 py-1 overflow-hidden" 
                             style={{ 
                                 background: `linear-gradient(135deg, ${currentTheme.primary}20, ${currentTheme.secondary || currentTheme.primary}20)`,
                                 backdropFilter: 'blur(10px)',
-                                border: `1px solid ${currentTheme.primary}30`
+                                border: `1px solid ${currentTheme.primary}30`,
+                                isolation: 'isolate'
                             }}
                         >
                             <GooeyNav
