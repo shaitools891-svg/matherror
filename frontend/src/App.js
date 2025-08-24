@@ -66,7 +66,7 @@ const BackgroundPattern = () => {
 // Main Home component
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       <BackgroundPattern />
       <Header />
       <main className="relative z-10">
@@ -103,9 +103,6 @@ const AppLoading = () => {
         />
       </div>
       <LoadingSpinner />
-    </div>
-  );
-};inner />
     </div>
   );
 };
