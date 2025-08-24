@@ -192,8 +192,9 @@ const Header = () => {
                                     particleR={150}
                                     timeVariance={400}
                                     colors={[1, 2, 3, 4, 1, 2]}
-                                />
-                            </div>
+                                    />
+                                </div>
+                            </ElectricBorder>
                         </div>
 
                         {/* Dark Mode Toggle & Mobile Menu Button */}
