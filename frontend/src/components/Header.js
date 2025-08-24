@@ -182,16 +182,22 @@ const Header = () => {
 
                         {/* Desktop Navigation - Enhanced ReactBits GooeyNav */}
                         <div className="hidden md:block">
-                            <div className="gooey-nav-wrapper" ref={gooeyNavRef}>
-                                <GooeyNav 
-                                    items={navItems}
-                                    initialActiveIndex={activeSection}
-                                    animationTime={500}
-                                    particleCount={15}
-                                    particleDistances={[120, 15]}
-                                    particleR={150}
-                                    timeVariance={400}
-                                    colors={[1, 2, 3, 4, 1, 2]}
+                            <ElectricBorder
+                                borderWidth={2}
+                                animationSpeed={1.5}
+                                color={currentTheme.primary}
+                                borderRadius="24px"
+                            >
+                                <div className="gooey-nav-wrapper" ref={gooeyNavRef}>
+                                    <GooeyNav
+                                        items={navItems}
+                                        initialActiveIndex={activeSection}
+                                        animationTime={500}
+                                        particleCount={15}
+                                        particleDistances={[120, 15]}
+                                        particleR={150}
+                                        timeVariance={400}
+                                        colors={[1, 2, 3, 4, 1, 2]}
                                     />
                                 </div>
                             </ElectricBorder>
