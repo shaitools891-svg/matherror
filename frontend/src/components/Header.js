@@ -170,12 +170,14 @@ const Header = () => {
                     <div className="flex justify-between items-center h-16">
                         {/* Logo */}
                         <div className="flex-shrink-0 animate-fade-in">
-                            <h1 
+                            <GlitchText
                                 className="text-2xl font-bold transition-all duration-300 hover:scale-105"
                                 style={{ color: currentTheme.primary }}
+                                glitchInterval={2000}
+                                hoverGlitch
                             >
                                 MathError
-                            </h1>
+                            </GlitchText>
                         </div>
 
                         {/* Desktop Navigation - Enhanced ReactBits GooeyNav */}
