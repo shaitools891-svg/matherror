@@ -1,13 +1,17 @@
 module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
   extends: [
-    'react-app',
-    'react-app/jest'
+    'eslint:recommended',
   ],
-  plugins: [
-    'react-hooks'
-  ],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
   rules: {
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn'
-  }
+    // your custom rules
+  },
 };
