@@ -1,0 +1,50 @@
+.electric-border-container {
+  position: relative;
+  display: inline-block;
+  padding: 2px;
+}
+
+.electric-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+}
+
+.electric-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.electric-rect {
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 10, 5;
+  animation: electric-dash 1.5s linear infinite;
+  filter: drop-shadow(0 0 2px currentColor) drop-shadow(0 0 5px currentColor);
+}
+
+.electric-particle {
+  animation: electric-pulse 2s infinite;
+}
+
+@keyframes electric-dash {
+  to {
+    stroke-dashoffset: 15;
+  }
+}
+
+@keyframes electric-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    r: 1;
+  }
+  50% {
+    opacity: 0.8;
+    r: 2;
+  }
+}
