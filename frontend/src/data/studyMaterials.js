@@ -391,8 +391,32 @@ export const studyMaterialsData = {
               ],
               videoLinks: [
                 {
-                  name: "Database Tutorial",
-                  url: "https://youtube.com/your-link-here"
+                  name: "ICT Chapter 3 Video 1",
+                  url: "https://t.me/c/2385979269/37"
+                },
+                {
+                  name: "ICT Chapter 3 Video 2",
+                  url: "https://t.me/c/2385979269/38"
+                },
+                {
+                  name: "ICT Chapter 3 Video 3",
+                  url: "https://t.me/c/2385979269/39"
+                },
+                {
+                  name: "ICT Chapter 3 Video 4",
+                  url: "https://t.me/c/2385979269/40"
+                },
+                {
+                  name: "ICT Chapter 3 Video 5",
+                  url: "https://t.me/c/2385979269/41"
+                },
+                {
+                  name: "ICT Chapter 3 Video 6",
+                  url: "https://t.me/c/2385979269/42"
+                },
+                {
+                  name: "ICT Chapter 3 Video 7",
+                  url: "https://t.me/c/2385979269/43"
                 }
               ]
             },
