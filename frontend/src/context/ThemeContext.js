@@ -11,7 +11,7 @@ export const useTheme = () => {
   return context;
 };
 
-// Light and Dark theme definitions
+// Light, Dark, and Glass theme definitions
 const themes = {
   light: {
     id: 'light',
@@ -42,38 +42,56 @@ const themes = {
     cardBg: '#1f2937',        // Gray-800
     cardBorder: '#374151',    // Gray-700
     mode: 'dark'
+  },
+  glass: {
+    id: 'glass',
+    name: 'Smooth Glass Theme',
+    primary: '#60a5fa',       // Blue-400
+    secondary: '#94a3b8',     // Slate-400
+    accent: '#34d399',        // Emerald-400
+    text: '#1f2937',          // Gray-800
+    textSecondary: '#6b7280', // Gray-500
+    background: 'rgba(255,255,255,0.1)',    // Semi-transparent white
+    backgroundSecondary: 'rgba(248,250,252,0.1)', // Semi-transparent gray-50
+    border: 'rgba(229,231,235,0.3)',        // Semi-transparent gray-200
+    cardBg: 'rgba(255,255,255,0.2)',        // Semi-transparent white
+    cardBorder: 'rgba(229,231,235,0.3)',    // Semi-transparent gray-200
+    mode: 'glass'
   }
 };
 
 export const ThemeProvider = ({ children }) => {
   // Initialize theme from localStorage or default to light
-  const [isDarkMode, setIsDarkMode] = useState(() => {
+  const [currentThemeId, setCurrentThemeId] = useState(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('darkMode');
-      if (saved !== null) {
-        return JSON.parse(saved);
+      const saved = localStorage.getItem('themeId');
+      if (saved && themes[saved]) {
+        return saved;
       }
-      // Check system preference
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // Check system preference for dark mode
+      const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return isDarkPreferred ? 'dark' : 'light';
     }
-    return false;
+    return 'light';
   });
 
   // For backward compatibility - get the current theme object
-  const currentTheme = isDarkMode ? themes.dark : themes.light;
+  const currentTheme = themes[currentThemeId];
+  const isDarkMode = currentThemeId === 'dark';
 
   // Update document class, CSS variables, and localStorage when theme changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const root = window.document.documentElement;
-      
+
       // Update CSS classes
-      if (isDarkMode) {
+      root.classList.remove('dark', 'glass');
+      if (currentThemeId === 'dark') {
         root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
+      } else if (currentThemeId === 'glass') {
+        root.classList.add('glass');
       }
-      
+
       // Update CSS variables for backward compatibility
       root.style.setProperty('--theme-primary', currentTheme.primary);
       root.style.setProperty('--theme-secondary', currentTheme.secondary);
@@ -82,14 +100,15 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty('--theme-text', currentTheme.text);
       root.style.setProperty('--theme-card-bg', currentTheme.cardBg);
       root.style.setProperty('--theme-card-border', currentTheme.cardBorder);
-      
+
       // Save to localStorage
+      localStorage.setItem('themeId', currentThemeId);
       localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-      
+
       // For backward compatibility with existing code
       localStorage.setItem('mathErrorTheme', currentTheme.id);
     }
-  }, [isDarkMode, currentTheme]);
+  }, [currentThemeId, currentTheme, isDarkMode]);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -97,9 +116,9 @@ export const ThemeProvider = ({ children }) => {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const handleChange = (e) => {
         // Only auto-switch if user hasn't manually set a preference
-        const savedTheme = localStorage.getItem('darkMode');
+        const savedTheme = localStorage.getItem('themeId');
         if (savedTheme === null) {
-          setIsDarkMode(e.matches);
+          setCurrentThemeId(e.matches ? 'dark' : 'light');
         }
       };
 
@@ -110,8 +129,8 @@ export const ThemeProvider = ({ children }) => {
 
   // For backward compatibility with existing code
   const changeTheme = (themeId) => {
-    if (themeId === 'light' || themeId === 'dark') {
-      setIsDarkMode(themeId === 'dark');
+    if (themes[themeId]) {
+      setCurrentThemeId(themeId);
     } else {
       // Handle custom themes from mockData if needed
       const customTheme = mockData.colorThemes.find(t => t.id === themeId);
@@ -125,14 +144,17 @@ export const ThemeProvider = ({ children }) => {
         root.style.setProperty('--theme-text', customTheme.text);
         root.style.setProperty('--theme-card-bg', customTheme.cardBg);
         root.style.setProperty('--theme-card-border', customTheme.cardBorder);
-        
+
         localStorage.setItem('mathErrorTheme', themeId);
       }
     }
   };
 
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
+    const themeOrder = ['light', 'dark', 'glass'];
+    const currentIndex = themeOrder.indexOf(currentThemeId);
+    const nextIndex = (currentIndex + 1) % themeOrder.length;
+    setCurrentThemeId(themeOrder[nextIndex]);
   };
 
   const value = {
