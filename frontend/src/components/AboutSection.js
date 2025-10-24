@@ -149,9 +149,7 @@ const AboutSection = () => {
           </div>
         </section>
         
-        <footer className="mt-10 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2025 Matherror. All rights reserved.</p>
-        </footer>
+       
       </div>
     </div>
   );
