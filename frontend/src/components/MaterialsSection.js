@@ -72,16 +72,16 @@ const MaterialsSection = () => {
     {
       icon: <BookOpen className="w-8 h-8 text-white" />, // Bangla uses BookOpen (matches data)
       label: "Bangla",
-      color: "red",
+      color: "blue",
       subjectId: "5", // Bangla has id: 5
-      cardColor: "red"
+      cardColor: "blue"
     },
     {
       icon: <Languages className="w-8 h-8 text-white" />, // English uses Languages (matches data)
       label: "English",
-      color: "teal",
+      color: "purple",
       subjectId: "6", // English has id: 6
-      cardColor: "teal"
+      cardColor: "purple"
     }
   ];
 
@@ -436,146 +436,147 @@ const MaterialsSection = () => {
                         {subject.fullName}
                       </p>
                     </div>
-                  <Badge
-                    variant="secondary"
-                    className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
-                  >
-                    {subject.papers.length} {subject.papers.length === 1 ? 'Paper' : 'Papers'}
-                  </Badge>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  {subject.papers.map((paper) => {
-                    const isExpanded = expandedPapers[`${subject.id}-${paper.id}`];
-                    const totalChapters = paper.chapters.length;
-                    const totalPdfs = paper.chapters.reduce((acc, chapter) => acc + chapter.driveLinks.length, 0);
-                    const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
-                    
-                    return (
-                      <div 
-                        key={paper.id} 
-                        className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 transition-colors duration-300"
-                      >
-                        <div 
-                          className="flex justify-between items-center cursor-pointer"
-                          onClick={() => togglePaperExpansion(subject.id, paper.id)}
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
+                    >
+                      {subject.papers.length} {subject.papers.length === 1 ? 'Paper' : 'Papers'}
+                    </Badge>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    {subject.papers.map((paper) => {
+                      const isExpanded = expandedPapers[`${subject.id}-${paper.id}`];
+                      const totalChapters = paper.chapters.length;
+                      const totalPdfs = paper.chapters.reduce((acc, chapter) => acc + chapter.driveLinks.length, 0);
+                      const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
+
+                      return (
+                        <div
+                          key={paper.id}
+                          className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 transition-colors duration-300"
                         >
-                          <h4 className="font-semibold text-lg text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                            {paper.name}
-                          </h4>
-                          <div className="flex items-center gap-2">
-                            <Badge 
-                              variant="outline" 
-                              className="mr-2 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 transition-colors duration-300"
-                            >
-                              {totalChapters} {totalChapters === 1 ? 'Chapter' : 'Chapters'}
-                            </Badge>
-                            <Badge 
-                              variant="outline" 
-                              className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
-                            >
-                              {totalPdfs} PDFs
-                            </Badge>
-                            <Badge 
-                              variant="outline" 
-                              className="bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300 transition-colors duration-300"
-                            >
-                              {totalVideos} Videos
-                            </Badge>
-                            <Button 
-                              variant="ghost" 
-                              size="sm"
-                              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
-                            >
-                              {isExpanded ? '▲' : '▼'}
-                            </Button>
-                          </div>
-                        </div>
-                        
-                        {isExpanded && (
-                          <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {paper.chapters.map((chapter) => (
-                              <div 
-                                key={chapter.id} 
-                                className="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 transition-colors duration-300"
+                          <div
+                            className="flex justify-between items-center cursor-pointer"
+                            onClick={() => togglePaperExpansion(subject.id, paper.id)}
+                          >
+                            <h4 className="font-semibold text-lg text-gray-800 dark:text-gray-100 transition-colors duration-300">
+                              {paper.name}
+                            </h4>
+                            <div className="flex items-center gap-2">
+                              <Badge
+                                variant="outline"
+                                className="mr-2 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 transition-colors duration-300"
                               >
-                                <h5 className="font-semibold mb-3 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                                  {chapter.title}
-                                </h5>
-
-                                <div className="space-y-2">
-                                  {/* PDF Download Buttons */}
-                                  {(activeView === 'all' || activeView === 'pdfs') && (
-                                    chapter.driveLinks && chapter.driveLinks.length > 0 ? (
-                                      chapter.driveLinks.map((link, index) => (
-                                        <Button
-                                          key={index}
-                                          variant="outline"
-                                          size="sm"
-                                          className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30"
-                                          onClick={() => handleLinkClick(link.url, 'PDF')}
-                                        >
-                                          <Download className="w-4 h-4" />
-                                          {link.name}
-                                          <ExternalLink className="w-3 h-3 ml-auto" />
-                                        </Button>
-                                      ))
-                                    ) : (
-                                      <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
-                                        onClick={() => handleLinkClick(null, 'PDF')}
-                                      >
-                                        <Plus className="w-4 h-4" />
-                                        Add PDF Link
-                                        <ExternalLink className="w-3 h-3 ml-auto" />
-                                      </Button>
-                                    )
-                                  )}
-
-                                  {/* Video Watch Buttons */}
-                                  {(activeView === 'all' || activeView === 'videos') && (
-                                    chapter.videoLinks && chapter.videoLinks.length > 0 ? (
-                                      chapter.videoLinks.map((link, index) => (
-                                        <Button
-                                          key={index}
-                                          variant="outline"
-                                          size="sm"
-                                          className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30"
-                                          onClick={() => handleLinkClick(link.url, 'Video')}
-                                        >
-                                          <Play className="w-4 h-4" />
-                                          {link.name}
-                                          <ExternalLink className="w-3 h-3 ml-auto" />
-                                        </Button>
-                                      ))
-                                    ) : (
-                                      <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
-                                        onClick={() => handleLinkClick(null, 'Video')}
-                                      >
-                                        <Plus className="w-4 h-4" />
-                                        Add Video Link
-                                        <ExternalLink className="w-3 h-3 ml-auto" />
-                                      </Button>
-                                    )
-                                  )}
-                                </div>
-                              </div>
-                            ))}
+                                {totalChapters} {totalChapters === 1 ? 'Chapter' : 'Chapters'}
+                              </Badge>
+                              <Badge
+                                variant="outline"
+                                className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
+                              >
+                                {totalPdfs} PDFs
+                              </Badge>
+                              <Badge
+                                variant="outline"
+                                className="bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300 transition-colors duration-300"
+                              >
+                                {totalVideos} Videos
+                              </Badge>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
+                              >
+                                {isExpanded ? '▲' : '▼'}
+                              </Button>
+                            </div>
                           </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                          {isExpanded && (
+                            <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                              {paper.chapters.map((chapter) => (
+                                <div
+                                  key={chapter.id}
+                                  className="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 transition-colors duration-300"
+                                >
+                                  <h5 className="font-semibold mb-3 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+                                    {chapter.title}
+                                  </h5>
+
+                                  <div className="space-y-2">
+                                    {/* PDF Download Buttons */}
+                                    {(activeView === 'all' || activeView === 'pdfs') && (
+                                      chapter.driveLinks && chapter.driveLinks.length > 0 ? (
+                                        chapter.driveLinks.map((link, index) => (
+                                          <Button
+                                            key={index}
+                                            variant="outline"
+                                            size="sm"
+                                            className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30"
+                                            onClick={() => handleLinkClick(link.url, 'PDF')}
+                                          >
+                                            <Download className="w-4 h-4" />
+                                            {link.name}
+                                            <ExternalLink className="w-3 h-3 ml-auto" />
+                                          </Button>
+                                        ))
+                                      ) : (
+                                        <Button
+                                          variant="outline"
+                                          size="sm"
+                                          className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+                                          onClick={() => handleLinkClick(null, 'PDF')}
+                                        >
+                                          <Plus className="w-4 h-4" />
+                                          Add PDF Link
+                                          <ExternalLink className="w-3 h-3 ml-auto" />
+                                        </Button>
+                                      )
+                                    )}
+
+                                    {/* Video Watch Buttons */}
+                                    {(activeView === 'all' || activeView === 'videos') && (
+                                      chapter.videoLinks && chapter.videoLinks.length > 0 ? (
+                                        chapter.videoLinks.map((link, index) => (
+                                          <Button
+                                            key={index}
+                                            variant="outline"
+                                            size="sm"
+                                            className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30"
+                                            onClick={() => handleLinkClick(link.url, 'Video')}
+                                          >
+                                            <Play className="w-4 h-4" />
+                                            {link.name}
+                                            <ExternalLink className="w-3 h-3 ml-auto" />
+                                          </Button>
+                                        ))
+                                      ) : (
+                                        <Button
+                                          variant="outline"
+                                          size="sm"
+                                          className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+                                          onClick={() => handleLinkClick(null, 'Video')}
+                                        >
+                                          <Plus className="w-4 h-4" />
+                                          Add Video Link
+                                          <ExternalLink className="w-3 h-3 ml-auto" />
+                                        </Button>
+                                      )
+                                    )}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
         
         {/* Help Text */}
