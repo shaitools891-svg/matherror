@@ -465,6 +465,70 @@ export const studyMaterialsData = {
           ]
         }
       ]
+    },
+    {
+      id: 5,
+      name: "Bangla",
+      fullName: "HSC Bangla",
+      icon: "BookOpen",
+      papers: [
+        {
+          id: 8,
+          name: "1st Paper",
+          chapters: [
+            {
+              id: 22,
+              title: "Chapter 1",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        },
+        {
+          id: 9,
+          name: "2nd Paper",
+          chapters: [
+            {
+              id: 23,
+              title: "Chapter 1",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 6,
+      name: "English",
+      fullName: "HSC English",
+      icon: "Languages",
+      papers: [
+        {
+          id: 10,
+          name: "1st Paper",
+          chapters: [
+            {
+              id: 24,
+              title: "Chapter 1",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        },
+        {
+          id: 11,
+          name: "2nd Paper",
+          chapters: [
+            {
+              id: 25,
+              title: "Chapter 1",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        }
+      ]
     }
   ]
 };

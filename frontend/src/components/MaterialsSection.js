@@ -21,7 +21,9 @@ import {
   Plus,
   Calculator,
   Search,
-  X
+  X,
+  BookOpen,
+  Languages
 } from 'lucide-react';
 
 // Path remains the same if 'data' is a sibling of 'components' under 'src'
@@ -53,7 +55,7 @@ const MaterialsSection = () => {
     },
     {
       icon: <Monitor className="w-8 h-8 text-white" />, // Mathematics uses Monitor (matches data)
-      label: "Mathematics", 
+      label: "Mathematics",
       color: "green",
       subjectId: "3" // Mathematics has id: 3
     },
@@ -62,6 +64,18 @@ const MaterialsSection = () => {
       label: "ICT",
       color: "orange",
       subjectId: "4" // ICT has id: 4
+    },
+    {
+      icon: <BookOpen className="w-8 h-8 text-white" />, // Bangla uses BookOpen (matches data)
+      label: "Bangla",
+      color: "red",
+      subjectId: "5" // Bangla has id: 5
+    },
+    {
+      icon: <Languages className="w-8 h-8 text-white" />, // English uses Languages (matches data)
+      label: "English",
+      color: "teal",
+      subjectId: "6" // English has id: 6
     }
   ];
 
@@ -204,7 +218,9 @@ const MaterialsSection = () => {
       Monitor,
       Atom,
       FlaskConical,
-      Calculator
+      Calculator,
+      BookOpen,
+      Languages
     };
     const IconComponent = icons[iconName];
     return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
@@ -242,6 +258,21 @@ const MaterialsSection = () => {
   return (
     <section id="materials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
+        {/* Update Banner */}
+        <div className="mb-8 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 rounded-xl p-6 text-white shadow-lg">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <Plus className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-semibold">Latest Updates</h3>
+            </div>
+            <p className="text-blue-100">
+              🎉 New subjects added: Bangla and English! More resources coming soon. Help us grow by sharing your study materials.
+            </p>
+          </div>
+        </div>
+
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300">
@@ -250,10 +281,10 @@ const MaterialsSection = () => {
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
             Access comprehensive notes and video lectures for HSC 26 preparation
           </p>
-          
+
           {/* UPDATED: Custom GlassIcons with click handler */}
-          <CustomGlassIcons 
-            items={glassIconItems} 
+          <CustomGlassIcons
+            items={glassIconItems}
             className="mt-8"
             onItemClick={scrollToSubject}
           />
