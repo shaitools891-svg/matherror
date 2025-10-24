@@ -406,7 +406,11 @@ const Header = () => {
                     <div className="flex-shrink-0 animate-fade-in">
                         <span
                             className="text-2xl font-bold transition-all duration-300 hover:scale-105 cursor-pointer"
-                            style={{ color: currentTheme.primary }}
+                            style={{
+                                color: currentTheme.primary,
+                                fontFamily: "'Inter', sans-serif",
+                                fontWeight: 700
+                            }}
                         >
                             Math ERROR
                         </span>
