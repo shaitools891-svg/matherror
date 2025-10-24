@@ -8,8 +8,8 @@ const AboutSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header without dark mode toggle */}
         <div className="flex justify-center items-center mb-10">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Matherror
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Math ERROR
           </h1>
         </div>
 

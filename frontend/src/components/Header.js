@@ -408,7 +408,7 @@ const Header = () => {
                             className="text-2xl font-bold transition-all duration-300 hover:scale-105 cursor-pointer"
                             style={{ color: currentTheme.primary }}
                         >
-                            MathError
+                            Math ERROR
                         </span>
                     </div>
 
