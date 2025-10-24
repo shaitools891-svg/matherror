@@ -100,10 +100,12 @@ const MaterialsSection = () => {
       // Add a highlight effect with subject-specific color
       const ringColor = glassIconItem ? `ring-${glassIconItem.cardColor}-500` : 'ring-blue-500';
       element.classList.add('ring-4', ringColor, 'ring-opacity-75', 'transition-all', 'duration-500', 'animate-pulse');
+      element.style.boxShadow = glassIconItem ? `0 0 0 4px rgba(var(--${glassIconItem.cardColor}-500), 0.75), 0 0 20px rgba(var(--${glassIconItem.cardColor}-500), 0.3)` : '0 0 0 4px rgba(59, 130, 246, 0.75), 0 0 20px rgba(59, 130, 246, 0.3)';
 
       // Remove highlight after 3 seconds
       setTimeout(() => {
         element.classList.remove('ring-4', ringColor, 'ring-opacity-75', 'animate-pulse');
+        element.style.boxShadow = '';
       }, 3000);
     }
   };
