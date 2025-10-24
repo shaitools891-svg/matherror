@@ -422,15 +422,16 @@ const MaterialsSection = () => {
               >
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
-                    <div
-                      className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${iconBgColor}`}
-                      style={{
-                        backgroundColor: glassIconItem ? `var(--${glassIconItem.cardColor}-100)` : undefined
-                      }}
-                    >
-                      <div className={iconColor}>
-                        {getIcon(subject.icon)}
-                      </div>
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                      {glassIconItem ? (
+                        <div className="w-8 h-8">
+                          {glassIconItem.icon}
+                        </div>
+                      ) : (
+                        <div className={iconColor}>
+                          {getIcon(subject.icon)}
+                        </div>
+                      )}
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">
