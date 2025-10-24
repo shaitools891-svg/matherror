@@ -89,18 +89,16 @@ const MaterialsSection = () => {
   const scrollToSubject = (subjectId) => {
     const element = document.getElementById(`subject-${subjectId}`);
     if (element) {
+      // Add highlight effect immediately before scrolling
+      const glassIconItem = glassIconItems.find(item => item.subjectId === subjectId);
+      const ringColor = glassIconItem ? `ring-${glassIconItem.cardColor}-500` : 'ring-blue-500';
+      element.classList.add('ring-4', ringColor, 'ring-opacity-75', 'transition-all', 'duration-500', 'animate-pulse');
+      element.style.boxShadow = glassIconItem ? `0 0 0 4px rgba(var(--${glassIconItem.cardColor}-500), 0.75), 0 0 20px rgba(var(--${glassIconItem.cardColor}-500), 0.3)` : '0 0 0 4px rgba(59, 130, 246, 0.75), 0 0 20px rgba(59, 130, 246, 0.3)';
+
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'center'
       });
-
-      // Find the corresponding glass icon item for color matching
-      const glassIconItem = glassIconItems.find(item => item.subjectId === subjectId);
-
-      // Add a highlight effect with subject-specific color
-      const ringColor = glassIconItem ? `ring-${glassIconItem.cardColor}-500` : 'ring-blue-500';
-      element.classList.add('ring-4', ringColor, 'ring-opacity-75', 'transition-all', 'duration-500', 'animate-pulse');
-      element.style.boxShadow = glassIconItem ? `0 0 0 4px rgba(var(--${glassIconItem.cardColor}-500), 0.75), 0 0 20px rgba(var(--${glassIconItem.cardColor}-500), 0.3)` : '0 0 0 4px rgba(59, 130, 246, 0.75), 0 0 20px rgba(59, 130, 246, 0.3)';
 
       // Remove highlight after 3 seconds
       setTimeout(() => {
