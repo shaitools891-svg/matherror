@@ -13,8 +13,8 @@ const Footer = () => {
             fontWeight: 'normal',
             letterSpacing: '2px'
           }}>
-            Math ERROR Official Website
-          </span>
+            Math ERROR
+          </span> Official Website
         </p>
         <p className="mt-2 text-gray-300 dark:text-gray-400 transition-colors duration-300">
           © 2025 Math ERROR. All rights reserved.
