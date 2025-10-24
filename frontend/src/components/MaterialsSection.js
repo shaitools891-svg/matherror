@@ -422,7 +422,12 @@ const MaterialsSection = () => {
               >
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center"
+                      style={{
+                        background: glassIconItem ? `linear-gradient(135deg, hsl(${glassIconItem.color === 'blue' ? '223, 90%, 50%' : glassIconItem.color === 'purple' ? '283, 90%, 50%' : glassIconItem.color === 'green' ? '123, 90%, 40%' : glassIconItem.color === 'orange' ? '43, 90%, 50%' : glassIconItem.color === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}, hsl(${glassIconItem.color === 'blue' ? '208, 90%, 50%' : glassIconItem.color === 'purple' ? '268, 90%, 50%' : glassIconItem.color === 'green' ? '108, 90%, 40%' : glassIconItem.color === 'orange' ? '28, 90%, 50%' : glassIconItem.color === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}))` : undefined
+                      }}
+                    >
                       {glassIconItem ? (
                         React.cloneElement(glassIconItem.icon, {
                           className: "w-8 h-8 text-white"
