@@ -63,21 +63,6 @@ const Hero = () => {
                             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </Button>
                         
-                        <Button
-                            variant="outline"
-                            className={`
-                                px-8 py-3 text-lg font-semibold rounded-full
-                                border-2 border-gray-300 dark:border-gray-600
-                                text-gray-700 dark:text-gray-300
-                                hover:bg-gray-100 dark:hover:bg-gray-800
-                                hover:border-gray-400 dark:hover:border-gray-500
-                                transform hover:scale-105 hover:-translate-y-1
-                                transition-all duration-300 ease-out
-                                backdrop-blur-sm
-                            `}
-                        >
-                            Learn More
-                        </Button>
                     </div>
 
                     {/* Feature cards */}
