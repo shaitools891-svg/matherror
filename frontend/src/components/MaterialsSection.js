@@ -2,13 +2,14 @@
 import GlassIcons from './reactbits/Components/GlassIcons/GlassIcons';
 import React, { useState, useMemo } from 'react';
 // Path remains the same if 'context' is a sibling of 'components' under 'src'
-import { useTheme } from '../context/ThemeContext'; 
+import { useTheme } from '../context/ThemeContext';
 // Updated import paths for UI components, assuming 'ui' is a sibling of 'components' under 'src'
-import { Button } from './ui/button'; 
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'; 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'; 
-import { Badge } from './ui/badge'; 
-import { Input } from './ui/input'; 
+import { Button } from './ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Badge } from './ui/badge';
+import { Input } from './ui/input';
+import PDFViewer from './PDFViewer';
 import {
   Monitor,
   Atom,
@@ -23,7 +24,8 @@ import {
   Search,
   X,
   BookOpen,
-  Languages
+  Languages,
+  Eye
 } from 'lucide-react';
 
 // Path remains the same if 'data' is a sibling of 'components' under 'src'
@@ -35,6 +37,7 @@ const MaterialsSection = () => {
   const [expandedPapers, setExpandedPapers] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const [pdfViewer, setPdfViewer] = useState(null);
   
   // Use shared data
   const materialsData = studyMaterialsData;
@@ -236,23 +239,21 @@ const MaterialsSection = () => {
     return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
   };
 
-  const handleLinkClick = (url, type) => {
+  const handleLinkClick = (url, type, title) => {
     if (!url || url.includes('your-link-here')) {
       alert(`${type} link is not ready yet. Please reach out to Shakib and notify him.`);
       return;
     }
-    // For local PDFs, use a more reliable method
-    if (url.startsWith('/')) {
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    // For local PDFs, open in PDF viewer
+    if (url.startsWith('/') && type === 'PDF') {
+      setPdfViewer({ url, title });
     } else {
       window.open(url, '_blank');
     }
+  };
+
+  const closePdfViewer = () => {
+    setPdfViewer(null);
   };
 
   const togglePaperExpansion = (subjectId, paperId) => {
@@ -416,6 +417,15 @@ const MaterialsSection = () => {
           </div>
         )}
 
+        {/* PDF Viewer Modal */}
+        {pdfViewer && (
+          <PDFViewer
+            pdfUrl={pdfViewer.url}
+            title={pdfViewer.title}
+            onClose={closePdfViewer}
+          />
+        )}
+
         {/* Materials Grid */}
         <div className="grid lg:grid-cols-1 gap-8">
           {materialsData?.subjects.map((subject) => {
@@ -530,17 +540,26 @@ const MaterialsSection = () => {
                                     {(activeView === 'all' || activeView === 'pdfs') && (
                                       chapter.driveLinks && chapter.driveLinks.length > 0 ? (
                                         chapter.driveLinks.map((link, index) => (
-                                          <Button
-                                            key={index}
-                                            variant="outline"
-                                            size="sm"
-                                            className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30"
-                                            onClick={() => handleLinkClick(link.url, 'PDF')}
-                                          >
-                                            <Download className="w-4 h-4" />
-                                            {link.name}
-                                            <ExternalLink className="w-3 h-3 ml-auto" />
-                                          </Button>
+                                          <div key={index} className="flex gap-2">
+                                            <Button
+                                              variant="outline"
+                                              size="sm"
+                                              className="flex-1 justify-start gap-2 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30"
+                                              onClick={() => handleLinkClick(link.url, 'PDF', link.name)}
+                                            >
+                                              <Eye className="w-4 h-4" />
+                                              View
+                                            </Button>
+                                            <Button
+                                              variant="outline"
+                                              size="sm"
+                                              className="justify-start gap-2 hover:scale-105 transition-all duration-300 border-green-200 text-green-700 hover:bg-green-50 dark:border-green-700 dark:text-green-300 dark:hover:bg-green-900/30"
+                                              onClick={() => handleLinkClick(link.url, 'Download')}
+                                            >
+                                              <Download className="w-4 h-4" />
+                                              Download
+                                            </Button>
+                                          </div>
                                         ))
                                       ) : (
                                         <Button
