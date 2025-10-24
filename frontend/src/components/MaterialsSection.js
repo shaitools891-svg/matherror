@@ -241,7 +241,18 @@ const MaterialsSection = () => {
       alert(`${type} link is not ready yet. Please reach out to Shakib and notify him.`);
       return;
     }
-    window.open(url, '_blank');
+    // For local PDFs, use a more reliable method
+    if (url.startsWith('/')) {
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(url, '_blank');
+    }
   };
 
   const togglePaperExpansion = (subjectId, paperId) => {
