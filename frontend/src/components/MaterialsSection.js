@@ -45,37 +45,43 @@ const MaterialsSection = () => {
       icon: <Atom className="w-8 h-8 text-white" />, // Physics uses Atom (matches data)
       label: "Physics",
       color: "blue",
-      subjectId: "1" // Physics has id: 1
+      subjectId: "1", // Physics has id: 1
+      cardColor: "blue"
     },
     {
       icon: <FlaskConical className="w-8 h-8 text-white" />, // Chemistry uses FlaskConical (matches data)
       label: "Chemistry",
       color: "purple",
-      subjectId: "2" // Chemistry has id: 2
+      subjectId: "2", // Chemistry has id: 2
+      cardColor: "purple"
     },
     {
       icon: <Monitor className="w-8 h-8 text-white" />, // Mathematics uses Monitor (matches data)
       label: "Mathematics",
       color: "green",
-      subjectId: "3" // Mathematics has id: 3
+      subjectId: "3", // Mathematics has id: 3
+      cardColor: "green"
     },
     {
       icon: <Calculator className="w-8 h-8 text-white" />, // ICT uses Calculator (matches data)
       label: "ICT",
       color: "orange",
-      subjectId: "4" // ICT has id: 4
+      subjectId: "4", // ICT has id: 4
+      cardColor: "orange"
     },
     {
       icon: <BookOpen className="w-8 h-8 text-white" />, // Bangla uses BookOpen (matches data)
       label: "Bangla",
       color: "red",
-      subjectId: "5" // Bangla has id: 5
+      subjectId: "5", // Bangla has id: 5
+      cardColor: "red"
     },
     {
       icon: <Languages className="w-8 h-8 text-white" />, // English uses Languages (matches data)
       label: "English",
       color: "teal",
-      subjectId: "6" // English has id: 6
+      subjectId: "6", // English has id: 6
+      cardColor: "teal"
     }
   ];
 
@@ -397,30 +403,39 @@ const MaterialsSection = () => {
 
         {/* Materials Grid */}
         <div className="grid lg:grid-cols-1 gap-8">
-          {materialsData?.subjects.map((subject) => (
-            <Card 
-              key={subject.id} 
-              id={`subject-${subject.id}`}
-              className="border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-gray-800/30 transition-all duration-300 bg-white dark:bg-gray-800"
-            >
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: `${currentTheme.primary}20` }}
-                  >
-                    <div style={{ color: currentTheme.primary }}>
-                      {getIcon(subject.icon)}
+          {materialsData?.subjects.map((subject) => {
+            // Find the corresponding glass icon item for color matching
+            const glassIconItem = glassIconItems.find(item => item.subjectId === subject.id.toString());
+            const cardColorClass = glassIconItem ? `border-${glassIconItem.cardColor}-200 dark:border-${glassIconItem.cardColor}-700` : 'border-gray-200 dark:border-gray-700';
+            const iconBgColor = glassIconItem ? `${glassIconItem.cardColor}-100 dark:bg-${glassIconItem.cardColor}-900/30` : 'gray-100 dark:bg-gray-700';
+            const iconColor = glassIconItem ? `text-${glassIconItem.cardColor}-600 dark:text-${glassIconItem.cardColor}-400` : 'text-gray-600 dark:text-gray-400';
+
+            return (
+              <Card
+                key={subject.id}
+                id={`subject-${subject.id}`}
+                className={`border ${cardColorClass} hover:shadow-md dark:hover:shadow-gray-800/30 transition-all duration-300 bg-white dark:bg-gray-800`}
+              >
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${iconBgColor}`}
+                      style={{
+                        backgroundColor: glassIconItem ? `var(--${glassIconItem.cardColor}-100)` : undefined
+                      }}
+                    >
+                      <div className={iconColor}>
+                        {getIcon(subject.icon)}
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                      {subject.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
-                      {subject.fullName}
-                    </p>
-                  </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">
+                        {subject.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                        {subject.fullName}
+                      </p>
+                    </div>
                   <Badge
                     variant="secondary"
                     className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors duration-300"
