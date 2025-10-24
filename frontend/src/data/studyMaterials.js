@@ -493,7 +493,7 @@ export const studyMaterialsData = {
                   url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-4%20.pdf"
                 },
                 {
-                  name: "বায়ান্নর দিঙ্গুল",
+                  name: "বায়ান্নর দিনগুলো",
                   url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-5.pdf"
                 }
               ],
