@@ -408,8 +408,9 @@ const Header = () => {
                             className="text-2xl font-bold transition-all duration-300 hover:scale-105 cursor-pointer"
                             style={{
                                 color: currentTheme.primary,
-                                fontFamily: "'Inter', sans-serif",
-                                fontWeight: 700
+                                fontFamily: "'LCDSolid', monospace",
+                                fontWeight: 'normal',
+                                letterSpacing: '2px'
                             }}
                         >
                             Math ERROR
