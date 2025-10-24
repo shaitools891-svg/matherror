@@ -424,9 +424,9 @@ const MaterialsSection = () => {
                   <CardTitle className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center">
                       {glassIconItem ? (
-                        <div className="w-8 h-8">
-                          {glassIconItem.icon}
-                        </div>
+                        React.cloneElement(glassIconItem.icon, {
+                          className: "w-8 h-8 text-white"
+                        })
                       ) : (
                         <div className={iconColor}>
                           {getIcon(subject.icon)}
