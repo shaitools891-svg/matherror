@@ -491,6 +491,10 @@ export const studyMaterialsData = {
                 {
                   name: "মানব কল্যাণ ও আঠারো বছর বয়স",
                   url: "/bangla-1st-3.pdf"
+                },
+                {
+                  name: "বায়ান্নর দিঙ্গুল",
+                  url: "/bangla-1st-4.pdf"
                 }
               ],
               videoLinks: []
@@ -508,6 +512,10 @@ export const studyMaterialsData = {
                 {
                   name: "উচ্চারণের নিয়ম ও প্রতিবেদন লিখন",
                   url: "/bangla-2nd-1.pdf"
+                },
+                {
+                  name: "বাংলা বানানের নিয়ম, আবেদনপত্র ও ইমেইল",
+                  url: "/bangla-2nd-2.pdf"
                 }
               ],
               videoLinks: []
