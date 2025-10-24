@@ -289,7 +289,7 @@ const MaterialsSection = () => {
               <h3 className="text-lg font-semibold">Latest Updates</h3>
             </div>
             <p className="text-blue-100">
-              🎉 New subjects added: Bangla and English! More resources coming soon. Help us grow by sharing your study materials.
+              🎉 Bangla 1st Paper materials added! More Bangla resources coming soon. Help us grow by sharing your study materials.
             </p>
           </div>
         </div>
