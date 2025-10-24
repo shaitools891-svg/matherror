@@ -72,16 +72,16 @@ const MaterialsSection = () => {
     {
       icon: <BookOpen className="w-8 h-8 text-white" />, // Bangla uses BookOpen (matches data)
       label: "Bangla",
-      color: "blue",
+      color: "red",
       subjectId: "5", // Bangla has id: 5
-      cardColor: "blue"
+      cardColor: "red"
     },
     {
       icon: <Languages className="w-8 h-8 text-white" />, // English uses Languages (matches data)
       label: "English",
-      color: "purple",
+      color: "teal",
       subjectId: "6", // English has id: 6
-      cardColor: "purple"
+      cardColor: "teal"
     }
   ];
 
