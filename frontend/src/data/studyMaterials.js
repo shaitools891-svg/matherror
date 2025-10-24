@@ -482,19 +482,19 @@ export const studyMaterialsData = {
               driveLinks: [
                 {
                   name: "অপরিচিতা ও সোনার তরী",
-                  url: "/bangla-1st-1.pdf"
+                  url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%201st%201.pdf"
                 },
                 {
                   name: "আমার পথ ও বিদ্রোহী",
-                  url: "/bangla-1st-2.pdf"
+                  url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-2.pdf"
                 },
                 {
                   name: "মানব কল্যাণ ও আঠারো বছর বয়স",
-                  url: "/bangla-1st-3.pdf"
+                  url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-4%20.pdf"
                 },
                 {
                   name: "বায়ান্নর দিঙ্গুল",
-                  url: "/bangla-1st-4.pdf"
+                  url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-5.pdf"
                 }
               ],
               videoLinks: []
@@ -511,11 +511,11 @@ export const studyMaterialsData = {
               driveLinks: [
                 {
                   name: "উচ্চারণের নিয়ম ও প্রতিবেদন লিখন",
-                  url: "/bangla-2nd-1.pdf"
+                  url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-6.pdf"
                 },
                 {
                   name: "বাংলা বানানের নিয়ম, আবেদনপত্র ও ইমেইল",
-                  url: "/bangla-2nd-2.pdf"
+                  url: "https://raw.githubusercontent.com/shaitools891-svg/matherror/main/bangla%20-7.pdf"
                 }
               ],
               videoLinks: []
