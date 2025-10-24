@@ -478,8 +478,21 @@ export const studyMaterialsData = {
           chapters: [
             {
               id: 22,
-              title: "Chapter 1",
-              driveLinks: [],
+              title: "অপরিচিতা ও সোনার তরী",
+              driveLinks: [
+                {
+                  name: "অপরিচিতা ও সোনার তরী",
+                  url: "/bangla-1st-1.pdf"
+                },
+                {
+                  name: "আমার পথ ও বিদ্রোহী",
+                  url: "/bangla-1st-2.pdf"
+                },
+                {
+                  name: "মানব কল্যাণ ও আঠারো বছর বয়স",
+                  url: "/bangla-1st-3.pdf"
+                }
+              ],
               videoLinks: []
             }
           ]
@@ -490,8 +503,13 @@ export const studyMaterialsData = {
           chapters: [
             {
               id: 23,
-              title: "Chapter 1",
-              driveLinks: [],
+              title: "উচ্চারণের নিয়ম ও প্রতিবেদন লিখন",
+              driveLinks: [
+                {
+                  name: "উচ্চারণের নিয়ম ও প্রতিবেদন লিখন",
+                  url: "/bangla-2nd-1.pdf"
+                }
+              ],
               videoLinks: []
             }
           ]
