@@ -478,7 +478,7 @@ export const studyMaterialsData = {
           chapters: [
             {
               id: 22,
-              title: "অপরিচিতা ও সোনার তরী",
+              title: "সাহিত্য",
               driveLinks: [
                 {
                   name: "অপরিচিতা ও সোনার তরী",
