@@ -33,7 +33,7 @@ const BackgroundPattern = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base gradient background using your existing classes */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 glass:from-white/10 glass:via-white/5 glass:to-white/10 transition-all duration-500"></div>
       
       {/* Particles layer */}
       <div className="absolute inset-0">
@@ -66,7 +66,7 @@ const BackgroundPattern = () => {
 // Main Home component
 const Home = () => {
   return (
-    <div className="min-h-screen bg-background transition-colors duration-300">
+    <div className="min-h-screen bg-background transition-colors duration-300 glass:bg-transparent">
       <BackgroundPattern />
       <Header />
       <main className="relative z-10">
@@ -86,7 +86,7 @@ const AppLoading = () => {
   const loadingColors = theme === 'dark' ? ['#64748b', '#94a3b8'] : ['#e2e8f0', '#cbd5e1'];
   
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background transition-colors duration-300 relative">
+    <div className="min-h-screen flex items-center justify-center bg-background glass:bg-transparent transition-colors duration-300 relative">
       {/* Particles for loading screen */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/50"></div>
