@@ -10,7 +10,7 @@ const DarkModeToggle = () => {
             onClick={toggleTheme}
             className={`
                 relative inline-flex items-center justify-center
-                w-14 h-7 rounded-full transition-all duration-500 ease-out
+                w-20 h-8 rounded-full transition-all duration-500 ease-out
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                 hover:scale-110 active:scale-95 transform-gpu
                 shadow-lg hover:shadow-xl
@@ -30,13 +30,13 @@ const DarkModeToggle = () => {
             {/* Toggle circle */}
             <span
                 className={`
-                    inline-block w-6 h-6 rounded-full shadow-md
+                    inline-block w-7 h-7 rounded-full shadow-md
                     transform transition-all duration-500 ease-out
                     ${currentThemeId === 'dark'
-                        ? 'translate-x-3.5 bg-gradient-to-br from-yellow-300 to-yellow-400'
+                        ? 'translate-x-6 bg-gradient-to-br from-yellow-300 to-yellow-400'
                         : currentThemeId === 'glass'
-                        ? 'translate-x-3.5 bg-gradient-to-br from-purple-300 to-pink-300'
-                        : '-translate-x-3.5 bg-gradient-to-br from-orange-400 to-orange-500'
+                        ? 'translate-x-12 bg-gradient-to-br from-purple-300 to-pink-300'
+                        : 'translate-x-0 bg-gradient-to-br from-orange-400 to-orange-500'
                     }
                     flex items-center justify-center ring-2 ring-white/20
                 `}
