@@ -183,10 +183,11 @@ const GooeyNav = ({
           .gooey-effect.text {
             color: white;
             transition: color 0.3s ease;
-            font-weight: 500;
+            font-weight: 600;
           }
           .gooey-effect.text.active {
             color: black;
+            font-weight: 600;
           }
           .gooey-effect.filter {
             filter: blur(7px) contrast(100) blur(0);
@@ -291,6 +292,7 @@ const GooeyNav = ({
           .gooey-nav-item.active {
             color: black !important;
             text-shadow: none;
+            font-weight: 600 !important;
           }
           .gooey-nav-item.active::after {
             opacity: 1;
