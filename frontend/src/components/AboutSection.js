@@ -128,7 +128,7 @@ const AboutSection = () => {
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">What We Offer</h3>
-                  <p className="text-gray-600 dark:text-gray-300">PDF notes, video lectures for more than 3 subjects.</p>
+                  <p className="text-gray-600 dark:text-gray-300">PDF notes, video lectures for more than 5 subjects.</p>
                 </div>
               </div>
             </div>
