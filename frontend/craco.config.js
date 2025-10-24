@@ -53,6 +53,8 @@ module.exports = {
   },
   // Add devServer configuration
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
   }
 };
