@@ -19,12 +19,19 @@ const AboutSection = () => {
             <div className="md:w-2/5 bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex flex-col justify-center items-center text-white">
               <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center mb-6 shadow-lg overflow-hidden">
                 {!imageError ? (
-                 <img 
+                 <img
   src={`${process.env.PUBLIC_URL}/images/profile-picture.jpg`}
-  alt="Shakib" 
-  className="w-full h-full object-cover"
+  alt="Shakib"
+  className="w-full h-full object-cover select-none pointer-events-none"
   onError={() => setImageError(true)}
-/>
+  onContextMenu={(e) => e.preventDefault()}
+  onDragStart={(e) => e.preventDefault()}
+  style={{
+    WebkitUserSelect: 'none',
+    WebkitTouchCallout: 'none',
+    userSelect: 'none'
+  }}
+ />
                 ) : (
                   <svg className="w-16 h-16 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
