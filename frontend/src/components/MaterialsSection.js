@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
+import { useNavigate } from 'react-router-dom';
 import {
   Monitor,
   Atom,
@@ -32,12 +33,11 @@ import VideoPlayer from './VideoPlayer';
 
 const MaterialsSection = () => {
   const { currentTheme } = useTheme();
+  const navigate = useNavigate();
   const [activeView, setActiveView] = useState('all');
   const [expandedPapers, setExpandedPapers] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const [showVideoModal, setShowVideoModal] = useState(false);
   
   // Use shared data
   const materialsData = studyMaterialsData;
@@ -241,9 +241,8 @@ const MaterialsSection = () => {
 
   const handleLinkClick = (url, type, videoData = null) => {
     if (type === 'Video' && videoData) {
-      // All videos are now YouTube videos, play directly in modal
-      setSelectedVideo(videoData);
-      setShowVideoModal(true);
+      // Navigate to dedicated video page
+      navigate('/video', { state: { videoData } });
       return;
     }
 
@@ -629,31 +628,6 @@ const MaterialsSection = () => {
         </div>
       </div>
 
-      {/* Video Modal */}
-      {showVideoModal && selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="relative w-full max-w-5xl max-h-[90vh] overflow-auto bg-white dark:bg-gray-900 rounded-lg shadow-2xl">
-            {/* Close Button */}
-            <button
-              onClick={() => {
-                setShowVideoModal(false);
-                setSelectedVideo(null);
-              }}
-              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors duration-200"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Video Player */}
-            <div className="p-6">
-              <VideoPlayer
-                videoUrl={selectedVideo.url}
-                title={`${selectedVideo.subject} - ${selectedVideo.chapter} - ${selectedVideo.title}`}
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
     </section>
   );

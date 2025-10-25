@@ -131,9 +131,9 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
 
   return (
     <div className={`
-      relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl
-      bg-black/90 backdrop-blur-sm border border-white/10
-      transition-all duration-300 hover:shadow-3xl
+      relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl
+      bg-gradient-to-br from-gray-900 to-black backdrop-blur-sm border border-white/20
+      transition-all duration-300 hover:shadow-3xl hover:border-white/30
     `}>
       {/* Video Container */}
       <div
@@ -142,21 +142,30 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
         onMouseLeave={() => setShowControls(false)}
         onClick={togglePlay}
       >
-        {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+        {isLoading && !isYouTube && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-10">
+            <div className="flex flex-col items-center gap-4">
+              <div className="animate-spin rounded-full h-16 w-16 border-4 border-white/30 border-t-white"></div>
+              <p className="text-white text-sm font-medium">Loading video...</p>
+            </div>
           </div>
         )}
 
         {isYouTube && youTubeVideoId ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${youTubeVideoId}?autoplay=1&rel=0`}
-            className="w-full h-auto aspect-video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title={title}
-          ></iframe>
+          <div className="relative w-full bg-black rounded-lg overflow-hidden shadow-2xl">
+            <iframe
+              src={`https://www.youtube.com/embed/${youTubeVideoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`}
+              className="w-full h-auto aspect-video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              title={title}
+            ></iframe>
+            {/* YouTube branding overlay */}
+            <div className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded font-medium">
+              YouTube
+            </div>
+          </div>
         ) : (
           <video
             ref={videoRef}
@@ -170,11 +179,11 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
           </video>
         )}
 
-        {/* Play/Pause Overlay */}
-        {!isPlaying && !isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-            <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110">
-              <Play className="w-12 h-12 text-white ml-1" fill="white" />
+        {/* Play/Pause Overlay - Only for non-YouTube videos */}
+        {!isYouTube && !isPlaying && !isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+            <div className="bg-white/30 backdrop-blur-md rounded-full p-6 transition-all duration-300 hover:scale-110 shadow-2xl">
+              <Play className="w-16 h-16 text-white ml-1" fill="white" />
             </div>
           </div>
         )}
@@ -267,9 +276,12 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
       </div>
 
       {/* Title */}
-      <div className="p-4 bg-white/5 backdrop-blur-sm border-t border-white/10">
-        <h2 className="text-lg font-semibold text-white">{title}</h2>
-        <p className="text-sm text-gray-300 mt-1">HSC 2024 ICT Chapter 3 - Lecture 3</p>
+      <div className="p-6 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm border-t border-white/20">
+        <h2 className="text-xl font-bold text-white mb-2">{title}</h2>
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+          <p className="text-sm text-gray-300">Now Playing</p>
+        </div>
       </div>
 
       <style jsx>{`
