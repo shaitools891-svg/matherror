@@ -2,6 +2,28 @@ import React, { useEffect, useState } from "react";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
+
+
+// Glass theme background component
+const GlassBackground = () => {
+  const { currentThemeId } = useTheme();
+
+  if (currentThemeId !== 'glass') return null;
+
+  return (
+    <div className="fixed inset-0 -z-10 pointer-events-none">
+      {/* Glass theme base background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5"></div>
+
+      {/* Glass theme accent elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-white/10 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-3/4 left-3/4 w-64 h-64 rounded-full bg-purple-500/10 blur-3xl animate-pulse delay-500"></div>
+      </div>
+    </div>
+  );
+};
 import Particles from './components/Particles'; // Add this import
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -24,21 +46,30 @@ const ScrollRestoration = () => {
 
 // Updated Background pattern component with particles
 const BackgroundPattern = () => {
-  const { theme } = useTheme();
-  
+  const { currentThemeId } = useTheme();
+
   // Different particle colors based on theme - using colors that work with your design system
   const lightThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1'];
   const darkThemeColors = ['#475569', '#64748b', '#94a3b8', '#cbd5e1'];
-  
+  const glassThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1']; // Similar to light but with glass effect
+
+  const getParticleColors = () => {
+    switch (currentThemeId) {
+      case 'dark': return darkThemeColors;
+      case 'glass': return glassThemeColors;
+      default: return lightThemeColors;
+    }
+  };
+
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base gradient background using your existing classes */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 glass:from-white/10 glass:via-white/5 glass:to-white/10 transition-all duration-500"></div>
-      
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 glass:from-white/20 glass:via-white/10 glass:to-white/5 transition-all duration-500"></div>
+
       {/* Particles layer */}
       <div className="absolute inset-0">
         <Particles
-          particleColors={theme === 'dark' ? darkThemeColors : lightThemeColors}
+          particleColors={getParticleColors()}
           particleCount={100}
           particleSpread={15}
           speed={0.06}
@@ -52,7 +83,7 @@ const BackgroundPattern = () => {
           className="w-full h-full opacity-50"
         />
       </div>
-      
+
       {/* Subtle accent orbs using your color system */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse transition-all duration-700"></div>
@@ -68,6 +99,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background transition-colors duration-300 glass:bg-transparent">
       <BackgroundPattern />
+      <GlassBackground />
       <Header />
       <main className="relative z-10">
         <Hero />
@@ -82,9 +114,9 @@ const Home = () => {
 
 // Loading component with particles
 const AppLoading = () => {
-  const { theme } = useTheme();
-  const loadingColors = theme === 'dark' ? ['#64748b', '#94a3b8'] : ['#e2e8f0', '#cbd5e1'];
-  
+  const { currentThemeId } = useTheme();
+  const loadingColors = currentThemeId === 'dark' ? ['#64748b', '#94a3b8'] : ['#e2e8f0', '#cbd5e1'];
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background glass:bg-transparent transition-colors duration-300 relative">
       {/* Particles for loading screen */}

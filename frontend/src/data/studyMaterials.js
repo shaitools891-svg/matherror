@@ -555,6 +555,62 @@ export const studyMaterialsData = {
           ]
         }
       ]
+    },
+    {
+      id: 7,
+      name: "Biology",
+      fullName: "HSC Biology",
+      icon: "Dna",
+      papers: [
+        {
+          id: 12,
+          name: "1st Paper",
+          chapters: [
+            {
+              id: 26,
+              title: "Cell Biology",
+              driveLinks: [],
+              videoLinks: []
+            },
+            {
+              id: 27,
+              title: "Genetics",
+              driveLinks: [],
+              videoLinks: []
+            },
+            {
+              id: 28,
+              title: "Molecular Biology",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        },
+        {
+          id: 13,
+          name: "2nd Paper",
+          chapters: [
+            {
+              id: 29,
+              title: "Ecology",
+              driveLinks: [],
+              videoLinks: []
+            },
+            {
+              id: 30,
+              title: "Evolution",
+              driveLinks: [],
+              videoLinks: []
+            },
+            {
+              id: 31,
+              title: "Human Physiology",
+              driveLinks: [],
+              videoLinks: []
+            }
+          ]
+        }
+      ]
     }
   ]
 };
