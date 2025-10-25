@@ -1,4 +1,4 @@
-i// src/data/studyMaterials.js
+// src/data/studyMaterials.js
 export const studyMaterialsData = {
   subjects: [
     {
