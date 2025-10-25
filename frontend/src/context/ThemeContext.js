@@ -104,6 +104,14 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty('--theme-card-bg', currentTheme.cardBg);
       root.style.setProperty('--theme-card-border', currentTheme.cardBorder);
 
+      // Debug logs for glass theme
+      if (currentThemeId === 'glass') {
+        console.log('Glass theme active');
+        console.log('Current theme background:', currentTheme.background);
+        console.log('Body classes:', document.body.className);
+        console.log('Root computed background:', window.getComputedStyle(root).background);
+        console.log('Body computed background:', window.getComputedStyle(document.body).background);
+      }
 
       // Save to localStorage
       localStorage.setItem('themeId', currentThemeId);

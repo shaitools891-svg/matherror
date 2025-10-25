@@ -119,6 +119,11 @@ const Home = () => {
         <ContactSection />
       </main>
       <Footer />
+      {/* Debug overlay for glass theme */}
+      <div className="fixed top-4 right-4 z-50 bg-black/80 text-white p-2 rounded text-xs font-mono">
+        Theme: {currentTheme?.id || 'unknown'}<br/>
+        Background: {currentTheme?.background || 'none'}
+      </div>
     </div>
   );
 };
