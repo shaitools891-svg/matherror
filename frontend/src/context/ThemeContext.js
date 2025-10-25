@@ -51,11 +51,11 @@ const themes = {
     accent: '#34d399',        // Emerald-400
     text: '#1f2937',          // Gray-800
     textSecondary: '#6b7280', // Gray-500
-    background: 'rgba(255,255,255,0.25)',   // More opaque for visibility
-    backgroundSecondary: 'rgba(248,250,252,0.2)', // Semi-transparent gray-50
-    border: 'rgba(229,231,235,0.4)',        // More visible border
-    cardBg: 'rgba(255,255,255,0.25)',       // More opaque cards
-    cardBorder: 'rgba(229,231,235,0.4)',    // More visible card borders
+    background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.3) 100%)',   // Visible gradient background
+    backgroundSecondary: 'rgba(248,250,252,0.5)', // More opaque secondary background
+    border: 'rgba(229,231,235,0.6)',        // More visible border
+    cardBg: 'rgba(255,255,255,0.5)',       // More opaque cards for glass effect
+    cardBorder: 'rgba(229,231,235,0.6)',    // More visible card borders
     mode: 'glass'
   }
 };
