@@ -127,7 +127,7 @@ function App() {
     // Simulate initial loading
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1000); // Reduced loading time for faster app startup
     return () => clearTimeout(timer);
   }, []);
 
