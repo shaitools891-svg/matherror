@@ -25,9 +25,9 @@ const DarkModeToggle = () => {
             }
         >
             {currentThemeId === 'light' ? (
-                <Sun className="w-4 h-4 text-yellow-100 drop-shadow-lg" />
+                <Sun className="w-2 h-2 text-yellow-100 drop-shadow-lg" />
             ) : (
-                <Moon className="w-4 h-4 text-indigo-900 drop-shadow-lg" />
+                <Moon className="w-2 h-2 text-indigo-900 drop-shadow-lg" />
             )}
         </button>
     );
