@@ -10,7 +10,7 @@ const DarkModeToggle = () => {
             onClick={toggleTheme}
             className={`
                 relative inline-flex items-center justify-center
-                w-10 h-10 rounded-full transition-all duration-300 ease-out
+                w-8 h-8 rounded-full transition-all duration-300 ease-out
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                 hover:scale-110 active:scale-95 transform-gpu
                 shadow-lg hover:shadow-xl border border-blue-300 dark:border-purple-600
@@ -25,9 +25,9 @@ const DarkModeToggle = () => {
             }
         >
             {currentThemeId === 'light' ? (
-                <Sun className="w-5 h-5 text-yellow-100 drop-shadow-lg" />
+                <Sun className="w-4 h-4 text-yellow-100 drop-shadow-lg" />
             ) : (
-                <Moon className="w-5 h-5 text-indigo-900 drop-shadow-lg" />
+                <Moon className="w-4 h-4 text-indigo-900 drop-shadow-lg" />
             )}
         </button>
     );
