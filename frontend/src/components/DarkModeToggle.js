@@ -36,12 +36,21 @@ const DarkModeToggle = () => {
                     flex items-center justify-center ring-2 ring-white/20
                 `}
             >
-                {/* Icon inside toggle */}
-                {currentThemeId === 'light' ? (
+                {/* Icon inside toggle with fade transition */}
+                <div
+                    className={`absolute transition-opacity duration-300 ease-out ${
+                        currentThemeId === 'light' ? 'opacity-100' : 'opacity-0'
+                    }`}
+                >
                     <Sun className="w-3.5 h-3.5 text-white drop-shadow-sm" />
-                ) : (
+                </div>
+                <div
+                    className={`absolute transition-opacity duration-300 ease-out ${
+                        currentThemeId === 'dark' ? 'opacity-100' : 'opacity-0'
+                    }`}
+                >
                     <Moon className="w-3.5 h-3.5 text-blue-700 drop-shadow-sm" />
-                )}
+                </div>
             </span>
         </button>
     );
