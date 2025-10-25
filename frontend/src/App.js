@@ -8,7 +8,7 @@ import { useTheme } from './context/ThemeContext';
 const GlassBackground = () => {
   const { currentThemeId } = useTheme();
 
-  console.log('[DEBUG] GlassBackground component - currentThemeId:', currentThemeId, 'typeof:', typeof currentThemeId);
+  console.log('[DEBUG] GlassBackground component - currentThemeId:', currentThemeId, 'typeof:', typeof currentThemeId, 'context available:', !!useTheme());
 
   if (currentThemeId !== 'glass') {
     console.log('[DEBUG] GlassBackground not rendering - theme is not glass');
@@ -55,7 +55,7 @@ const ScrollRestoration = () => {
 const BackgroundPattern = () => {
   const { currentThemeId } = useTheme();
 
-  console.log('[DEBUG] BackgroundPattern - currentThemeId:', currentThemeId, 'typeof:', typeof currentThemeId);
+  console.log('[DEBUG] BackgroundPattern - currentThemeId:', currentThemeId, 'typeof:', typeof currentThemeId, 'context available:', !!useTheme());
 
   // Different particle colors based on theme - using colors that work with your design system
   const lightThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1'];
@@ -109,6 +109,7 @@ const BackgroundPattern = () => {
 
 // Main Home component
 const Home = () => {
+  console.log('[DEBUG] Home component rendering');
   return (
     <div className="min-h-screen bg-background transition-colors duration-300 glass:bg-transparent">
       <BackgroundPattern />
@@ -162,6 +163,8 @@ function App() {
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
+
+  console.log('[DEBUG] App component rendering, loading:', loading);
 
   return (
     <ThemeProvider>
