@@ -86,11 +86,14 @@ export const ThemeProvider = ({ children }) => {
 
       // Update CSS classes
       root.classList.remove('dark', 'glass');
+      document.body.classList.remove('dark', 'glass');
       if (currentThemeId === 'dark') {
         root.classList.add('dark');
+        document.body.classList.add('dark');
       } else if (currentThemeId === 'glass') {
         root.classList.add('glass');
-        console.log('[DEBUG] Glass theme activated - class added to documentElement');
+        document.body.classList.add('glass');
+        console.log('[DEBUG] Glass theme activated - class added to documentElement and body');
       }
 
       // Update CSS variables for backward compatibility
@@ -107,7 +110,9 @@ export const ThemeProvider = ({ children }) => {
         background: currentTheme.background,
         cardBg: currentTheme.cardBg,
         classes: root.classList.toString(),
-        computedBodyBg: window.getComputedStyle(document.body).background
+        computedBodyBg: window.getComputedStyle(document.body).background,
+        bodyClasses: document.body.classList.toString(),
+        hasGlassClass: document.body.classList.contains('glass')
       });
 
       // Save to localStorage
