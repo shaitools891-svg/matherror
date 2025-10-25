@@ -10,13 +10,13 @@ const DarkModeToggle = () => {
             onClick={toggleTheme}
             className={`
                 relative inline-flex items-center justify-center
-                w-16 h-8 rounded-full transition-all duration-500 ease-out
+                w-18 h-9 rounded-full transition-all duration-500 ease-out
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-                hover:scale-110 active:scale-95 transform-gpu
-                shadow-lg hover:shadow-xl
+                hover:scale-105 active:scale-95 transform-gpu
+                shadow-lg hover:shadow-xl border border-gray-300 dark:border-gray-600
                 ${currentThemeId === 'dark'
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600'
-                    : 'bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-200 hover:to-gray-300'
+                    ? 'bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700'
+                    : 'bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-100 hover:to-gray-200'
                 }
             `}
             aria-label={
@@ -27,29 +27,29 @@ const DarkModeToggle = () => {
             {/* Toggle circle */}
             <span
                 className={`
-                    inline-block w-7 h-7 rounded-full shadow-md
+                    inline-block w-8 h-8 rounded-full shadow-md
                     transform transition-all duration-500 ease-out
                     ${currentThemeId === 'dark'
-                        ? 'translate-x-6 bg-gradient-to-br from-yellow-300 to-yellow-400'
+                        ? 'translate-x-8 bg-gradient-to-br from-yellow-300 to-yellow-400'
                         : 'translate-x-0 bg-gradient-to-br from-orange-400 to-orange-500'
                     }
-                    flex items-center justify-center ring-2 ring-white/20
+                    flex items-center justify-center ring-2 ring-white/30
                 `}
             >
                 {/* Icon inside toggle with fade transition */}
                 <div
-                    className={`absolute transition-opacity duration-300 ease-out ${
+                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-out ${
                         currentThemeId === 'light' ? 'opacity-100' : 'opacity-0'
                     }`}
                 >
-                    <Sun className="w-3.5 h-3.5 text-white drop-shadow-sm" />
+                    <Sun className="w-4 h-4 text-white drop-shadow-md" />
                 </div>
                 <div
-                    className={`absolute transition-opacity duration-300 ease-out ${
+                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-out ${
                         currentThemeId === 'dark' ? 'opacity-100' : 'opacity-0'
                     }`}
                 >
-                    <Moon className="w-3.5 h-3.5 text-blue-700 drop-shadow-sm" />
+                    <Moon className="w-4 h-4 text-slate-800 drop-shadow-md" />
                 </div>
             </span>
         </button>
