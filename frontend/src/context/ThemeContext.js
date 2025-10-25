@@ -148,8 +148,9 @@ export const ThemeProvider = ({ children }) => {
     isDarkMode,
     toggleTheme,
     currentTheme,
+    currentThemeId,
     themes,
-    
+
     // For backward compatibility with existing components
     changeTheme,
     themes: mockData.colorThemes // Include custom themes from mockData
