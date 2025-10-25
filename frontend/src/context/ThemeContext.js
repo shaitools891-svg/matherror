@@ -93,7 +93,6 @@ export const ThemeProvider = ({ children }) => {
       } else if (currentThemeId === 'glass') {
         root.classList.add('glass');
         document.body.classList.add('glass');
-        console.log('[DEBUG] Glass theme activated - class added to documentElement and body');
       }
 
       // Update CSS variables for backward compatibility
@@ -105,15 +104,6 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty('--theme-card-bg', currentTheme.cardBg);
       root.style.setProperty('--theme-card-border', currentTheme.cardBorder);
 
-      console.log('[DEBUG] Theme variables set:', {
-        themeId: currentThemeId,
-        background: currentTheme.background,
-        cardBg: currentTheme.cardBg,
-        classes: root.classList.toString(),
-        computedBodyBg: window.getComputedStyle(document.body).background,
-        bodyClasses: document.body.classList.toString(),
-        hasGlassClass: document.body.classList.contains('glass')
-      });
 
       // Save to localStorage
       localStorage.setItem('themeId', currentThemeId);

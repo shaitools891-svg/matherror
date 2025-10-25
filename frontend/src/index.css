@@ -128,11 +128,6 @@ code {
             min-height: 100vh;
         }
 
-        /* Debug: Force visible background for glass theme */
-        body.glass-debug {
-            background: linear-gradient(135deg, rgba(255,0,0,0.5) 0%, rgba(0,255,0,0.5) 50%, rgba(0,0,255,0.5) 100%) !important;
-        }
-
         /* Override any conflicting backgrounds */
         .glass body {
             background: var(--theme-background) !important;
