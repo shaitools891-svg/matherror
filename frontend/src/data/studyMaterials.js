@@ -392,31 +392,38 @@ export const studyMaterialsData = {
               videoLinks: [
                 {
                   name: "ICT Chapter 3 Video 1",
-                  url: "https://t.me/c/2385979269/37"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 },
                 {
                   name: "ICT Chapter 3 Video 2",
-                  url: "https://t.me/c/2385979269/38"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 },
                 {
                   name: "ICT Chapter 3 Video 3",
-                  url: "https://t.me/c/2385979269/39"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 },
                 {
                   name: "ICT Chapter 3 Video 4",
-                  url: "https://t.me/c/2385979269/40"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 },
                 {
                   name: "ICT Chapter 3 Video 5",
-                  url: "https://t.me/c/2385979269/41"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 },
                 {
                   name: "ICT Chapter 3 Video 6",
-                  url: "https://t.me/c/2385979269/42"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 },
                 {
                   name: "ICT Chapter 3 Video 7",
-                  url: "https://t.me/c/2385979269/43"
+                  url: "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20",
+                  type: "archive"
                 }
               ]
             },

@@ -2,13 +2,13 @@
 import GlassIcons from './reactbits/Components/GlassIcons/GlassIcons';
 import React, { useState, useMemo } from 'react';
 // Path remains the same if 'context' is a sibling of 'components' under 'src'
-import { useTheme } from '../context/ThemeContext'; 
+import { useTheme } from '../context/ThemeContext';
 // Updated import paths for UI components, assuming 'ui' is a sibling of 'components' under 'src'
-import { Button } from './ui/button'; 
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'; 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'; 
-import { Badge } from './ui/badge'; 
-import { Input } from './ui/input'; 
+import { Button } from './ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Badge } from './ui/badge';
+import { Input } from './ui/input';
 import {
   Monitor,
   Atom,
@@ -27,7 +27,8 @@ import {
 } from 'lucide-react';
 
 // Path remains the same if 'data' is a sibling of 'components' under 'src'
-import { studyMaterialsData } from '../data/studyMaterials'; 
+import { studyMaterialsData } from '../data/studyMaterials';
+import VideoPlayer from './VideoPlayer';
 
 const MaterialsSection = () => {
   const { currentTheme } = useTheme();
@@ -35,6 +36,8 @@ const MaterialsSection = () => {
   const [expandedPapers, setExpandedPapers] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   
   // Use shared data
   const materialsData = studyMaterialsData;
@@ -236,7 +239,14 @@ const MaterialsSection = () => {
     return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
   };
 
-  const handleLinkClick = (url, type) => {
+  const handleLinkClick = (url, type, videoData = null) => {
+    if (type === 'Video' && videoData) {
+      // Open video in modal
+      setSelectedVideo(videoData);
+      setShowVideoModal(true);
+      return;
+    }
+
     if (!url || url.includes('your-link-here')) {
       alert(`${type} link is not ready yet. Please reach out to Shakib and notify him.`);
       return;
@@ -565,7 +575,12 @@ const MaterialsSection = () => {
                                             variant="outline"
                                             size="sm"
                                             className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30"
-                                            onClick={() => handleLinkClick(link.url, 'Video')}
+                                            onClick={() => handleLinkClick(link.url, 'Video', {
+                                              url: link.url,
+                                              title: link.name,
+                                              chapter: chapter.title,
+                                              subject: subject.name
+                                            })}
                                           >
                                             <Play className="w-4 h-4" />
                                             {link.name}
@@ -612,6 +627,32 @@ const MaterialsSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {showVideoModal && selectedVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="relative w-full max-w-5xl max-h-[90vh] overflow-auto bg-white dark:bg-gray-900 rounded-lg shadow-2xl">
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setShowVideoModal(false);
+                setSelectedVideo(null);
+              }}
+              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors duration-200"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Video Player */}
+            <div className="p-6">
+              <VideoPlayer
+                videoUrl={selectedVideo.url}
+                title={`${selectedVideo.subject} - ${selectedVideo.chapter} - ${selectedVideo.title}`}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
