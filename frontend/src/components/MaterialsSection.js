@@ -23,7 +23,8 @@ import {
   Search,
   X,
   BookOpen,
-  Languages
+  Languages,
+  Dna
 } from 'lucide-react';
 
 // Path remains the same if 'data' is a sibling of 'components' under 'src'
@@ -82,6 +83,13 @@ const MaterialsSection = () => {
       color: "teal",
       subjectId: "6", // English has id: 6
       cardColor: "teal"
+    },
+    {
+      icon: <Dna className="w-8 h-8 text-white" />, // Biology uses Dna (matches data)
+      label: "Biology",
+      color: "emerald",
+      subjectId: "7", // Biology has id: 7
+      cardColor: "emerald"
     }
   ];
 
@@ -118,6 +126,8 @@ const MaterialsSection = () => {
         indigo: "linear-gradient(hsl(253, 90%, 50%), hsl(238, 90%, 50%))",
         orange: "linear-gradient(hsl(43, 90%, 50%), hsl(28, 90%, 50%))",
         green: "linear-gradient(hsl(123, 90%, 40%), hsl(108, 90%, 40%))",
+        teal: "linear-gradient(hsl(178, 90%, 50%), hsl(163, 90%, 50%))",
+        emerald: "linear-gradient(hsl(142, 90%, 45%), hsl(127, 90%, 45%))",
       };
       
       if (gradientMapping[color]) {
@@ -127,7 +137,7 @@ const MaterialsSection = () => {
     };
 
     return (
-      <div className={`grid gap-[5em] grid-cols-2 md:grid-cols-3 mx-auto py-[3em] overflow-visible ${className || ""}`}>
+      <div className={`grid gap-[5em] grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto py-[3em] overflow-visible ${className || ""}`}>
         {items.map((item, index) => (
           <button
             key={index}

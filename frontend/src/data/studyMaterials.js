@@ -46,6 +46,17 @@ export const studyMaterialsData = {
                   url: "https://youtube.com/your-link-here"
                 }
               ]
+            },
+            {
+              id: 34,
+              title: "Chapter 6",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "Physics 46",
+                  url: "https://www.youtube.com/live/DxZp3hQKIBQ?si=9g1hpXVgQw7vSWxb"
+                }
+              ]
             }
           ]
         },
@@ -113,6 +124,10 @@ export const studyMaterialsData = {
                 {
                   name: "Chemistry-47",
                   url: "https://www.youtube.com/live/hEsZQVA8SBM?si=VzcCuKqhfpwEkLuv"
+                },
+                {
+                  name: "Chemistry-48",
+                  url: "https://www.youtube.com/live/ozkjdRnfFns?si=ix8ZOzIhDrGGnSYj"
                 }
               ]
             }
