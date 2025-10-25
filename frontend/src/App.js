@@ -34,6 +34,7 @@ import Particles from './components/Particles'; // Add this import
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MaterialsSection from './components/MaterialsSection';
+import VideoSection from './components/VideoSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -115,6 +116,7 @@ const Home = () => {
       <main className="relative z-10">
         <Hero />
         <MaterialsSection />
+        <VideoSection />
         <AboutSection />
         <ContactSection />
       </main>
