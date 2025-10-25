@@ -11,7 +11,7 @@ export const useTheme = () => {
   return context;
 };
 
-// Light, Dark, and Glass theme definitions
+// Light and Dark theme definitions
 const themes = {
   light: {
     id: 'light',
@@ -42,21 +42,6 @@ const themes = {
     cardBg: '#1f2937',        // Gray-800
     cardBorder: '#374151',    // Gray-700
     mode: 'dark'
-  },
-  glass: {
-    id: 'glass',
-    name: 'Smooth Glass Theme',
-    primary: '#60a5fa',       // Blue-400
-    secondary: '#94a3b8',     // Slate-400
-    accent: '#34d399',        // Emerald-400
-    text: '#f9fafb',          // Gray-50 (light text for dark background)
-    textSecondary: '#d1d5db', // Gray-300 (lighter secondary text)
-    background: 'linear-gradient(135deg, rgba(15,23,42,0.8) 0%, rgba(30,41,59,0.6) 50%, rgba(51,65,85,0.4) 100%)',   // Dark gradient background
-    backgroundSecondary: 'rgba(30,41,59,0.5)', // Dark secondary background
-    border: 'rgba(71,85,105,0.6)',        // Dark border
-    cardBg: 'rgba(30,41,59,0.5)',       // Dark cards for glass effect
-    cardBorder: 'rgba(71,85,105,0.6)',    // Dark card borders
-    mode: 'glass'
   }
 };
 
@@ -85,14 +70,11 @@ export const ThemeProvider = ({ children }) => {
       const root = window.document.documentElement;
 
       // Update CSS classes
-      root.classList.remove('dark', 'glass');
-      document.body.classList.remove('dark', 'glass');
+      root.classList.remove('dark');
+      document.body.classList.remove('dark');
       if (currentThemeId === 'dark') {
         root.classList.add('dark');
         document.body.classList.add('dark');
-      } else if (currentThemeId === 'glass') {
-        root.classList.add('glass');
-        document.body.classList.add('glass');
       }
 
       // Update CSS variables for backward compatibility
@@ -104,15 +86,6 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty('--theme-card-bg', currentTheme.cardBg);
       root.style.setProperty('--theme-card-border', currentTheme.cardBorder);
 
-      // Debug logs for glass theme
-      if (currentThemeId === 'glass') {
-        console.log('Glass theme active');
-        console.log('Current theme background:', currentTheme.background);
-        console.log('Body classes:', document.body.className);
-        console.log('Root computed background:', window.getComputedStyle(root).background);
-        console.log('Body computed background:', window.getComputedStyle(document.body).background);
-        console.log('HTML classes:', document.documentElement.className);
-      }
 
       // Save to localStorage
       localStorage.setItem('themeId', currentThemeId);
@@ -164,7 +137,7 @@ export const ThemeProvider = ({ children }) => {
   };
 
   const toggleTheme = () => {
-    const themeOrder = ['light', 'dark', 'glass'];
+    const themeOrder = ['light', 'dark'];
     const currentIndex = themeOrder.indexOf(currentThemeId);
     const nextIndex = (currentIndex + 1) % themeOrder.length;
     setCurrentThemeId(themeOrder[nextIndex]);

@@ -108,6 +108,8 @@ const BackgroundPattern = () => {
 
 // Main Home component
 const Home = () => {
+  const { currentTheme } = useTheme();
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-300 glass:bg-transparent">
       <BackgroundPattern />
