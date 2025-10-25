@@ -27,7 +27,7 @@ const DarkModeToggle = () => {
             {/* Toggle circle */}
             <span
                 className={`
-                    inline-block w-8 h-8 rounded-full shadow-md
+                    relative inline-block w-8 h-8 rounded-full shadow-md
                     transform transition-all duration-500 ease-out
                     ${currentThemeId === 'dark'
                         ? 'translate-x-8 bg-gradient-to-br from-yellow-300 to-yellow-400'
