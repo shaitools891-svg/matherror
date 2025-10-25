@@ -161,7 +161,27 @@ export const studyMaterialsData = {
                   url: "https://drive.google.com/file/d/170QWMr1KJsq4a95tfTmRp9579y3HmArj/view?usp=drive_link"
                 }
               ],
-              videoLinks: []
+              videoLinks: [
+                {
+                  name: "Lecture 4",
+                  url: "https://www.youtube.com/live/0PUZMG4Ks6k?si=nn1qBVQVpCprCbMV"
+                }
+              ]
+            },
+            {
+              id: 32,
+              title: "Chapter 2",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "HM-47",
+                  url: "https://www.youtube.com/live/CTuJ47Y_nrs?si=QNs6idWheFWrmxpE"
+                },
+                {
+                  name: "HM-48",
+                  url: "https://www.youtube.com/live/yn7UhWX1wdM?si=R_48AnkpSTLZca-s"
+                }
+              ]
             },
             {
               id: 17,
@@ -545,7 +565,12 @@ export const studyMaterialsData = {
               id: 24,
               title: "Chapter 1",
               driveLinks: [],
-              videoLinks: []
+              videoLinks: [
+                {
+                  name: "Unit 1 Lesson 1,2",
+                  url: "https://www.youtube.com/live/PgJIpUjtVZA?si=Z62wbPNxTzr8ekPT"
+                }
+              ]
             }
           ]
         },
