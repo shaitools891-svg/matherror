@@ -4,32 +4,6 @@ import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
 
 
-// Glass theme background component
-const GlassBackground = () => {
-  const { currentTheme } = useTheme();
-  const currentThemeId = currentTheme?.id;
-
-  if (currentThemeId !== 'glass') {
-    console.log('[DEBUG] GlassBackground not rendering - theme is not glass');
-    return null;
-  }
-
-  console.log('[DEBUG] GlassBackground rendering for glass theme');
-
-  return (
-    <div className="fixed inset-0 -z-10 pointer-events-none">
-      {/* Glass theme base background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5"></div>
-
-      {/* Glass theme accent elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-white/10 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-3/4 left-3/4 w-64 h-64 rounded-full bg-purple-500/10 blur-3xl animate-pulse delay-500"></div>
-      </div>
-    </div>
-  );
-};
 import Particles from './components/Particles'; // Add this import
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -59,12 +33,10 @@ const BackgroundPattern = () => {
   // Different particle colors based on theme - using colors that work with your design system
   const lightThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1'];
   const darkThemeColors = ['#475569', '#64748b', '#94a3b8', '#cbd5e1'];
-  const glassThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1']; // Similar to light but with glass effect
 
   const getParticleColors = () => {
     switch (currentThemeId) {
       case 'dark': return darkThemeColors;
-      case 'glass': return glassThemeColors;
       default: return lightThemeColors;
     }
   };
@@ -72,11 +44,7 @@ const BackgroundPattern = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base gradient background using your existing classes */}
-      <div className={`absolute inset-0 transition-all duration-500 ${
-        currentThemeId === 'glass'
-          ? 'bg-gradient-to-br from-white/20 via-white/10 to-white/5'
-          : 'bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900'
-      }`}></div>
+      <div className={`absolute inset-0 transition-all duration-500 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900`}></div>
 
       {/* Particles layer */}
       <div className="absolute inset-0">
@@ -111,9 +79,8 @@ const Home = () => {
   const { currentTheme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-background transition-colors duration-300 glass:bg-transparent">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       <BackgroundPattern />
-      <GlassBackground />
       <Header />
       <main className="relative z-10">
         <Hero />
@@ -123,11 +90,6 @@ const Home = () => {
         <ContactSection />
       </main>
       <Footer />
-      {/* Debug overlay for glass theme */}
-      <div className="fixed top-4 right-4 z-50 bg-black/80 text-white p-2 rounded text-xs font-mono">
-        Theme: {currentTheme?.id || 'unknown'}<br/>
-        Background: {currentTheme?.background || 'none'}
-      </div>
     </div>
   );
 };
@@ -138,7 +100,7 @@ const AppLoading = () => {
   const loadingColors = currentThemeId === 'dark' ? ['#64748b', '#94a3b8'] : ['#e2e8f0', '#cbd5e1'];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background glass:bg-transparent transition-colors duration-300 relative">
+    <div className="min-h-screen flex items-center justify-center bg-background transition-colors duration-300 relative">
       {/* Particles for loading screen */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/50"></div>
