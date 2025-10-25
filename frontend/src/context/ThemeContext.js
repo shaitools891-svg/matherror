@@ -49,13 +49,13 @@ const themes = {
     primary: '#60a5fa',       // Blue-400
     secondary: '#94a3b8',     // Slate-400
     accent: '#34d399',        // Emerald-400
-    text: '#1f2937',          // Gray-800
-    textSecondary: '#6b7280', // Gray-500
-    background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.3) 100%)',   // Visible gradient background
-    backgroundSecondary: 'rgba(248,250,252,0.5)', // More opaque secondary background
-    border: 'rgba(229,231,235,0.6)',        // More visible border
-    cardBg: 'rgba(255,255,255,0.5)',       // More opaque cards for glass effect
-    cardBorder: 'rgba(229,231,235,0.6)',    // More visible card borders
+    text: '#f9fafb',          // Gray-50 (light text for dark background)
+    textSecondary: '#d1d5db', // Gray-300 (lighter secondary text)
+    background: 'linear-gradient(135deg, rgba(15,23,42,0.8) 0%, rgba(30,41,59,0.6) 50%, rgba(51,65,85,0.4) 100%)',   // Dark gradient background
+    backgroundSecondary: 'rgba(30,41,59,0.5)', // Dark secondary background
+    border: 'rgba(71,85,105,0.6)',        // Dark border
+    cardBg: 'rgba(30,41,59,0.5)',       // Dark cards for glass effect
+    cardBorder: 'rgba(71,85,105,0.6)',    // Dark card borders
     mode: 'glass'
   }
 };
@@ -111,6 +111,7 @@ export const ThemeProvider = ({ children }) => {
         console.log('Body classes:', document.body.className);
         console.log('Root computed background:', window.getComputedStyle(root).background);
         console.log('Body computed background:', window.getComputedStyle(document.body).background);
+        console.log('HTML classes:', document.documentElement.className);
       }
 
       // Save to localStorage
