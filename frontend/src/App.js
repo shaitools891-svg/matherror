@@ -8,7 +8,7 @@ import { useTheme } from './context/ThemeContext';
 const GlassBackground = () => {
   const { currentThemeId } = useTheme();
 
-  console.log('[DEBUG] GlassBackground component - currentThemeId:', currentThemeId);
+  console.log('[DEBUG] GlassBackground component - currentThemeId:', currentThemeId, 'typeof:', typeof currentThemeId);
 
   if (currentThemeId !== 'glass') {
     console.log('[DEBUG] GlassBackground not rendering - theme is not glass');
@@ -55,7 +55,7 @@ const ScrollRestoration = () => {
 const BackgroundPattern = () => {
   const { currentThemeId } = useTheme();
 
-  console.log('[DEBUG] BackgroundPattern - currentThemeId:', currentThemeId);
+  console.log('[DEBUG] BackgroundPattern - currentThemeId:', currentThemeId, 'typeof:', typeof currentThemeId);
 
   // Different particle colors based on theme - using colors that work with your design system
   const lightThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1'];
