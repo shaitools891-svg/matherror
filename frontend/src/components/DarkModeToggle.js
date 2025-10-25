@@ -10,13 +10,13 @@ const DarkModeToggle = () => {
             onClick={toggleTheme}
             className={`
                 relative inline-flex items-center justify-center
-                w-18 h-9 rounded-full transition-all duration-500 ease-out
+                w-10 h-10 rounded-full transition-all duration-300 ease-out
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-                hover:scale-105 active:scale-95 transform-gpu
+                hover:scale-110 active:scale-95 transform-gpu
                 shadow-lg hover:shadow-xl border border-blue-300 dark:border-purple-600
                 ${currentThemeId === 'dark'
-                    ? 'bg-gradient-to-r from-indigo-700 to-purple-800 hover:from-indigo-600 hover:to-purple-700'
-                    : 'bg-gradient-to-r from-blue-200 to-blue-300 hover:from-blue-100 hover:to-blue-200'
+                    ? 'bg-gradient-to-br from-indigo-600 to-purple-700 hover:from-indigo-500 hover:to-purple-600'
+                    : 'bg-gradient-to-br from-blue-400 to-blue-500 hover:from-blue-300 hover:to-blue-400'
                 }
             `}
             aria-label={
@@ -24,34 +24,11 @@ const DarkModeToggle = () => {
                 'Switch to light mode'
             }
         >
-            {/* Toggle circle */}
-            <span
-                className={`
-                    relative inline-block w-8 h-8 rounded-full shadow-md
-                    transform transition-all duration-500 ease-out
-                    ${currentThemeId === 'dark'
-                        ? 'translate-x-8 bg-gradient-to-br from-blue-300 to-blue-500 ring-4 ring-blue-400/50'
-                        : 'translate-x-0 bg-gradient-to-br from-yellow-300 to-yellow-500 ring-4 ring-yellow-400/50'
-                    }
-                    flex items-center justify-center
-                `}
-            >
-                {/* Icon inside toggle with fade transition */}
-                <div
-                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-out ${
-                        currentThemeId === 'light' ? 'opacity-100' : 'opacity-0'
-                    }`}
-                >
-                    <Sun className="w-4 h-4 text-yellow-100 drop-shadow-lg" />
-                </div>
-                <div
-                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-out ${
-                        currentThemeId === 'dark' ? 'opacity-100' : 'opacity-0'
-                    }`}
-                >
-                    <Moon className="w-4 h-4 text-indigo-900 drop-shadow-lg" />
-                </div>
-            </span>
+            {currentThemeId === 'light' ? (
+                <Sun className="w-5 h-5 text-yellow-100 drop-shadow-lg" />
+            ) : (
+                <Moon className="w-5 h-5 text-indigo-900 drop-shadow-lg" />
+            )}
         </button>
     );
 };
