@@ -9,7 +9,6 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
-import { useNavigate } from 'react-router-dom';
 import {
   Monitor,
   Atom,
@@ -29,11 +28,9 @@ import {
 
 // Path remains the same if 'data' is a sibling of 'components' under 'src'
 import { studyMaterialsData } from '../data/studyMaterials';
-import VideoPlayer from './VideoPlayer';
 
 const MaterialsSection = () => {
   const { currentTheme } = useTheme();
-  const navigate = useNavigate();
   const [activeView, setActiveView] = useState('all');
   const [expandedPapers, setExpandedPapers] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
@@ -241,8 +238,8 @@ const MaterialsSection = () => {
 
   const handleLinkClick = (url, type, videoData = null) => {
     if (type === 'Video' && videoData) {
-      // Navigate to dedicated video page
-      navigate('/video', { state: { videoData } });
+      // Open video directly in new tab
+      window.open(url, '_blank');
       return;
     }
 

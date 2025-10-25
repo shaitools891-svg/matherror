@@ -15,7 +15,6 @@ import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './components/NotFound';
-import VideoPlayer from './components/VideoPlayer';
 
 // Scroll restoration component
 const ScrollRestoration = () => {
@@ -75,93 +74,6 @@ const BackgroundPattern = () => {
   );
 };
 
-// Video Player Page component
-const VideoPlayerPage = () => {
-  const { currentTheme } = useTheme();
-  const location = useLocation();
-  const videoData = location.state?.videoData;
-
-  if (!videoData) {
-    return (
-      <div className="min-h-screen bg-background transition-colors duration-300">
-        <BackgroundPattern />
-        <Header />
-        <main className="relative z-10 flex items-center justify-center min-h-[60vh]">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-              Video Not Found
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              The video you're looking for is not available.
-            </p>
-            <a
-              href="#/materials"
-              className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            >
-              Back to Materials
-            </a>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-background transition-colors duration-300">
-      <BackgroundPattern />
-      <Header />
-      <main className="relative z-10 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <div className="mb-6">
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <a href="#/" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-              <span>/</span>
-              <a href="#/materials" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Materials</a>
-              <span>/</span>
-              <span className="text-gray-800 dark:text-gray-200">{videoData.subject}</span>
-              <span>/</span>
-              <span className="text-gray-800 dark:text-gray-200">{videoData.title}</span>
-            </nav>
-          </div>
-
-          {/* Video Player */}
-          <div className="flex justify-center">
-            <VideoPlayer
-              videoUrl={videoData.url}
-              title={`${videoData.subject} - ${videoData.chapter} - ${videoData.title}`}
-            />
-          </div>
-
-          {/* Video Info */}
-          <div className="mt-8 max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-              <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
-                {videoData.title}
-              </h1>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
-                  {videoData.subject}
-                </span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">
-                  {videoData.chapter}
-                </span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
-                  Video Lecture
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Watch this educational video to enhance your understanding of {videoData.chapter} from {videoData.subject}.
-              </p>
-            </div>
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
-  );
-};
 
 // Main Home component
 const Home = () => {
@@ -229,7 +141,6 @@ function App() {
           <ScrollToTop />
           <Routes>
             <Route path="/" element={loading ? <AppLoading /> : <Home />} />
-            <Route path="/video" element={<VideoPlayerPage />} />
             {/* Add other routes here if needed */}
             <Route path="*" element={<NotFound />} />
           </Routes>
