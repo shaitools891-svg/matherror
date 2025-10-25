@@ -241,7 +241,7 @@ const MaterialsSection = () => {
 
   const handleLinkClick = (url, type, videoData = null) => {
     if (type === 'Video' && videoData) {
-      // Open video in modal
+      // All videos are now YouTube videos, play directly in modal
       setSelectedVideo(videoData);
       setShowVideoModal(true);
       return;
@@ -285,6 +285,7 @@ const MaterialsSection = () => {
     setSearchQuery('');
     setIsSearching(false);
   };
+
 
   return (
     <section id="materials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
@@ -653,6 +654,7 @@ const MaterialsSection = () => {
           </div>
         </div>
       )}
+
     </section>
   );
 };

@@ -14,8 +14,20 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
   const [showControls, setShowControls] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Check if it's a YouTube URL
+  const isYouTube = videoUrl && (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be'));
+
   // Archive.org video URL
   const archiveUrl = videoUrl || "https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20";
+
+  // Extract YouTube video ID
+  const getYouTubeVideoId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  const youTubeVideoId = isYouTube ? getYouTubeVideoId(videoUrl) : null;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -136,16 +148,27 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
           </div>
         )}
 
-        <video
-          ref={videoRef}
-          className="w-full h-auto aspect-video object-contain"
-          preload="metadata"
-          poster={`https://archive.org/services/img/${archiveUrl.split('/').pop()}`}
-        >
-          <source src={`${archiveUrl}/format=mp4`} type="video/mp4" />
-          <source src={`${archiveUrl}/format=webm`} type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
+        {isYouTube && youTubeVideoId ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${youTubeVideoId}?autoplay=1&rel=0`}
+            className="w-full h-auto aspect-video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title={title}
+          ></iframe>
+        ) : (
+          <video
+            ref={videoRef}
+            className="w-full h-auto aspect-video object-contain"
+            preload="metadata"
+            poster={`https://archive.org/services/img/${archiveUrl.split('/').pop()}`}
+          >
+            <source src={`${archiveUrl}/format=mp4`} type="video/mp4" />
+            <source src={`${archiveUrl}/format=webm`} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        )}
 
         {/* Play/Pause Overlay */}
         {!isPlaying && !isLoading && (
@@ -156,89 +179,91 @@ const VideoPlayer = ({ videoUrl, title = "ICT Chapter 3 Lecture 3" }) => {
           </div>
         )}
 
-        {/* Controls Overlay */}
-        <div className={`
-          absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent
-          p-4 transition-opacity duration-300
-          ${showControls || !isPlaying ? 'opacity-100' : 'opacity-0'}
-        `}>
-          {/* Progress Bar */}
-          <div className="mb-4">
-            <div
-              className="w-full h-1 bg-white/30 rounded-full cursor-pointer relative"
-              onClick={handleSeek}
-            >
+        {/* Controls Overlay - Only show for non-YouTube videos */}
+        {!isYouTube && (
+          <div className={`
+            absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent
+            p-4 transition-opacity duration-300
+            ${showControls || !isPlaying ? 'opacity-100' : 'opacity-0'}
+          `}>
+            {/* Progress Bar */}
+            <div className="mb-4">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full relative"
-                style={{ width: `${progressPercent}%` }}
+                className="w-full h-1 bg-white/30 rounded-full cursor-pointer relative"
+                onClick={handleSeek}
               >
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg"></div>
+                <div
+                  className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full relative"
+                  style={{ width: `${progressPercent}%` }}
+                >
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg"></div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Control Buttons */}
-          <div className="flex items-center justify-between text-white">
-            <div className="flex items-center space-x-4">
-              {/* Play/Pause */}
-              <button
-                onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
-              >
-                {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-              </button>
-
-              {/* Skip Back */}
-              <button
-                onClick={(e) => { e.stopPropagation(); skip(-10); }}
-                className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
-              >
-                <SkipBack className="w-4 h-4" />
-              </button>
-
-              {/* Skip Forward */}
-              <button
-                onClick={(e) => { e.stopPropagation(); skip(10); }}
-                className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
-              >
-                <SkipForward className="w-4 h-4" />
-              </button>
-
-              {/* Volume */}
-              <div className="flex items-center space-x-2">
+            {/* Control Buttons */}
+            <div className="flex items-center justify-between text-white">
+              <div className="flex items-center space-x-4">
+                {/* Play/Pause */}
                 <button
-                  onClick={(e) => { e.stopPropagation(); toggleMute(); }}
+                  onClick={(e) => { e.stopPropagation(); togglePlay(); }}
                   className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
                 >
-                  {isMuted || volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                 </button>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={isMuted ? 0 : volume}
-                  onChange={handleVolumeChange}
-                  onClick={(e) => e.stopPropagation()}
-                  className="w-20 h-1 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
-                />
+
+                {/* Skip Back */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); skip(-10); }}
+                  className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
+                >
+                  <SkipBack className="w-4 h-4" />
+                </button>
+
+                {/* Skip Forward */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); skip(10); }}
+                  className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
+                >
+                  <SkipForward className="w-4 h-4" />
+                </button>
+
+                {/* Volume */}
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); toggleMute(); }}
+                    className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
+                  >
+                    {isMuted || volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  </button>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value={isMuted ? 0 : volume}
+                    onChange={handleVolumeChange}
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-20 h-1 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                </div>
+
+                {/* Time Display */}
+                <div className="text-sm font-medium">
+                  {formatTime(currentTime)} / {formatTime(duration)}
+                </div>
               </div>
 
-              {/* Time Display */}
-              <div className="text-sm font-medium">
-                {formatTime(currentTime)} / {formatTime(duration)}
-              </div>
+              {/* Fullscreen */}
+              <button
+                onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
+                className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
+              >
+                {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
+              </button>
             </div>
-
-            {/* Fullscreen */}
-            <button
-              onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-              className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
-            >
-              {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
-            </button>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Title */}

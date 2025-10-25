@@ -104,6 +104,17 @@ export const studyMaterialsData = {
                   url: "https://youtube.com/your-link-here"
                 }
               ]
+            },
+            {
+              id: 33,
+              title: "Chapter 4",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "Chemistry-47",
+                  url: "https://www.youtube.com/live/hEsZQVA8SBM?si=VzcCuKqhfpwEkLuv"
+                }
+              ]
             }
           ]
         },

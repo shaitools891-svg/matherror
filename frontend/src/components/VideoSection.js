@@ -32,13 +32,13 @@ const VideoSection = () => {
           </p>
         </div>
 
-        {/* Video Player Container */}
-        <div className="flex justify-center">
+        {/* Video Player Container - Hidden since videos are now accessed through MaterialsSection */}
+        {/* <div className="flex justify-center">
           <VideoPlayer
             videoUrl="https://archive.org/details/utkorsho-hsc-24-fpb-2024-hsc-2024-fpc-ict-03-room-1-start-01-20"
             title="ICT Chapter 3 Lecture 3"
           />
-        </div>
+        </div> */}
 
         {/* Additional Info */}
         <div className={`
@@ -52,15 +52,14 @@ const VideoSection = () => {
             text-xl font-semibold mb-3
             text-gray-900 dark:text-white glass:text-gray-800
           `}>
-            About This Lecture
+            About Video Lectures
           </h3>
           <p className={`
             text-gray-600 dark:text-gray-300 glass:text-gray-600
             leading-relaxed
           `}>
-            This is a recorded lecture for ICT Chapter 3 from the HSC 2024 curriculum.
-            The video covers important concepts and practical applications that will help
-            you understand the subject matter more effectively.
+            All video lectures are now available in the Study Materials section above.
+            Click on any video link to watch lectures directly on our website.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             <span className={`
@@ -75,14 +74,14 @@ const VideoSection = () => {
               bg-green-100 dark:bg-green-900/30 glass:bg-green-100/50
               text-green-800 dark:text-green-300 glass:text-green-700
             `}>
-              ICT Chapter 3
+              All Subjects
             </span>
             <span className={`
               px-3 py-1 rounded-full text-sm font-medium
               bg-purple-100 dark:bg-purple-900/30 glass:bg-purple-100/50
               text-purple-800 dark:text-purple-300 glass:text-purple-700
             `}>
-              Lecture 3
+              YouTube Integration
             </span>
           </div>
         </div>
