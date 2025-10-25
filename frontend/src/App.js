@@ -8,7 +8,14 @@ import { useTheme } from './context/ThemeContext';
 const GlassBackground = () => {
   const { currentThemeId } = useTheme();
 
-  if (currentThemeId !== 'glass') return null;
+  console.log('[DEBUG] GlassBackground component - currentThemeId:', currentThemeId);
+
+  if (currentThemeId !== 'glass') {
+    console.log('[DEBUG] GlassBackground not rendering - theme is not glass');
+    return null;
+  }
+
+  console.log('[DEBUG] GlassBackground rendering for glass theme');
 
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
@@ -48,6 +55,8 @@ const ScrollRestoration = () => {
 const BackgroundPattern = () => {
   const { currentThemeId } = useTheme();
 
+  console.log('[DEBUG] BackgroundPattern - currentThemeId:', currentThemeId);
+
   // Different particle colors based on theme - using colors that work with your design system
   const lightThemeColors = ['#ffffff', '#f8fafc', '#e2e8f0', '#cbd5e1'];
   const darkThemeColors = ['#475569', '#64748b', '#94a3b8', '#cbd5e1'];
@@ -64,7 +73,11 @@ const BackgroundPattern = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base gradient background using your existing classes */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 glass:from-white/20 glass:via-white/10 glass:to-white/5 transition-all duration-500"></div>
+      <div className={`absolute inset-0 transition-all duration-500 ${
+        currentThemeId === 'glass'
+          ? 'bg-gradient-to-br from-white/20 via-white/10 to-white/5'
+          : 'bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900'
+      }`}></div>
 
       {/* Particles layer */}
       <div className="absolute inset-0">
