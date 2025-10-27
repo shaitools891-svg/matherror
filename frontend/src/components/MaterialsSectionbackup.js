@@ -33,10 +33,13 @@ const MaterialsSection = () => {
       Monitor,
       Atom,
       FlaskConical,
-      Calculator
+      Calculator,
+      BookOpen,
+      Languages,
+      Dna
     };
     const IconComponent = icons[iconName];
-    return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
+    return IconComponent ? React.createElement(IconComponent, { className: "w-5 h-5" }) : React.createElement(FileText, { className: "w-5 h-5" });
   };
 
   const handleLinkClick = (url, type) => {

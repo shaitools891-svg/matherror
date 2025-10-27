@@ -43,49 +43,49 @@ const MaterialsSection = () => {
   // ADDED ARRAY for GlassIcons with correct subject IDs and icons matching data
   const glassIconItems = [
     {
-      icon: <Atom className="w-8 h-8 text-white" />, // Physics uses Atom (matches data)
+      icon: Atom, // Physics uses Atom (matches data)
       label: "Physics",
       color: "blue",
       subjectId: "1", // Physics has id: 1
       cardColor: "blue"
     },
     {
-      icon: <FlaskConical className="w-8 h-8 text-white" />, // Chemistry uses FlaskConical (matches data)
+      icon: FlaskConical, // Chemistry uses FlaskConical (matches data)
       label: "Chemistry",
       color: "purple",
       subjectId: "2", // Chemistry has id: 2
       cardColor: "purple"
     },
     {
-      icon: <Monitor className="w-8 h-8 text-white" />, // Mathematics uses Monitor (matches data)
+      icon: Monitor, // Mathematics uses Monitor (matches data)
       label: "Mathematics",
       color: "green",
       subjectId: "3", // Mathematics has id: 3
       cardColor: "green"
     },
     {
-      icon: <Calculator className="w-8 h-8 text-white" />, // ICT uses Calculator (matches data)
+      icon: Calculator, // ICT uses Calculator (matches data)
       label: "ICT",
       color: "orange",
       subjectId: "4", // ICT has id: 4
       cardColor: "orange"
     },
     {
-      icon: <BookOpen className="w-8 h-8 text-white" />, // Bangla uses BookOpen (matches data)
+      icon: BookOpen, // Bangla uses BookOpen (matches data)
       label: "Bangla",
       color: "red",
       subjectId: "5", // Bangla has id: 5
       cardColor: "red"
     },
     {
-      icon: <Languages className="w-8 h-8 text-white" />, // English uses Languages (matches data)
+      icon: Languages, // English uses Languages (matches data)
       label: "English",
       color: "teal",
       subjectId: "6", // English has id: 6
       cardColor: "teal"
     },
     {
-      icon: <Dna className="w-8 h-8 text-white" />, // Biology uses Dna (matches data)
+      icon: Dna, // Biology uses Dna (matches data)
       label: "Biology",
       color: "emerald",
       subjectId: "7", // Biology has id: 7
@@ -166,7 +166,7 @@ const MaterialsSection = () => {
                 className="m-auto w-[1.5em] h-[1.5em] flex items-center justify-center"
                 aria-hidden="true"
               >
-                {item.icon}
+                {React.createElement(item.icon, { className: "w-8 h-8 text-white" })}
               </span>
             </span>
 
@@ -240,7 +240,8 @@ const MaterialsSection = () => {
       FlaskConical,
       Calculator,
       BookOpen,
-      Languages
+      Languages,
+      Dna
     };
     const IconComponent = icons[iconName];
     return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
@@ -457,12 +458,12 @@ const MaterialsSection = () => {
                       }}
                     >
                       {glassIconItem ? (
-                        React.cloneElement(glassIconItem.icon, {
+                        React.createElement(glassIconItem.icon, {
                           className: "w-8 h-8 text-white"
                         })
                       ) : (
                         <div className={iconColor}>
-                          {getIcon(subject.icon)}
+                          {React.createElement(getIcon(subject.icon), { className: "w-8 h-8 text-white" })}
                         </div>
                       )}
                     </div>

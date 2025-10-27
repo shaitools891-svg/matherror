@@ -19,7 +19,7 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
   const location = useLocation();
 
   // Icon mapping
-  const getIcon = (iconName) => {
+  const getIcon = (iconName, className = "w-4 h-4") => {
     const icons = {
       Monitor,
       Atom,
@@ -30,7 +30,7 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
       Dna
     };
     const IconComponent = icons[iconName];
-    return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
+    return IconComponent ? React.createElement(IconComponent, { className }) : React.createElement(FileText, { className });
   };
 
   // Color mapping for subjects
@@ -134,11 +134,9 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
                           active ? 'bg-white/20' : `bg-${subjectColor}-100 dark:bg-${subjectColor}-900/30`
                         }`}
                       >
-                        {React.createElement(getIcon(subject.icon), {
-                          className: `w-4 h-4 ${
-                            active ? 'text-white' : `text-${subjectColor}-600 dark:text-${subjectColor}-400`
-                          }`
-                        })}
+                        {getIcon(subject.icon, `w-4 h-4 ${
+                          active ? 'text-white' : `text-${subjectColor}-600 dark:text-${subjectColor}-400`
+                        }`)}
                       </div>
                       <span className="truncate">{subject.name}</span>
                     </div>
