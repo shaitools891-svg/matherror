@@ -54,8 +54,7 @@ const SubjectPage = () => {
       Languages,
       Dna
     };
-    const IconComponent = icons[iconName];
-    return IconComponent ? <IconComponent className="w-5 h-5" /> : <FileText className="w-5 h-5" />;
+    return icons[iconName] || FileText;
   };
 
   // Color mapping for subjects
