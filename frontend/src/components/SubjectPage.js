@@ -26,7 +26,6 @@ import { studyMaterialsData } from '../data/studyMaterials';
 const SubjectPage = () => {
   const { subjectId } = useParams();
   const navigate = useNavigate();
-  const { currentTheme } = useTheme();
   const [activeView, setActiveView] = useState('all');
   const [expandedPapers, setExpandedPapers] = useState({});
 

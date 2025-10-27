@@ -17,7 +17,6 @@ import { studyMaterialsData } from '../data/studyMaterials';
 const SubjectSidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { currentTheme } = useTheme();
 
   // Icon mapping
   const getIcon = (iconName) => {
