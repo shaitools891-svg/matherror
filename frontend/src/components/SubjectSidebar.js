@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
+import GooeyNav from './GooeyNav';
 import {
   Monitor,
   Atom,
@@ -17,6 +18,7 @@ import { studyMaterialsData } from '../data/studyMaterials';
 const SubjectSidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [activeSubjectIndex, setActiveSubjectIndex] = useState(0);
 
   // Icon mapping
   const getIcon = (iconName, className = "w-4 h-4") => {
@@ -95,6 +97,39 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
     return location.pathname === '/';
   };
 
+  // Prepare nav items for GooeyNav
+  const navItems = [
+    { label: 'All Subjects', href: '/' },
+    ...studyMaterialsData.subjects.map(subject => ({
+      label: subject.name,
+      href: `/subject/${subject.id}`
+    }))
+  ];
+
+  // Handle GooeyNav click
+  const handleGooeyNavClick = (item, index) => {
+    if (index === 0) {
+      navigate('/');
+    } else {
+      const subjectId = studyMaterialsData.subjects[index - 1].id;
+      navigate(`/subject/${subjectId}`);
+    }
+    if (onClose) onClose();
+  };
+
+  // Update active index based on current location
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setActiveSubjectIndex(0);
+    } else {
+      const subjectId = parseInt(location.pathname.split('/').pop());
+      const subjectIndex = studyMaterialsData.subjects.findIndex(s => s.id === subjectId);
+      if (subjectIndex !== -1) {
+        setActiveSubjectIndex(subjectIndex + 1);
+      }
+    }
+  }, [location.pathname]);
+
   return (
     <>
       {/* Overlay for mobile */}
@@ -124,25 +159,44 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
 
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto p-4">
-            {/* Home Link */}
-            <Button
-              variant={isHomeActive() ? "default" : "ghost"}
-              className={`w-full justify-start mb-4 ${
-                isHomeActive()
-                  ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-              onClick={handleHomeClick}
-            >
-              <FileText className="w-4 h-4 mr-3" />
-              All Subjects
-            </Button>
+            {/* GooeyNav for Subject Navigation */}
+            <div className="mb-6">
+              <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
+                <GooeyNav
+                  items={navItems}
+                  initialActiveIndex={activeSubjectIndex}
+                  onItemClick={handleGooeyNavClick}
+                  particleCount={10}
+                  particleDistances={[60, 5]}
+                  particleR={70}
+                  animationTime={400}
+                  timeVariance={150}
+                  colors={[1, 2, 3, 4]}
+                />
+              </div>
+            </div>
 
-            {/* Subjects */}
+            {/* Traditional Navigation as Backup */}
             <div className="space-y-2">
               <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-                Subjects
+                Quick Access
               </h3>
+
+              {/* Home Link */}
+              <Button
+                variant={isHomeActive() ? "default" : "ghost"}
+                className={`w-full justify-start mb-4 ${
+                  isHomeActive()
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+                onClick={handleHomeClick}
+              >
+                <FileText className="w-4 h-4 mr-3" />
+                All Subjects
+              </Button>
+
+              {/* Subjects */}
               {studyMaterialsData.subjects.map((subject) => {
                 const subjectColor = getSubjectColor(subject.id);
                 const active = isActive(subject.id);
