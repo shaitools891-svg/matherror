@@ -99,10 +99,11 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
 
   // Prepare nav items for GooeyNav
   const navItems = [
-    { label: 'All Subjects', href: '/' },
+    { label: 'All Subjects', href: '/', icon: 'FileText' },
     ...studyMaterialsData.subjects.map(subject => ({
       label: subject.name,
-      href: `/subject/${subject.id}`
+      href: `/subject/${subject.id}`,
+      icon: subject.icon
     }))
   ];
 
@@ -167,6 +168,8 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
                   items={navItems}
                   initialActiveIndex={activeSubjectIndex}
                   onItemClick={handleGooeyNavClick}
+                  getIcon={getIcon}
+                  getActiveColor={getActiveColor}
                   particleCount={10}
                   particleDistances={[60, 5]}
                   particleR={70}

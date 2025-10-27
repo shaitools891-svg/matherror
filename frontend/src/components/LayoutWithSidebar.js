@@ -5,12 +5,13 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
 const LayoutWithSidebar = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
   const location = useLocation();
 
   // Show sidebar on subject pages and home page
   const showSidebar = location.pathname === '/' || location.pathname.startsWith('/subject/');
+
+  const [sidebarOpen, setSidebarOpen] = useState(showSidebar);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
 
   if (!showSidebar) {
     return children;
@@ -23,10 +24,10 @@ const LayoutWithSidebar = ({ children }) => {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => setSidebarOpen(true)}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
           className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
         >
-          <Menu className="w-4 h-4" />
+          {sidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </Button>
       </div>
 
@@ -53,20 +54,6 @@ const LayoutWithSidebar = ({ children }) => {
       <div className={`${desktopSidebarOpen ? 'lg:ml-64' : 'lg:ml-0'} transition-all duration-300`}>
         {children}
       </div>
-
-      {/* Mobile overlay close button */}
-      {sidebarOpen && (
-        <div className="lg:hidden fixed top-4 right-4 z-50">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setSidebarOpen(false)}
-            className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-          >
-            <X className="w-4 h-4" />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };

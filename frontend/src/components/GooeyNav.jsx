@@ -2,15 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // GooeyNav Component
 const GooeyNav = ({
-  items,
-  animationTime = 600,
-  particleCount = 15,
-  particleDistances = [90, 10],
-  particleR = 100,
-  timeVariance = 300,
-  colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0,
-  onItemClick,
+items,
+animationTime = 600,
+particleCount = 15,
+particleDistances = [90, 10],
+particleR = 100,
+timeVariance = 300,
+colors = [1, 2, 3, 1, 2, 3, 1, 4],
+initialActiveIndex = 0,
+onItemClick,
+getIcon,
+getActiveColor,
 }) => {
   const containerRef = useRef(null);
   const navRef = useRef(null);
@@ -97,7 +99,9 @@ const GooeyNav = ({
     };
     Object.assign(filterRef.current.style, styles);
     Object.assign(textRef.current.style, styles);
-    textRef.current.innerText = element.innerText;
+    // Clear existing content and set new text
+    textRef.current.innerHTML = '';
+    textRef.current.appendChild(document.createTextNode(element.innerText));
   };
 
   const handleClick = (e, index) => {
@@ -107,6 +111,12 @@ const GooeyNav = ({
 
     setActiveIndex(index);
     updateEffectPosition(liEl);
+
+    // Update active color CSS variable
+    if (getActiveColor && containerRef.current) {
+      const activeColor = getActiveColor(index);
+      containerRef.current.style.setProperty('--active-color', activeColor);
+    }
 
     if (filterRef.current) {
       const particles = filterRef.current.querySelectorAll(".particle");
@@ -288,7 +298,7 @@ const GooeyNav = ({
             }
           }
           .gooey-nav-item.active {
-            color: black !important;
+            color: var(--active-color, black) !important;
             text-shadow: none;
             font-weight: 600 !important;
           }
@@ -343,9 +353,10 @@ const GooeyNav = ({
                   onClick={(e) => handleClick(e, index)}
                   href={item.href}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-white transition-colors block w-full text-left"
+                  className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-white transition-colors block w-full text-left flex items-center gap-2"
                 >
-                  {item.label}
+                  {getIcon && item.icon && getIcon(item.icon, "w-4 h-4")}
+                  <span>{item.label}</span>
                 </a>
               </li>
             ))}
