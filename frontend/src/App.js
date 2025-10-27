@@ -14,6 +14,8 @@ import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './components/NotFound';
+import SubjectPage from './components/SubjectPage';
+import LayoutWithSidebar from './components/LayoutWithSidebar';
 
 // Scroll restoration component
 const ScrollRestoration = () => {
@@ -137,11 +139,14 @@ function App() {
         <div className="App">
           <ScrollRestoration />
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={loading ? <AppLoading /> : <Home />} />
-            {/* Add other routes here if needed */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <LayoutWithSidebar>
+            <Routes>
+               <Route path="/" element={loading ? <AppLoading /> : <Home />} />
+               <Route path="/subject/:subjectId" element={<SubjectPage />} />
+               {/* Add other routes here if needed */}
+               <Route path="*" element={<NotFound />} />
+             </Routes>
+          </LayoutWithSidebar>
         </div>
       </HashRouter>
     </ThemeProvider>

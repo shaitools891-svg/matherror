@@ -321,11 +321,11 @@ const MaterialsSection = () => {
           </p>
 
           {/* UPDATED: Custom GlassIcons with click handler */}
-          <CustomGlassIcons
-            items={glassIconItems}
-            className="mt-8"
-            onItemClick={scrollToSubject}
-          />
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              Click on any subject in the sidebar to view detailed materials
+            </p>
+          </div>
         </div>
 
         {/* Search Bar */}
