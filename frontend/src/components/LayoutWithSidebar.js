@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 
 const LayoutWithSidebar = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
   const location = useLocation();
 
   // Show sidebar on subject pages and home page
@@ -29,14 +30,27 @@ const LayoutWithSidebar = ({ children }) => {
         </Button>
       </div>
 
+      {/* Desktop toggle button */}
+      <div className="hidden lg:block fixed top-4 left-4 z-50">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setDesktopSidebarOpen(!desktopSidebarOpen)}
+          className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+        >
+          {desktopSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+        </Button>
+      </div>
+
       {/* Sidebar */}
       <SubjectSidebar
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        desktopOpen={desktopSidebarOpen}
       />
 
       {/* Main content */}
-      <div className="lg:ml-64">
+      <div className={`${desktopSidebarOpen ? 'lg:ml-64' : 'lg:ml-0'} transition-all duration-300`}>
         {children}
       </div>
 
