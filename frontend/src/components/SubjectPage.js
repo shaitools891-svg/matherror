@@ -146,9 +146,9 @@ const SubjectPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {/* View Toggle */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6">
           <Tabs value={activeView} onValueChange={setActiveView} className="w-full max-w-md">
             <TabsList className="grid w-full grid-cols-3 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
               <TabsTrigger
@@ -177,7 +177,7 @@ const SubjectPage = () => {
         </div>
 
         {/* Papers */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {subject.papers.map((paper) => {
             const isExpanded = expandedPapers[paper.id];
             const totalChapters = paper.chapters.length;
@@ -300,7 +300,7 @@ const SubjectPage = () => {
         </div>
 
         {/* Help Text */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
           <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl max-w-2xl mx-auto">
             <h3 className="font-semibold mb-2 text-gray-800 dark:text-gray-100">
               Share Your Resources

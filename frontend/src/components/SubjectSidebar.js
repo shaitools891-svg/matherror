@@ -47,6 +47,36 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
     return colors[subjectId] || 'gray';
   };
 
+  // Get background color for active state
+  const getActiveBgColor = (subjectColor) => {
+    const colorMap = {
+      blue: '#2563eb',
+      purple: '#9333ea',
+      green: '#16a34a',
+      orange: '#ea580c',
+      red: '#dc2626',
+      teal: '#0d9488',
+      emerald: '#059669',
+      gray: '#6b7280'
+    };
+    return colorMap[subjectColor] || colorMap.gray;
+  };
+
+  // Get hover color for active state
+  const getActiveHoverColor = (subjectColor) => {
+    const colorMap = {
+      blue: '#1d4ed8',
+      purple: '#7c3aed',
+      green: '#15803d',
+      orange: '#c2410c',
+      red: '#b91c1c',
+      teal: '#0f766e',
+      emerald: '#047857',
+      gray: '#4b5563'
+    };
+    return colorMap[subjectColor] || colorMap.gray;
+  };
+
   const handleSubjectClick = (subjectId) => {
     navigate(`/subject/${subjectId}`);
     if (onClose) onClose();
@@ -123,9 +153,13 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
                     variant={active ? "default" : "ghost"}
                     className={`w-full justify-start ${
                       active
-                        ? `bg-${subjectColor}-600 hover:bg-${subjectColor}-700 text-white`
+                        ? 'text-white'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
+                    style={active ? {
+                      backgroundColor: getActiveBgColor(subjectColor),
+                      borderColor: getActiveBgColor(subjectColor)
+                    } : {}}
                     onClick={() => handleSubjectClick(subject.id)}
                   >
                     <div className="flex items-center gap-3">
