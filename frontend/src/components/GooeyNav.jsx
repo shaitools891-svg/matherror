@@ -144,6 +144,10 @@ getActiveColor,
     const activeLi = navRef.current.querySelectorAll("li")[activeIndex];
     if (activeLi) {
       updateEffectPosition(activeLi);
+      // Trigger initial animation for the default active item
+      if (filterRef.current) {
+        makeParticles(filterRef.current);
+      }
     }
 
     const resizeObserver = new ResizeObserver(() => {
