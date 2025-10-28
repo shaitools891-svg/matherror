@@ -296,6 +296,10 @@ getActiveColor,
           .gooey-nav-item svg {
             color: white;
             transition: color 0.3s ease;
+            margin-right: 0.5rem;
+          }
+          .gooey-nav-item.active svg {
+            color: var(--active-color, black) !important;
           }
           .gooey-nav-item.active::after {
             opacity: 1;
@@ -349,9 +353,13 @@ getActiveColor,
                   onClick={(e) => handleClick(e, index)}
                   href={item.href}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-white transition-colors block w-full text-left flex items-center gap-2"
+                  className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-white transition-colors block w-full text-left flex items-center"
                 >
-                  {getIcon && item.icon && getIcon(item.icon, "w-4 h-4")}
+                  {getIcon && item.icon && (
+                    <div className="w-6 h-6 rounded flex items-center justify-center mr-3">
+                      {getIcon(item.icon, "w-4 h-4")}
+                    </div>
+                  )}
                   <span>{item.label}</span>
                 </a>
               </li>
