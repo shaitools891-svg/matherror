@@ -296,7 +296,7 @@ getActiveColor,
           .gooey-nav-item::after {
             content: "";
             position: absolute;
-            inset: 0;
+            inset: 0 0 0 2rem;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.8);
             opacity: 0;
