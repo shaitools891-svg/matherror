@@ -119,7 +119,7 @@ const SubjectPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
       {/* Header */}
       <div className="relative overflow-hidden">
         {/* Background Pattern */}
@@ -130,7 +130,7 @@ const SubjectPage = () => {
           }} />
         </div>
 
-        <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
+        <div className="relative bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row lg:items-center gap-6">
               <Button
@@ -264,10 +264,10 @@ const SubjectPage = () => {
                         {paperIndex + 1}
                       </div>
                       <div>
-                        <CardTitle className="text-2xl text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                        <CardTitle className="text-2xl text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                           {paper.name}
                         </CardTitle>
-                        <p className="text-gray-600 dark:text-gray-400 mt-1">
+                        <p className="text-gray-700 dark:text-gray-400 mt-1">
                           {totalChapters} chapters • {totalPdfs} PDFs • {totalVideos} videos
                         </p>
                       </div>
@@ -305,7 +305,7 @@ const SubjectPage = () => {
                           className="group p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                           <div className="flex items-start justify-between mb-4">
-                            <h5 className="font-bold text-lg text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                            <h5 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                               {chapter.title}
                             </h5>
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xs font-bold flex items-center justify-center shadow-md">
@@ -405,10 +405,10 @@ const SubjectPage = () => {
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+            <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
               Help Us Grow This Resource Library
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
               Have study materials, PDFs, or educational videos to share? Your contributions help thousands of HSC 2026 students succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
