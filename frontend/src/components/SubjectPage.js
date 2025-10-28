@@ -165,7 +165,7 @@ const SubjectPage = () => {
                       background: `linear-gradient(135deg, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}, hsl(${subjectColor === 'blue' ? '208, 90%, 50%' : subjectColor === 'purple' ? '268, 90%, 50%' : subjectColor === 'green' ? '108, 90%, 40%' : subjectColor === 'orange' ? '28, 90%, 50%' : subjectColor === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}))`
                     }}
                   >
-                    <div className="w-10 h-10 text-white">
+                    <div className="w-10 h-10 text-white dark:text-white">
                       {React.createElement(getIcon(subject.icon), {
                         className: "w-full h-full"
                       })}
