@@ -298,7 +298,8 @@ getActiveColor,
             position: absolute;
             inset: 0 0 0 2rem;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: transparent;
             opacity: 0;
             transform: scale(0);
             transition: all 0.3s ease;
