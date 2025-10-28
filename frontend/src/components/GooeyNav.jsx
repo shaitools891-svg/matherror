@@ -17,7 +17,6 @@ getActiveColor,
   const containerRef = useRef(null);
   const navRef = useRef(null);
   const filterRef = useRef(null);
-  const textRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
@@ -86,7 +85,7 @@ getActiveColor,
   };
 
   const updateEffectPosition = (element) => {
-    if (!containerRef.current || !filterRef.current || !textRef.current)
+    if (!containerRef.current || !filterRef.current)
       return;
     const containerRect = containerRef.current.getBoundingClientRect();
     const pos = element.getBoundingClientRect();
@@ -98,10 +97,6 @@ getActiveColor,
       height: `${pos.height}px`,
     };
     Object.assign(filterRef.current.style, styles);
-    Object.assign(textRef.current.style, styles);
-    // Clear existing content and set new text
-    textRef.current.innerHTML = '';
-    textRef.current.appendChild(document.createTextNode(element.innerText));
   };
 
   const handleClick = (e, index) => {
@@ -123,11 +118,6 @@ getActiveColor,
       particles.forEach((p) => filterRef.current.removeChild(p));
     }
 
-    if (textRef.current) {
-      textRef.current.classList.remove("active");
-      void textRef.current.offsetWidth;
-      textRef.current.classList.add("active");
-    }
 
     if (filterRef.current) {
       makeParticles(filterRef.current);
@@ -154,7 +144,6 @@ getActiveColor,
     const activeLi = navRef.current.querySelectorAll("li")[activeIndex];
     if (activeLi) {
       updateEffectPosition(activeLi);
-      textRef.current?.classList.add("active");
     }
 
     const resizeObserver = new ResizeObserver(() => {
@@ -187,15 +176,6 @@ getActiveColor,
             display: grid;
             place-items: center;
             z-index: 1;
-          }
-          .gooey-effect.text {
-            color: white;
-            transition: color 0.3s ease;
-            font-weight: 600;
-          }
-          .gooey-effect.text.active {
-            color: black;
-            font-weight: 600;
           }
           .gooey-effect.filter {
             filter: blur(7px) contrast(100) blur(0);
@@ -370,7 +350,6 @@ getActiveColor,
           </ul>
         </nav>
         <span className="gooey-effect filter" ref={filterRef} />
-        <span className="gooey-effect text" ref={textRef} />
       </div>
     </>
   );
