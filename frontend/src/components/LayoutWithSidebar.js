@@ -51,7 +51,7 @@ const LayoutWithSidebar = ({ children }) => {
       />
 
       {/* Main content */}
-      <div className={`${desktopSidebarOpen ? 'lg:ml-64' : 'lg:ml-0'} transition-all duration-300`}>
+      <div className={`${desktopSidebarOpen ? 'lg:ml-48' : 'lg:ml-0'} transition-all duration-300`}>
         {children}
       </div>
     </div>

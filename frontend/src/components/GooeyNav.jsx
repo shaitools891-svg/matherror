@@ -304,7 +304,7 @@ getActiveColor,
             transition: background-color 0.3s ease;
           }
           .gooey-nav-item svg {
-            color: white;
+            color: currentColor;
             transition: color 0.3s ease;
             width: 1rem;
             height: 1rem;
@@ -354,20 +354,20 @@ getActiveColor,
             ref={navRef}
             className="flex flex-col gap-2 list-none p-0 m-0 relative z-[3]"
             style={{
-              color: "white",
+              color: "var(--text-color, white)",
               textShadow: "0 1px 1px hsl(205deg 30% 10% / 0.2)",
             }}
           >
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`gooey-nav-item rounded-lg relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${activeIndex === index ? "active" : ""}`}
+                className={`gooey-nav-item rounded-lg relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] ${activeIndex === index ? "active" : ""}`}
               >
                 <a
                   onClick={(e) => handleClick(e, index)}
                   href={item.href}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-white transition-colors block w-full text-left flex items-center"
+                  className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-current transition-colors block w-full text-left flex items-center"
                 >
                   {getIcon && item.icon && (
                     <div className="icon-container">

@@ -156,7 +156,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
+        fixed inset-y-0 left-0 z-50 w-48 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         ${desktopOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full'}
@@ -176,7 +176,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
           <nav className="flex-1 overflow-y-auto p-4">
             {/* GooeyNav for Subject Navigation */}
             <div className="mb-6">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700" style={{ '--text-color': 'var(--sidebar-text-color, #374151)' }}>
                 <GooeyNav
                   items={navItems}
                   initialActiveIndex={activeSubjectIndex}
@@ -193,62 +193,6 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
               </div>
             </div>
 
-            {/* Traditional Navigation as Backup */}
-            <div className="space-y-2">
-              <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">
-                Quick Access
-              </h3>
-
-              {/* Home Link */}
-              <Button
-                variant={isHomeActive() ? "default" : "ghost"}
-                className={`w-full justify-start mb-4 ${
-                  isHomeActive()
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                    : 'text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-                onClick={handleHomeClick}
-              >
-                <FileText className="w-4 h-4 mr-3" />
-                All Subjects
-              </Button>
-
-              {/* Subjects */}
-              {studyMaterialsData.subjects.map((subject) => {
-                const subjectColor = getSubjectColor(subject.id);
-                const active = isActive(subject.id);
-
-                return (
-                  <Button
-                    key={subject.id}
-                    variant={active ? "default" : "ghost"}
-                    className={`w-full justify-start ${
-                      active
-                        ? 'text-white'
-                        : 'text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                    }`}
-                    style={active ? {
-                      backgroundColor: getActiveBgColor(subjectColor),
-                      borderColor: getActiveBgColor(subjectColor)
-                    } : {}}
-                    onClick={() => handleSubjectClick(subject.id)}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-6 h-6 rounded flex items-center justify-center ${
-                          active ? 'bg-white/20' : `bg-${subjectColor}-100 dark:bg-${subjectColor}-900/30`
-                        }`}
-                      >
-                        {getIcon(subject.icon, `w-4 h-4 ${
-                          active ? 'text-white' : `text-${subjectColor}-600 dark:text-${subjectColor}-400`
-                        }`)}
-                      </div>
-                      <span className="truncate">{subject.name}</span>
-                    </div>
-                  </Button>
-                );
-              })}
-            </div>
           </nav>
 
           {/* Footer */}
