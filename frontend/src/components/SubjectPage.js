@@ -34,6 +34,7 @@ const SubjectPage = () => {
   const navigate = useNavigate();
   const [activeView, setActiveView] = useState('all');
   const [expandedPapers, setExpandedPapers] = useState({});
+  const [selectedChapter, setSelectedChapter] = useState(null);
 
   // Find the subject data
   const subject = studyMaterialsData.subjects.find(s => s.id.toString() === subjectId);
@@ -117,6 +118,14 @@ const SubjectPage = () => {
       ...prev,
       [paperId]: !prev[paperId]
     }));
+  };
+
+  const handleChapterClick = (chapter, paperName) => {
+    setSelectedChapter({ ...chapter, paperName });
+  };
+
+  const closeChapterModal = () => {
+    setSelectedChapter(null);
   };
 
   return (
@@ -305,94 +314,37 @@ const SubjectPage = () => {
                   <CardContent className="relative">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {paper.chapters.map((chapter, chapterIndex) => (
-                        <div
+                        <Card
                           key={chapter.id}
-                          className="group p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border-0 shadow-lg bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800"
+                          onClick={() => handleChapterClick(chapter, paper.name)}
                         >
-                          <div className="flex items-start justify-between mb-4">
-                            <h5 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                              {chapter.title}
-                            </h5>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xs font-bold flex items-center justify-center shadow-md">
-                              {chapterIndex + 1}
+                          <CardContent className="p-6">
+                            <div className="flex items-start justify-between mb-4">
+                              <h5 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 line-clamp-2">
+                                {chapter.title}
+                              </h5>
+                              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xs font-bold flex items-center justify-center shadow-md flex-shrink-0 ml-2">
+                                {chapterIndex + 1}
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="space-y-3">
-                            {/* PDF Download Buttons */}
-                            {(activeView === 'all' || activeView === 'pdfs') && (
-                              chapter.driveLinks && chapter.driveLinks.length > 0 ? (
-                                chapter.driveLinks.map((link, index) => (
-                                  <Button
-                                    key={index}
-                                    variant="outline"
-                                    size="sm"
-                                    className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-xl py-3 font-medium"
-                                    onClick={() => handleLinkClick(link.url, 'PDF')}
-                                  >
-                                    <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                                      <Download className="w-4 h-4" />
-                                    </div>
-                                    <span className="flex-1 text-left">{link.name}</span>
-                                    <ExternalLink className="w-4 h-4 opacity-60" />
-                                  </Button>
-                                ))
-                              ) : (
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 rounded-xl py-3 font-medium"
-                                  onClick={() => handleLinkClick(null, 'PDF')}
-                                >
-                                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-                                    <Plus className="w-4 h-4" />
-                                  </div>
-                                  <span className="flex-1 text-left">Add PDF Link</span>
-                                  <ExternalLink className="w-4 h-4 opacity-60" />
-                                </Button>
-                              )
-                            )}
+                            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                              <div className="flex items-center gap-1">
+                                <Download className="w-4 h-4" />
+                                <span>{chapter.driveLinks?.length || 0} PDFs</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Video className="w-4 h-4" />
+                                <span>{chapter.videoLinks?.length || 0} Videos</span>
+                              </div>
+                            </div>
 
-                            {/* Video Watch Buttons */}
-                            {(activeView === 'all' || activeView === 'videos') && (
-                              chapter.videoLinks && chapter.videoLinks.length > 0 ? (
-                                chapter.videoLinks.map((link, index) => (
-                                  <Button
-                                    key={index}
-                                    variant="outline"
-                                    size="sm"
-                                    className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 hover:border-pink-300 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30 rounded-xl py-3 font-medium"
-                                    onClick={() => handleLinkClick(link.url, 'Video', {
-                                      url: link.url,
-                                      title: link.name,
-                                      chapter: chapter.title,
-                                      subject: subject.name
-                                    })}
-                                  >
-                                    <div className="w-8 h-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
-                                      <Play className="w-4 h-4" />
-                                    </div>
-                                    <span className="flex-1 text-left">{link.name}</span>
-                                    <ExternalLink className="w-4 h-4 opacity-60" />
-                                  </Button>
-                                ))
-                              ) : (
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 rounded-xl py-3 font-medium"
-                                  onClick={() => handleLinkClick(null, 'Video')}
-                                >
-                                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-                                    <Plus className="w-4 h-4" />
-                                  </div>
-                                  <span className="flex-1 text-left">Add Video Link</span>
-                                  <ExternalLink className="w-4 h-4 opacity-60" />
-                                </Button>
-                              )
-                            )}
-                          </div>
-                        </div>
+                            <div className="mt-4 text-xs text-gray-500 dark:text-gray-500 text-center">
+                              Click to view materials
+                            </div>
+                          </CardContent>
+                        </Card>
                       ))}
                     </div>
                   </CardContent>
@@ -428,6 +380,111 @@ const SubjectPage = () => {
             </div>
           </div>
         </div>
+
+        {/* Chapter Modal */}
+        {selectedChapter && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                      {selectedChapter.title}
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-400 mt-1">
+                      {selectedChapter.paperName} • {subject.name}
+                    </p>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={closeChapterModal}
+                    className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  >
+                    ✕
+                  </Button>
+                </div>
+              </div>
+
+              <div className="p-6 max-h-[calc(90vh-120px)] overflow-y-auto">
+                <div className="space-y-6">
+                  {/* PDFs Section */}
+                  {(selectedChapter.driveLinks && selectedChapter.driveLinks.length > 0) && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                        <Download className="w-5 h-5 text-blue-600" />
+                        PDF Materials ({selectedChapter.driveLinks.length})
+                      </h3>
+                      <div className="grid gap-3">
+                        {selectedChapter.driveLinks.map((link, index) => (
+                          <Button
+                            key={index}
+                            variant="outline"
+                            className="w-full justify-start gap-4 hover:scale-[1.02] transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-xl py-4 font-medium"
+                            onClick={() => handleLinkClick(link.url, 'PDF')}
+                          >
+                            <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                              <Download className="w-5 h-5" />
+                            </div>
+                            <span className="flex-1 text-left">{link.name}</span>
+                            <ExternalLink className="w-5 h-5 opacity-60" />
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Videos Section */}
+                  {(selectedChapter.videoLinks && selectedChapter.videoLinks.length > 0) && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                        <Video className="w-5 h-5 text-pink-600" />
+                        Video Materials ({selectedChapter.videoLinks.length})
+                      </h3>
+                      <div className="grid gap-3">
+                        {selectedChapter.videoLinks.map((link, index) => (
+                          <Button
+                            key={index}
+                            variant="outline"
+                            className="w-full justify-start gap-4 hover:scale-[1.02] transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 hover:border-pink-300 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30 rounded-xl py-4 font-medium"
+                            onClick={() => handleLinkClick(link.url, 'Video', {
+                              url: link.url,
+                              title: link.name,
+                              chapter: selectedChapter.title,
+                              subject: subject.name
+                            })}
+                          >
+                            <div className="w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
+                              <Play className="w-5 h-5" />
+                            </div>
+                            <span className="flex-1 text-left">{link.name}</span>
+                            <ExternalLink className="w-5 h-5 opacity-60" />
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Empty State */}
+                  {(!selectedChapter.driveLinks || selectedChapter.driveLinks.length === 0) &&
+                   (!selectedChapter.videoLinks || selectedChapter.videoLinks.length === 0) && (
+                    <div className="text-center py-8">
+                      <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-4">
+                        <FileText className="w-8 h-8 text-gray-400" />
+                      </div>
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+                        No materials available yet
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        Materials for this chapter are being prepared. Check back soon!
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
