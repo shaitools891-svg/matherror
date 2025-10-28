@@ -214,7 +214,7 @@ getActiveColor,
           .gooey-effect.filter::after {
             content: "";
             position: absolute;
-            inset: 0;
+            inset: 0 0 0 2rem;
             background: white;
             transform: scale(0);
             opacity: 0;
@@ -301,6 +301,13 @@ getActiveColor,
             color: var(--active-color, black) !important;
             text-shadow: none;
             font-weight: 600 !important;
+          }
+          .gooey-nav-item.active svg {
+            color: var(--active-color, black) !important;
+          }
+          .gooey-nav-item svg {
+            color: white;
+            transition: color 0.3s ease;
           }
           .gooey-nav-item.active::after {
             opacity: 1;
