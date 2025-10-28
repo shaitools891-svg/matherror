@@ -195,13 +195,6 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
 
           </nav>
 
-          {/* Footer */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-            <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
-              Have resources to add?<br />
-              Contact Shakib
-            </p>
-          </div>
         </div>
       </div>
     </>
