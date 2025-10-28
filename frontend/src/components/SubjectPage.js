@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Progress } from './ui/progress';
 import {
   Monitor,
   Atom,
@@ -19,7 +20,11 @@ import {
   BookOpen,
   Languages,
   Dna,
-  ArrowLeft
+  ArrowLeft,
+  BarChart3,
+  Clock,
+  CheckCircle,
+  TrendingUp
 } from 'lucide-react';
 import { studyMaterialsData } from '../data/studyMaterials';
 
@@ -73,6 +78,15 @@ const SubjectPage = () => {
 
   const subjectColor = getSubjectColor(subject.id);
 
+  // Calculate statistics
+  const totalPapers = subject.papers.length;
+  const totalChapters = subject.papers.reduce((acc, paper) => acc + paper.chapters.length, 0);
+  const totalPdfs = subject.papers.reduce((acc, paper) =>
+    acc + paper.chapters.reduce((chapterAcc, chapter) => chapterAcc + chapter.driveLinks.length, 0), 0);
+  const totalVideos = subject.papers.reduce((acc, paper) =>
+    acc + paper.chapters.reduce((chapterAcc, chapter) => chapterAcc + chapter.videoLinks.length, 0), 0);
+  const completionPercentage = Math.round(((totalPdfs + totalVideos) / (totalChapters * 2)) * 100) || 0;
+
   const handleLinkClick = (url, type, videoData = null) => {
     if (type === 'Video' && videoData) {
       window.open(url, '_blank');
@@ -105,125 +119,201 @@ const SubjectPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate('/')}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Home
-            </Button>
-            <div className="flex items-center gap-3">
-              <div
-                className="w-12 h-12 rounded-lg flex items-center justify-center"
-                style={{
-                  background: `linear-gradient(135deg, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}, hsl(${subjectColor === 'blue' ? '208, 90%, 50%' : subjectColor === 'purple' ? '268, 90%, 50%' : subjectColor === 'green' ? '108, 90%, 40%' : subjectColor === 'orange' ? '28, 90%, 50%' : subjectColor === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}))`
-                }}
+      <div className="relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}) 0%, transparent 50%), radial-gradient(circle at 75% 75%, hsl(${subjectColor === 'blue' ? '208, 90%, 50%' : subjectColor === 'purple' ? '268, 90%, 50%' : subjectColor === 'green' ? '108, 90%, 40%' : subjectColor === 'orange' ? '28, 90%, 50%' : subjectColor === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}) 0%, transparent 50%)`,
+            backgroundSize: '400px 400px'
+          }} />
+        </div>
+
+        <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/')}
+                className="flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 self-start"
               >
-                <div className="w-8 h-8 text-white">
-                  {React.createElement(getIcon(subject.icon), {
-                    className: "w-full h-full"
-                  })}
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+              </Button>
+
+              <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}, hsl(${subjectColor === 'blue' ? '208, 90%, 50%' : subjectColor === 'purple' ? '268, 90%, 50%' : subjectColor === 'green' ? '108, 90%, 40%' : subjectColor === 'orange' ? '28, 90%, 50%' : subjectColor === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}))`
+                    }}
+                  >
+                    <div className="w-10 h-10 text-white">
+                      {React.createElement(getIcon(subject.icon), {
+                        className: "w-full h-full"
+                      })}
+                    </div>
+                  </div>
+                  <div>
+                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-1">
+                      {subject.name}
+                    </h1>
+                    <p className="text-lg text-gray-600 dark:text-gray-400">
+                      {subject.fullName}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Statistics Cards */}
+                <div className="flex flex-wrap gap-3">
+                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalPapers} Papers</span>
+                    </div>
+                  </div>
+                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                    <div className="flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-green-600 dark:text-green-400" />
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalChapters} Chapters</span>
+                    </div>
+                  </div>
+                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                    <div className="flex items-center gap-2">
+                      <Download className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalPdfs} PDFs</span>
+                    </div>
+                  </div>
+                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                    <div className="flex items-center gap-2">
+                      <Video className="w-4 h-4 text-pink-600 dark:text-pink-400" />
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalVideos} Videos</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
-                  {subject.name}
-                </h1>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {subject.fullName}
-                </p>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="mt-6">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Content Completion</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{completionPercentage}%</span>
               </div>
+              <Progress value={completionPercentage} className="h-2" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* View Toggle */}
-        <div className="flex justify-center mb-6">
-          <Tabs value={activeView} onValueChange={setActiveView} className="w-full max-w-md">
-            <TabsList className="grid w-full grid-cols-3 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
+        <div className="flex justify-center mb-8">
+          <Tabs value={activeView} onValueChange={setActiveView} className="w-full max-w-lg">
+            <TabsList className="grid w-full grid-cols-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-1 rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
               <TabsTrigger
                 value="all"
-                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400"
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 data-[state=active]:shadow-md transition-all duration-200 rounded-lg"
               >
                 <FileText className="w-4 h-4" />
-                All
+                All Resources
               </TabsTrigger>
               <TabsTrigger
                 value="pdfs"
-                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400"
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 data-[state=active]:shadow-md transition-all duration-200 rounded-lg"
               >
                 <Download className="w-4 h-4" />
-                PDFs
+                PDFs ({totalPdfs})
               </TabsTrigger>
               <TabsTrigger
                 value="videos"
-                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400"
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 data-[state=active]:shadow-md transition-all duration-200 rounded-lg"
               >
                 <Video className="w-4 h-4" />
-                Videos
+                Videos ({totalVideos})
               </TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
 
         {/* Papers */}
-        <div className="space-y-4">
-          {subject.papers.map((paper) => {
+        <div className="space-y-6">
+          {subject.papers.map((paper, paperIndex) => {
             const isExpanded = expandedPapers[paper.id];
             const totalChapters = paper.chapters.length;
             const totalPdfs = paper.chapters.reduce((acc, chapter) => acc + chapter.driveLinks.length, 0);
             const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
 
             return (
-              <Card key={paper.id} className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-                <CardHeader>
+              <Card key={paper.id} className="group border-0 shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-5 transition-opacity duration-300"
+                     style={{
+                       background: `linear-gradient(135deg, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}), transparent)`
+                     }} />
+                <CardHeader className="relative">
                   <div
-                    className="flex justify-between items-center cursor-pointer"
+                    className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 cursor-pointer group-hover:bg-gray-50/50 dark:group-hover:bg-gray-700/50 transition-colors duration-200 p-4 rounded-lg"
                     onClick={() => togglePaperExpansion(paper.id)}
                   >
-                    <CardTitle className="text-xl text-gray-800 dark:text-gray-100">
-                      {paper.name}
-                    </CardTitle>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">
-                        {totalChapters} {totalChapters === 1 ? 'Chapter' : 'Chapters'}
-                      </Badge>
-                      <Badge variant="outline" className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
-                        {totalPdfs} PDFs
-                      </Badge>
-                      <Badge variant="outline" className="bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300">
-                        {totalVideos} Videos
-                      </Badge>
-                      <Button variant="ghost" size="sm" className="text-gray-500 dark:text-gray-400">
-                        {isExpanded ? '▲' : '▼'}
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-lg shadow-lg">
+                        {paperIndex + 1}
+                      </div>
+                      <div>
+                        <CardTitle className="text-2xl text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                          {paper.name}
+                        </CardTitle>
+                        <p className="text-gray-600 dark:text-gray-400 mt-1">
+                          {totalChapters} chapters • {totalPdfs} PDFs • {totalVideos} videos
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="flex gap-2">
+                        <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-700 px-3 py-1">
+                          <BookOpen className="w-3 h-3 mr-1" />
+                          {totalChapters} {totalChapters === 1 ? 'Chapter' : 'Chapters'}
+                        </Badge>
+                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-700 px-3 py-1">
+                          <Download className="w-3 h-3 mr-1" />
+                          {totalPdfs} PDFs
+                        </Badge>
+                        <Badge variant="outline" className="bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-900/20 dark:text-pink-300 dark:border-pink-700 px-3 py-1">
+                          <Video className="w-3 h-3 mr-1" />
+                          {totalVideos} Videos
+                        </Badge>
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full w-8 h-8 p-0 transition-all duration-200">
+                        <span className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
                       </Button>
                     </div>
                   </div>
                 </CardHeader>
 
                 {isExpanded && (
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {paper.chapters.map((chapter) => (
+                  <CardContent className="relative">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {paper.chapters.map((chapter, chapterIndex) => (
                         <div
                           key={chapter.id}
-                          className="p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600"
+                          className="group p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
-                          <h5 className="font-semibold mb-3 text-gray-800 dark:text-gray-100">
-                            {chapter.title}
-                          </h5>
+                          <div className="flex items-start justify-between mb-4">
+                            <h5 className="font-bold text-lg text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                              {chapter.title}
+                            </h5>
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xs font-bold flex items-center justify-center shadow-md">
+                              {chapterIndex + 1}
+                            </div>
+                          </div>
 
-                          <div className="space-y-2">
+                          <div className="space-y-3">
                             {/* PDF Download Buttons */}
                             {(activeView === 'all' || activeView === 'pdfs') && (
                               chapter.driveLinks && chapter.driveLinks.length > 0 ? (
@@ -232,24 +322,28 @@ const SubjectPage = () => {
                                     key={index}
                                     variant="outline"
                                     size="sm"
-                                    className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30"
+                                    className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-xl py-3 font-medium"
                                     onClick={() => handleLinkClick(link.url, 'PDF')}
                                   >
-                                    <Download className="w-4 h-4" />
-                                    {link.name}
-                                    <ExternalLink className="w-3 h-3 ml-auto" />
+                                    <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                      <Download className="w-4 h-4" />
+                                    </div>
+                                    <span className="flex-1 text-left">{link.name}</span>
+                                    <ExternalLink className="w-4 h-4 opacity-60" />
                                   </Button>
                                 ))
                               ) : (
                                 <Button
                                   variant="outline"
                                   size="sm"
-                                  className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+                                  className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 rounded-xl py-3 font-medium"
                                   onClick={() => handleLinkClick(null, 'PDF')}
                                 >
-                                  <Plus className="w-4 h-4" />
-                                  Add PDF Link
-                                  <ExternalLink className="w-3 h-3 ml-auto" />
+                                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                                    <Plus className="w-4 h-4" />
+                                  </div>
+                                  <span className="flex-1 text-left">Add PDF Link</span>
+                                  <ExternalLink className="w-4 h-4 opacity-60" />
                                 </Button>
                               )
                             )}
@@ -262,7 +356,7 @@ const SubjectPage = () => {
                                     key={index}
                                     variant="outline"
                                     size="sm"
-                                    className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30"
+                                    className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-pink-200 text-pink-700 hover:bg-pink-50 hover:border-pink-300 dark:border-pink-700 dark:text-pink-300 dark:hover:bg-pink-900/30 rounded-xl py-3 font-medium"
                                     onClick={() => handleLinkClick(link.url, 'Video', {
                                       url: link.url,
                                       title: link.name,
@@ -270,21 +364,25 @@ const SubjectPage = () => {
                                       subject: subject.name
                                     })}
                                   >
-                                    <Play className="w-4 h-4" />
-                                    {link.name}
-                                    <ExternalLink className="w-3 h-3 ml-auto" />
+                                    <div className="w-8 h-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
+                                      <Play className="w-4 h-4" />
+                                    </div>
+                                    <span className="flex-1 text-left">{link.name}</span>
+                                    <ExternalLink className="w-4 h-4 opacity-60" />
                                   </Button>
                                 ))
                               ) : (
                                 <Button
                                   variant="outline"
                                   size="sm"
-                                  className="w-full justify-start gap-2 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+                                  className="w-full justify-start gap-3 hover:scale-105 transition-all duration-300 border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 rounded-xl py-3 font-medium"
                                   onClick={() => handleLinkClick(null, 'Video')}
                                 >
-                                  <Plus className="w-4 h-4" />
-                                  Add Video Link
-                                  <ExternalLink className="w-3 h-3 ml-auto" />
+                                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                                    <Plus className="w-4 h-4" />
+                                  </div>
+                                  <span className="flex-1 text-left">Add Video Link</span>
+                                  <ExternalLink className="w-4 h-4 opacity-60" />
                                 </Button>
                               )
                             )}
@@ -300,14 +398,29 @@ const SubjectPage = () => {
         </div>
 
         {/* Help Text */}
-        <div className="mt-8 text-center">
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl max-w-2xl mx-auto">
-            <h3 className="font-semibold mb-2 text-gray-800 dark:text-gray-100">
-              Share Your Resources
+        <div className="mt-12 text-center">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-3xl max-w-3xl mx-auto border border-gray-200/50 dark:border-gray-600/50 shadow-lg">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <TrendingUp className="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Help Us Grow This Resource Library
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Have a PDF (Google Drive) or YouTube video to add? Contact Shakib.
+            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+              Have study materials, PDFs, or educational videos to share? Your contributions help thousands of HSC 2026 students succeed.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-6 py-3">
+                <Plus className="w-4 h-4 mr-2" />
+                Contribute Resources
+              </Button>
+              <Button variant="outline" className="border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl px-6 py-3">
+                <BarChart3 className="w-4 h-4 mr-2" />
+                View Statistics
+              </Button>
+            </div>
           </div>
         </div>
       </div>
