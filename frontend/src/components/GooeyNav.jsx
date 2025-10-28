@@ -100,6 +100,7 @@ getActiveColor,
   };
 
   const handleClick = (e, index) => {
+    console.log('GooeyNav handleClick called for index:', index);
     e.preventDefault();
     const liEl = e.currentTarget.parentElement;
     if (activeIndex === index) return;
@@ -367,7 +368,10 @@ getActiveColor,
                   onClick={(e) => handleClick(e, index)}
                   href={item.href}
                   onKeyDown={(e) => handleKeyDown(e, index)}
+                  onTouchStart={(e) => console.log('GooeyNav item touch start:', index)}
+                  onTouchEnd={(e) => console.log('GooeyNav item touch end:', index)}
                   className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-current transition-colors block w-full text-left flex items-center"
+                  style={{ touchAction: 'manipulation', userSelect: 'none' }}
                 >
                   {getIcon && item.icon && (
                     <div className="icon-container">

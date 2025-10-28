@@ -122,6 +122,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
 
   // Handle GooeyNav click
   const handleGooeyNavClick = (item, index) => {
+    console.log('GooeyNav clicked:', item, index);
     if (index === 0) {
       navigate('/');
     } else {
@@ -150,7 +151,9 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
       {isOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={onClose}
+          onClick={() => { console.log('Overlay clicked'); onClose(); }}
+          onTouchStart={(e) => { console.log('Overlay touch start'); }}
+          onTouchEnd={(e) => { console.log('Overlay touch end'); }}
         />
       )}
 
@@ -160,7 +163,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         ${desktopOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full'}
-      `}>
+      `} style={{ touchAction: 'manipulation' }}>
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
