@@ -25,7 +25,34 @@ import {
   BarChart3,
   Clock,
   CheckCircle,
-  TrendingUp
+  TrendingUp,
+  // Biology icons
+  Leaf,
+  TreePine,
+  Microscope,
+  Flower,
+  Apple,
+  // Physics icons
+  Zap,
+  Waves,
+  Magnet,
+  Telescope,
+  // Chemistry icons
+  Beaker,
+  TestTube,
+  // Mathematics icons
+  Pi,
+  Triangle,
+  Square,
+  // ICT icons
+  Cpu,
+  HardDrive,
+  Wifi,
+  // English icons
+  Book,
+  PenTool,
+  // Bangla icons
+  Type
 } from 'lucide-react';
 import { studyMaterialsData } from '../data/studyMaterials';
 
@@ -80,6 +107,22 @@ const SubjectPage = () => {
 
   const subjectColor = getSubjectColor(subject.id);
 
+  // Subject-specific background icons
+  const getSubjectBackgroundIcons = (subjectId) => {
+    const iconSets = {
+      1: [Zap, Waves, Magnet, Telescope], // Physics
+      2: [Beaker, TestTube, FlaskConical, Atom], // Chemistry
+      3: [Pi, Triangle, Square, Calculator], // Mathematics
+      4: [Cpu, HardDrive, Wifi, Monitor], // ICT
+      5: [Type, BookOpen, PenTool], // Bangla
+      6: [Book, PenTool, Languages], // English
+      7: [Leaf, TreePine, Microscope, Flower, Apple] // Biology
+    };
+    return iconSets[subjectId] || [BookOpen];
+  };
+
+  const backgroundIcons = getSubjectBackgroundIcons(subject.id);
+
   // Calculate statistics
   const totalPapers = subject.papers.length;
   const totalChapters = subject.papers.reduce((acc, paper) => acc + paper.chapters.length, 0);
@@ -129,18 +172,10 @@ const SubjectPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
       {/* Header */}
       <div className="relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}) 0%, transparent 50%), radial-gradient(circle at 75% 75%, hsl(${subjectColor === 'blue' ? '208, 90%, 50%' : subjectColor === 'purple' ? '268, 90%, 50%' : subjectColor === 'green' ? '108, 90%, 40%' : subjectColor === 'orange' ? '28, 90%, 50%' : subjectColor === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}) 0%, transparent 50%)`,
-            backgroundSize: '400px 400px'
-          }} />
-        </div>
-
-        <div className="relative bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
+        <div className="relative bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row lg:items-center gap-6">
               <Button
@@ -160,12 +195,9 @@ const SubjectPage = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300"
-                    style={{
-                      background: `linear-gradient(135deg, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}, hsl(${subjectColor === 'blue' ? '208, 90%, 50%' : subjectColor === 'purple' ? '268, 90%, 50%' : subjectColor === 'green' ? '108, 90%, 40%' : subjectColor === 'orange' ? '28, 90%, 50%' : subjectColor === 'red' ? '348, 90%, 50%' : '163, 90%, 50%'}))`
-                    }}
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center bg-gray-100 dark:bg-gray-700"
                   >
-                    <div className="w-10 h-10 text-white dark:text-white">
+                    <div className="w-10 h-10 text-gray-600 dark:text-gray-300">
                       {React.createElement(getIcon(subject.icon), {
                         className: "w-full h-full"
                       })}
@@ -183,27 +215,27 @@ const SubjectPage = () => {
 
                 {/* Statistics Cards */}
                 <div className="flex flex-wrap gap-3">
-                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
                     <div className="flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      <BookOpen className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalPapers} Papers</span>
                     </div>
                   </div>
-                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
                     <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-green-600 dark:text-green-400" />
+                      <FileText className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalChapters} Chapters</span>
                     </div>
                   </div>
-                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
                     <div className="flex items-center gap-2">
-                      <Download className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                      <Download className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalPdfs} PDFs</span>
                     </div>
                   </div>
-                  <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-gray-200/50 dark:border-gray-600/50">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
                     <div className="flex items-center gap-2">
-                      <Video className="w-4 h-4 text-pink-600 dark:text-pink-400" />
+                      <Video className="w-4 h-4 text-gray-600 dark:text-gray-300" />
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalVideos} Videos</span>
                     </div>
                   </div>
@@ -228,24 +260,24 @@ const SubjectPage = () => {
         {/* View Toggle */}
         <div className="flex justify-center mb-8">
           <Tabs value={activeView} onValueChange={setActiveView} className="w-full max-w-lg">
-            <TabsList className="grid w-full grid-cols-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-1 rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
+            <TabsList className="grid w-full grid-cols-3 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl border border-gray-200 dark:border-gray-700">
               <TabsTrigger
                 value="all"
-                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 data-[state=active]:shadow-md transition-all duration-200 rounded-lg"
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-gray-100 transition-all duration-200 rounded-lg"
               >
                 <FileText className="w-4 h-4" />
                 All Resources
               </TabsTrigger>
               <TabsTrigger
                 value="pdfs"
-                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 data-[state=active]:shadow-md transition-all duration-200 rounded-lg"
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-gray-100 transition-all duration-200 rounded-lg"
               >
                 <Download className="w-4 h-4" />
                 PDFs ({totalPdfs})
               </TabsTrigger>
               <TabsTrigger
                 value="videos"
-                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-blue-600 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-blue-400 data-[state=active]:shadow-md transition-all duration-200 rounded-lg"
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-gray-900 dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-gray-100 transition-all duration-200 rounded-lg"
               >
                 <Video className="w-4 h-4" />
                 Videos ({totalVideos})
@@ -263,11 +295,7 @@ const SubjectPage = () => {
             const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
 
             return (
-              <Card key={paper.id} className="group border-0 shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-5 transition-opacity duration-300"
-                     style={{
-                       background: `linear-gradient(135deg, hsl(${subjectColor === 'blue' ? '223, 90%, 50%' : subjectColor === 'purple' ? '283, 90%, 50%' : subjectColor === 'green' ? '123, 90%, 40%' : subjectColor === 'orange' ? '43, 90%, 50%' : subjectColor === 'red' ? '3, 90%, 50%' : '178, 90%, 50%'}), transparent)`
-                     }} />
+              <Card key={paper.id} className="group border border-gray-200 dark:border-gray-700 shadow-lg bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 overflow-hidden">
                 <CardHeader className="relative">
                   <div
                     className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 cursor-pointer group-hover:bg-gray-50/50 dark:group-hover:bg-gray-700/50 transition-colors duration-200 p-4 rounded-lg"
@@ -316,7 +344,7 @@ const SubjectPage = () => {
                       {paper.chapters.map((chapter, chapterIndex) => (
                         <Card
                           key={chapter.id}
-                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border-0 shadow-lg bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800"
+                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-gray-200 dark:border-gray-700 shadow-lg bg-white dark:bg-gray-800"
                           onClick={() => handleChapterClick(chapter, paper.name)}
                         >
                           <CardContent className="p-6">
@@ -356,10 +384,10 @@ const SubjectPage = () => {
 
         {/* Help Text */}
         <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-3xl max-w-3xl mx-auto border border-gray-200/50 dark:border-gray-600/50 shadow-lg">
+          <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl max-w-3xl mx-auto border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
-                <TrendingUp className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-gray-600 dark:text-gray-300" />
               </div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
@@ -369,7 +397,7 @@ const SubjectPage = () => {
               Have study materials, PDFs, or educational videos to share? Your contributions help thousands of HSC 2026 students succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-6 py-3">
+              <Button className="bg-gray-800 hover:bg-gray-900 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-6 py-3">
                 <Plus className="w-4 h-4 mr-2" />
                 Contribute Resources
               </Button>
