@@ -79,6 +79,19 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
     return colorMap[subjectColor] || colorMap.gray;
   };
 
+  // Get active color for GooeyNav
+  const getActiveColor = (index) => {
+    if (index === 0) {
+      return '#3b82f6'; // Blue for All Subjects
+    }
+    const subject = studyMaterialsData.subjects[index - 1];
+    if (subject) {
+      const subjectColor = getSubjectColor(subject.id);
+      return getActiveBgColor(subjectColor);
+    }
+    return '#6b7280'; // Gray fallback
+  };
+
   const handleSubjectClick = (subjectId) => {
     navigate(`/subject/${subjectId}`);
     if (onClose) onClose();
