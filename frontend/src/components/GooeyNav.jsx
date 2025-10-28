@@ -292,11 +292,18 @@ getActiveColor,
           .gooey-nav-item.active::after {
             opacity: 1;
             transform: scale(1);
+            animation: fadeOut 0.5s ease 2s forwards;
+          }
+          @keyframes fadeOut {
+            to {
+              opacity: 0;
+              transform: scale(0);
+            }
           }
           .gooey-nav-item::after {
             content: "";
             position: absolute;
-            inset: 0 0 0 2rem;
+            inset: 0;
             border-radius: 8px;
             border: 2px solid rgba(255, 255, 255, 0.8);
             background: transparent;
