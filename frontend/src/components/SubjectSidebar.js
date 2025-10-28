@@ -163,11 +163,11 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
       `}>
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Study Materials
             </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-700 dark:text-gray-400">
               HSC 2026 Preparation
             </p>
           </div>
@@ -176,7 +176,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
           <nav className="flex-1 overflow-y-auto p-4">
             {/* GooeyNav for Subject Navigation */}
             <div className="mb-6">
-              <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
                 <GooeyNav
                   items={navItems}
                   initialActiveIndex={activeSubjectIndex}
@@ -195,7 +195,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
 
             {/* Traditional Navigation as Backup */}
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+              <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">
                 Quick Access
               </h3>
 
@@ -205,7 +205,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
                 className={`w-full justify-start mb-4 ${
                   isHomeActive()
                     ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    : 'text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
                 onClick={handleHomeClick}
               >
@@ -225,7 +225,7 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
                     className={`w-full justify-start ${
                       active
                         ? 'text-white'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        : 'text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
                     style={active ? {
                       backgroundColor: getActiveBgColor(subjectColor),
@@ -252,8 +252,8 @@ const SubjectSidebar = ({ isOpen, onClose, desktopOpen = true }) => {
           </nav>
 
           {/* Footer */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+            <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
               Have resources to add?<br />
               Contact Shakib
             </p>

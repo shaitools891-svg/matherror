@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Progress } from './ui/progress';
+import DarkModeToggle from './DarkModeToggle';
 import {
   Monitor,
   Atom,
@@ -144,6 +145,10 @@ const SubjectPage = () => {
               </Button>
 
               <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                {/* Theme Toggle */}
+                <div className="flex justify-end lg:justify-start">
+                  <DarkModeToggle />
+                </div>
                 <div className="flex items-center gap-4">
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300"
