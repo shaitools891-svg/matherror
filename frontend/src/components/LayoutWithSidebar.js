@@ -32,7 +32,7 @@ const LayoutWithSidebar = ({ children }) => {
       </div>
 
       {/* Desktop toggle button */}
-      <div className="hidden lg:block fixed top-4 left-4 z-50">
+      <div className="hidden md:block fixed top-4 left-4 z-50">
         <Button
           variant="outline"
           size="sm"
