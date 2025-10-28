@@ -200,9 +200,13 @@ getActiveColor,
             opacity: 0;
             z-index: -1;
             border-radius: 9999px;
+            animation: pill 0.3s ease both, fadeOutGlow 0.5s ease 2s forwards;
           }
-          .gooey-effect.active::after {
-            animation: pill 0.3s ease both;
+          @keyframes fadeOutGlow {
+            to {
+              opacity: 0;
+              transform: scale(0);
+            }
           }
           @keyframes pill {
             to {
