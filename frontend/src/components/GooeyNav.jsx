@@ -293,10 +293,24 @@ getActiveColor,
           .gooey-nav-item.active svg {
             color: var(--active-color, black) !important;
           }
+          .gooey-nav-item .icon-container {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            transition: background-color 0.3s ease;
+          }
           .gooey-nav-item svg {
             color: white;
             transition: color 0.3s ease;
-            margin-right: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+          }
+          .gooey-nav-item.active .icon-container {
+            background-color: rgba(255, 255, 255, 0.2);
           }
           .gooey-nav-item.active svg {
             color: var(--active-color, black) !important;
@@ -356,7 +370,7 @@ getActiveColor,
                   className="outline-none py-2 px-3 inline-block text-sm font-medium hover:text-white transition-colors block w-full text-left flex items-center"
                 >
                   {getIcon && item.icon && (
-                    <div className="w-6 h-6 rounded flex items-center justify-center mr-3">
+                    <div className="icon-container">
                       {getIcon(item.icon, "w-4 h-4")}
                     </div>
                   )}
