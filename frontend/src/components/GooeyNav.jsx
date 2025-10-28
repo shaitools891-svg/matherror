@@ -300,13 +300,6 @@ getActiveColor,
           .gooey-nav-item.active::after {
             opacity: 1;
             transform: scale(1);
-            animation: fadeOut 0.5s ease 2s forwards;
-          }
-          @keyframes fadeOut {
-            to {
-              opacity: 0;
-              transform: scale(0);
-            }
           }
           .gooey-nav-item::after {
             content: "";
