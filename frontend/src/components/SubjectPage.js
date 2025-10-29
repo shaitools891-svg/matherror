@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
+import { SidebarContext } from './LayoutWithSidebar';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
@@ -65,6 +66,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
   const [expandedPapers, setExpandedPapers] = useState({});
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { handleToggleSidebar } = React.useContext(SidebarContext);
 
   // Find the subject data
   const subject = studyMaterialsData.subjects.find(s => s.id.toString() === subjectId);
@@ -188,7 +190,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
       {/* Floating Action Button for Sidebar Toggle */}
       <div className="fixed top-6 left-6 z-50">
         <Button
-          onClick={() => console.log('FAB clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
+          onClick={() => console.log('FAB clicked, handleToggleSidebar:', handleToggleSidebar) || handleToggleSidebar?.()}
           className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0"
           size="sm"
         >

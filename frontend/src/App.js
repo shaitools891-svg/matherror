@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
 import { Menu } from 'lucide-react';
+import { SidebarContext } from './components/LayoutWithSidebar';
 
 
 import Particles from './components/Particles'; // Add this import
@@ -80,6 +81,7 @@ const BackgroundPattern = () => {
 // Main Home component
 const Home = ({ onToggleSidebar }) => {
   const { currentTheme } = useTheme();
+  const { handleToggleSidebar } = React.useContext(SidebarContext);
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
@@ -96,7 +98,7 @@ const Home = ({ onToggleSidebar }) => {
       {/* Floating Action Button for Sidebar Toggle */}
       <div className="fixed top-6 left-6 z-50">
         <button
-          onClick={() => console.log('Home FAB clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
+          onClick={() => console.log('Home FAB clicked, handleToggleSidebar:', handleToggleSidebar) || handleToggleSidebar?.()}
           className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0 flex items-center justify-center"
         >
           <Menu className="w-6 h-6" />
