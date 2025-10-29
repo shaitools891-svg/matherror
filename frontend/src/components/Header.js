@@ -105,10 +105,10 @@ const Header = () => {
                             <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                                 className={`
-                                    p-2 rounded-md text-gray-700 dark:text-gray-300 glass:text-gray-800
+                                    p-2 rounded-md text-gray-700 dark:text-gray-300 glass:text-gray-800 z-[100]
                                     hover:bg-gray-100 dark:hover:bg-gray-800 glass:hover:bg-white/20
                                     transition-all duration-300 hover:scale-105
-                                    animate-fade-in
+                                    animate-fade-in bg-yellow-400
                                 `}
                                 style={{ animationDelay: '0.5s' }}
                             >

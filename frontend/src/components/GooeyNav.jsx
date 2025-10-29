@@ -353,7 +353,7 @@ getActiveColor,
         >
           <ul
             ref={navRef}
-            className="flex flex-col gap-2 list-none p-0 m-0 relative z-[3]"
+            className="flex flex-col gap-2 list-none p-0 m-0 relative z-[100]"
             style={{
               color: "var(--text-color, white)",
               textShadow: "0 1px 1px hsl(205deg 30% 10% / 0.2)",

@@ -9,11 +9,12 @@ const DarkModeToggle = () => {
         <button
             onClick={toggleTheme}
             className={`
-                relative inline-flex items-center justify-center
+                relative inline-flex items-center justify-center z-[100]
                 w-8 h-8 rounded-full transition-all duration-300 ease-out
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                 hover:scale-110 active:scale-95 transform-gpu
                 shadow-lg hover:shadow-xl border border-blue-300 dark:border-purple-600
+                bg-yellow-400
                 ${currentThemeId === 'dark'
                     ? 'bg-indigo-600 hover:bg-indigo-500'
                     : 'bg-blue-400 hover:bg-blue-300'
