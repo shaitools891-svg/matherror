@@ -190,7 +190,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={onToggleSidebar}
+                    onClick={() => console.log('Button clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
                     className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <Menu className="w-4 h-4" />
