@@ -186,7 +186,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
       </div>
 
       {/* Floating Action Button for Sidebar Toggle */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed top-6 left-6 z-50">
         <Button
           onClick={() => console.log('FAB clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
           className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0"
