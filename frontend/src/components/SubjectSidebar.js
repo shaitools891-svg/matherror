@@ -11,11 +11,13 @@ import {
   BookOpen,
   Languages,
   Dna,
-  FileText
+  FileText,
+  X,
+  Menu
 } from 'lucide-react';
 import { studyMaterialsData } from '../data/studyMaterials';
 
-const SubjectSidebar = ({ isOpen, onClose }) => {
+const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeSubjectIndex, setActiveSubjectIndex] = useState(0);
@@ -129,7 +131,7 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
       const subjectId = studyMaterialsData.subjects[index - 1].id;
       navigate(`/subject/${subjectId}`);
     }
-    if (onClose) onClose();
+    // Don't close sidebar on navigation
   };
 
   // Update active index based on current location
@@ -165,14 +167,26 @@ const SubjectSidebar = ({ isOpen, onClose }) => {
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `} style={{ touchAction: 'manipulation' }}>
         <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Study Materials
-            </h2>
-            <p className="text-sm text-gray-700 dark:text-gray-400">
-              HSC 2026 Preparation
-            </p>
+          {/* Header with toggle button */}
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 relative">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Study Materials
+                </h2>
+                <p className="text-sm text-gray-700 dark:text-gray-400">
+                  HSC 2026 Preparation
+                </p>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onToggle}
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full w-8 h-8 p-0"
+              >
+                {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </Button>
+            </div>
           </div>
 
           {/* Navigation */}

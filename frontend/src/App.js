@@ -140,12 +140,14 @@ function App() {
           <ScrollRestoration />
           <ScrollToTop />
           <LayoutWithSidebar>
-            <Routes>
-               <Route path="/" element={loading ? <AppLoading /> : <Home />} />
-               <Route path="/subject/:subjectId" element={<SubjectPage />} />
-               {/* Add other routes here if needed */}
-               <Route path="*" element={<NotFound />} />
-             </Routes>
+            {({ onToggleSidebar }) => (
+              <Routes>
+                 <Route path="/" element={loading ? <AppLoading /> : <Home />} />
+                 <Route path="/subject/:subjectId" element={<SubjectPage onToggleSidebar={onToggleSidebar} />} />
+                 {/* Add other routes here if needed */}
+                 <Route path="*" element={<NotFound />} />
+               </Routes>
+            )}
           </LayoutWithSidebar>
         </div>
       </HashRouter>

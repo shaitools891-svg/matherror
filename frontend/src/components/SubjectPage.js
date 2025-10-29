@@ -27,6 +27,7 @@ import {
   Clock,
   CheckCircle,
   TrendingUp,
+  Menu,
   // Biology icons
   Leaf,
   TreePine,
@@ -57,7 +58,7 @@ import {
 } from 'lucide-react';
 import { studyMaterialsData } from '../data/studyMaterials';
 
-const SubjectPage = () => {
+const SubjectPage = ({ onToggleSidebar }) => {
   const { subjectId } = useParams();
   const navigate = useNavigate();
   const [activeView, setActiveView] = useState('all');
@@ -184,8 +185,16 @@ const SubjectPage = () => {
             <div className="flex flex-col lg:flex-row lg:items-center gap-6">
 
               <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                {/* Theme Toggle */}
-                <div className="flex justify-end lg:justify-start">
+                {/* Controls */}
+                <div className="flex items-center gap-2 justify-end lg:justify-start">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={onToggleSidebar}
+                    className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+                  >
+                    <Menu className="w-4 h-4" />
+                  </Button>
                   <DarkModeToggle />
                 </div>
                 <div className="flex items-center gap-4">
