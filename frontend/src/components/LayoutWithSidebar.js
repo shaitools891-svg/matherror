@@ -32,18 +32,6 @@ const LayoutWithSidebar = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Toggle button - always visible when sidebar is closed */}
-      <div className={`fixed top-4 left-4 z-60 transition-all duration-300 ${sidebarOpen ? 'lg:opacity-0 lg:pointer-events-none' : 'opacity-100'}`}>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => { console.log('Toggle button clicked'); setSidebarOpen(!sidebarOpen); }}
-          className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
-          style={{ touchAction: 'manipulation', userSelect: 'none' }}
-        >
-          <Menu className="w-4 h-4" />
-        </Button>
-      </div>
 
       {/* Sidebar */}
       <SubjectSidebar

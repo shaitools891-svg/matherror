@@ -178,6 +178,21 @@ const SubjectPage = ({ onToggleSidebar }) => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
+      {/* Fixed Header Controls */}
+      <div className="fixed top-4 right-4 z-50">
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => console.log('Button clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
+            className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <Menu className="w-4 h-4" />
+          </Button>
+          <DarkModeToggle />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="relative overflow-hidden">
         <div className="relative bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -185,16 +200,8 @@ const SubjectPage = ({ onToggleSidebar }) => {
             <div className="flex flex-col lg:flex-row lg:items-center gap-6">
 
               <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                {/* Controls */}
-                <div className="flex items-center gap-2 justify-end lg:justify-start">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => console.log('Button clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
-                    className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
-                  >
-                    <Menu className="w-4 h-4" />
-                  </Button>
+                {/* Controls - hidden on mobile, visible on desktop */}
+                <div className="hidden lg:flex items-center gap-2 justify-end lg:justify-start">
                   <DarkModeToggle />
                 </div>
                 <div className="flex items-center gap-4">
