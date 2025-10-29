@@ -182,15 +182,6 @@ const SubjectPage = () => {
         <div className="relative bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate('/')}
-                className="flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 self-start"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Home
-              </Button>
 
               <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 {/* Theme Toggle */}
