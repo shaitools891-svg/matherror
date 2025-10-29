@@ -33,7 +33,7 @@ const LayoutWithSidebar = ({ children }) => {
           onClick={() => { console.log('Toggle button clicked'); setSidebarOpen(!sidebarOpen); }}
           onTouchStart={(e) => { console.log('Touch start on button'); }}
           onTouchEnd={(e) => { console.log('Touch end on button'); }}
-          className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+          className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
           style={{ touchAction: 'manipulation', userSelect: 'none' }}
         >
           {sidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
