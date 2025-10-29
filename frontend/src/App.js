@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
+import { Menu } from 'lucide-react';
 
 
 import Particles from './components/Particles'; // Add this import
