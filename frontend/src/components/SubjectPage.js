@@ -181,16 +181,19 @@ const SubjectPage = ({ onToggleSidebar }) => {
       {/* Fixed Header Controls */}
       <div className="fixed top-4 right-4 z-50">
         <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => console.log('Button clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
-            className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <Menu className="w-4 h-4" />
-          </Button>
           <DarkModeToggle />
         </div>
+      </div>
+
+      {/* Floating Action Button for Sidebar Toggle */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button
+          onClick={() => console.log('FAB clicked, onToggleSidebar:', onToggleSidebar) || onToggleSidebar?.()}
+          className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0"
+          size="sm"
+        >
+          <Menu className="w-6 h-6" />
+        </Button>
       </div>
 
       {/* Header */}
