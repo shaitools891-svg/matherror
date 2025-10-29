@@ -81,7 +81,8 @@ const BackgroundPattern = () => {
 // Main Home component
 const Home = ({ onToggleSidebar }) => {
   const { currentTheme } = useTheme();
-  const { handleToggleSidebar } = React.useContext(SidebarContext);
+  const sidebarContext = React.useContext(SidebarContext);
+  const { handleToggleSidebar } = sidebarContext || {};
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">

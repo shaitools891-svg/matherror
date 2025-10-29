@@ -50,12 +50,12 @@ const LayoutWithSidebar = ({ children }) => {
         </div>
 
         {/* Floating Action Button for Sidebar Toggle */}
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed top-24 left-4 z-50">
           <button
-            onClick={() => { console.log('Global FAB clicked, handleToggleSidebar:', handleToggleSidebar); handleToggleSidebar(); }}
-            className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0 flex items-center justify-center"
+            onClick={() => { console.log('Global FAB clicked, handleToggleSidebar:', handleToggleSidebar); if (handleToggleSidebar) handleToggleSidebar(); }}
+            className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0 flex items-center justify-center"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
         </div>
       </div>

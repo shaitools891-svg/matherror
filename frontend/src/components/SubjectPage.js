@@ -66,7 +66,8 @@ const SubjectPage = ({ onToggleSidebar }) => {
   const [expandedPapers, setExpandedPapers] = useState({});
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { handleToggleSidebar } = React.useContext(SidebarContext);
+  const sidebarContext = React.useContext(SidebarContext);
+  const { handleToggleSidebar } = sidebarContext || {};
 
   // Find the subject data
   const subject = studyMaterialsData.subjects.find(s => s.id.toString() === subjectId);
