@@ -190,7 +190,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
             backgroundIcons.map((IconComponent, index) => (
               <div
                 key={`${multiplier}-${index}`}
-                className="absolute opacity-10 dark:opacity-20"
+                className="absolute opacity-25 dark:opacity-20"
                 style={{
                   left: `${2 + ((index + multiplier * backgroundIcons.length) * 6) % 96}%`,
                   top: `${2 + ((index + multiplier * backgroundIcons.length) * 7) % 96}%`,
@@ -199,14 +199,14 @@ const SubjectPage = ({ onToggleSidebar }) => {
               >
                 <IconComponent
                   className={`w-6 h-6 md:w-8 md:h-8 ${
-                    subjectColor === 'blue' ? 'text-blue-100' :
-                    subjectColor === 'purple' ? 'text-purple-100' :
-                    subjectColor === 'green' ? 'text-green-100' :
-                    subjectColor === 'orange' ? 'text-orange-100' :
-                    subjectColor === 'red' ? 'text-red-100' :
-                    subjectColor === 'teal' ? 'text-teal-100' :
-                    subjectColor === 'emerald' ? 'text-emerald-100' :
-                    'text-gray-100'
+                    subjectColor === 'blue' ? 'text-blue-200' :
+                    subjectColor === 'purple' ? 'text-purple-200' :
+                    subjectColor === 'green' ? 'text-green-200' :
+                    subjectColor === 'orange' ? 'text-orange-200' :
+                    subjectColor === 'red' ? 'text-red-200' :
+                    subjectColor === 'teal' ? 'text-teal-200' :
+                    subjectColor === 'emerald' ? 'text-emerald-200' :
+                    'text-gray-200'
                   }`}
                 />
               </div>
