@@ -250,6 +250,9 @@ const GooeyNav = ({
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
             animation: pill 0.3s ease both, fadeOutGlow 0.3s ease 1s forwards;
           }
+          .dark .gooey-effect.filter::after {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+          }
           @keyframes fadeOutGlow {
             to {
               opacity: 0;
@@ -347,6 +350,9 @@ const GooeyNav = ({
             transition: background-color 0.3s ease;
             background-color: rgba(255, 255, 255, 0.1);
           }
+          .dark .gooey-nav-item .icon-container {
+            background-color: rgba(255, 255, 255, 0.05);
+          }
           .gooey-nav-item svg {
             color: currentColor;
             transition: color 0.3s ease;
@@ -357,6 +363,10 @@ const GooeyNav = ({
             background-color: rgba(255, 255, 255, 0.15);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           }
+          .dark .gooey-nav-item.active .icon-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+          }
           .gooey-nav-item.active svg {
             color: var(--active-color, black) !important;
           }
@@ -366,6 +376,9 @@ const GooeyNav = ({
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid var(--active-color, #3b82f6);
             pointer-events: none;
+          }
+          .dark .gooey-nav-item.active::after {
+            background: rgba(255, 255, 255, 0.05);
           }
           .gooey-nav-item::after {
             content: "";
@@ -378,6 +391,9 @@ const GooeyNav = ({
             transition: all 0.3s ease;
             z-index: -1;
             backdrop-filter: blur(10px);
+          }
+          .dark .gooey-nav-item::after {
+            background: rgba(0, 0, 0, 0.05);
           }
           .gooey-nav-vertical .gooey-nav-item {
             margin-bottom: 4px;
