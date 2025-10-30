@@ -186,27 +186,27 @@ const SubjectPage = ({ onToggleSidebar }) => {
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0">
           {/* Create multiple instances of each icon for denser texture */}
-          {[...Array(5)].map((_, multiplier) =>
+          {[...Array(8)].map((_, multiplier) =>
             backgroundIcons.map((IconComponent, index) => (
               <div
                 key={`${multiplier}-${index}`}
-                className="absolute opacity-15 dark:opacity-25"
+                className="absolute opacity-10 dark:opacity-20"
                 style={{
-                  left: `${5 + ((index + multiplier * backgroundIcons.length) * 8) % 90}%`,
-                  top: `${5 + ((index + multiplier * backgroundIcons.length) * 10) % 90}%`,
-                  transform: `rotate(${(index + multiplier * backgroundIcons.length) * 20}deg) scale(${0.6 + ((index + multiplier * backgroundIcons.length) % 5) * 0.15})`,
+                  left: `${2 + ((index + multiplier * backgroundIcons.length) * 6) % 96}%`,
+                  top: `${2 + ((index + multiplier * backgroundIcons.length) * 7) % 96}%`,
+                  transform: `rotate(${(index + multiplier * backgroundIcons.length) * 15}deg) scale(${0.4 + ((index + multiplier * backgroundIcons.length) % 6) * 0.1})`,
                 }}
               >
                 <IconComponent
-                  className={`w-8 h-8 md:w-10 md:h-10 ${
-                    subjectColor === 'blue' ? 'text-blue-200' :
-                    subjectColor === 'purple' ? 'text-purple-200' :
-                    subjectColor === 'green' ? 'text-green-200' :
-                    subjectColor === 'orange' ? 'text-orange-200' :
-                    subjectColor === 'red' ? 'text-red-200' :
-                    subjectColor === 'teal' ? 'text-teal-200' :
-                    subjectColor === 'emerald' ? 'text-emerald-200' :
-                    'text-gray-200'
+                  className={`w-6 h-6 md:w-8 md:h-8 ${
+                    subjectColor === 'blue' ? 'text-blue-100' :
+                    subjectColor === 'purple' ? 'text-purple-100' :
+                    subjectColor === 'green' ? 'text-green-100' :
+                    subjectColor === 'orange' ? 'text-orange-100' :
+                    subjectColor === 'red' ? 'text-red-100' :
+                    subjectColor === 'teal' ? 'text-teal-100' :
+                    subjectColor === 'emerald' ? 'text-emerald-100' :
+                    'text-gray-100'
                   }`}
                 />
               </div>
