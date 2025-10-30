@@ -218,10 +218,10 @@ const SubjectPage = ({ onToggleSidebar }) => {
       {/* Header */}
       <div className="relative overflow-hidden z-10">
         <div className="relative bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-4">
 
-              <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-3">
                 {/* Controls - hidden on mobile, visible on desktop */}
                 <div className="hidden lg:flex items-center gap-2 justify-end lg:justify-start">
                   {/* Sidebar Toggle Button - Only show when sidebar is closed */}
@@ -236,9 +236,9 @@ const SubjectPage = ({ onToggleSidebar }) => {
                   )}
                   <DarkModeToggle />
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                   <div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br ${
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${
                       subjectColor === 'blue' ? 'from-blue-500 to-blue-600' :
                       subjectColor === 'purple' ? 'from-purple-500 to-purple-600' :
                       subjectColor === 'green' ? 'from-green-500 to-green-600' :
@@ -247,61 +247,61 @@ const SubjectPage = ({ onToggleSidebar }) => {
                       subjectColor === 'teal' ? 'from-teal-500 to-teal-600' :
                       subjectColor === 'emerald' ? 'from-emerald-500 to-emerald-600' :
                       'from-gray-500 to-gray-600'
-                    } shadow-lg`}
+                    } shadow-md`}
                   >
-                    <div className="w-10 h-10 text-white">
+                    <div className="w-7 h-7 text-white">
                       {React.createElement(getIcon(subject.icon), {
                         className: "w-full h-full"
                       })}
                     </div>
                   </div>
                   <div>
-                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-1">
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                       {subject.name}
                     </h1>
-                    <p className="text-lg text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       {subject.fullName}
                     </p>
                   </div>
                 </div>
 
-                {/* Statistics Cards */}
-                <div className="flex flex-wrap gap-3">
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalPapers} Papers</span>
+                {/* Statistics Cards - Compact */}
+                <div className="flex flex-wrap gap-2">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-1 border border-gray-200 dark:border-gray-600">
+                    <div className="flex items-center gap-1">
+                      <BookOpen className="w-3 h-3 text-gray-600 dark:text-gray-300" />
+                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalPapers} Papers</span>
                     </div>
                   </div>
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
-                    <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalChapters} Chapters</span>
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-1 border border-gray-200 dark:border-gray-600">
+                    <div className="flex items-center gap-1">
+                      <FileText className="w-3 h-3 text-gray-600 dark:text-gray-300" />
+                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalChapters} Chapters</span>
                     </div>
                   </div>
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
-                    <div className="flex items-center gap-2">
-                      <Download className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalPdfs} PDFs</span>
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-1 border border-gray-200 dark:border-gray-600">
+                    <div className="flex items-center gap-1">
+                      <Download className="w-3 h-3 text-gray-600 dark:text-gray-300" />
+                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalPdfs} PDFs</span>
                     </div>
                   </div>
-                  <div className="bg-gray-100 dark:bg-gray-700 rounded-xl px-4 py-2 border border-gray-200 dark:border-gray-600">
-                    <div className="flex items-center gap-2">
-                      <Video className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{totalVideos} Videos</span>
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-1 border border-gray-200 dark:border-gray-600">
+                    <div className="flex items-center gap-1">
+                      <Video className="w-3 h-3 text-gray-600 dark:text-gray-300" />
+                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalVideos} Videos</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Progress Bar */}
-            <div className="mt-6">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Content Completion</span>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{completionPercentage}%</span>
+            {/* Progress Bar - Compact */}
+            <div className="mt-4">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Content Completion</span>
+                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{completionPercentage}%</span>
               </div>
-              <Progress value={completionPercentage} className="h-2" />
+              <Progress value={completionPercentage} className="h-1.5" />
             </div>
           </div>
         </div>
