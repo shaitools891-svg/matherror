@@ -41,6 +41,8 @@ getActiveColor,
   };
 
   const makeParticles = (element) => {
+    if (!element) return;
+
     const d = particleDistances;
     const r = particleR;
     const bubbleTime = animationTime * 2 + timeVariance;
@@ -52,6 +54,8 @@ getActiveColor,
       element.classList.remove("active");
 
       setTimeout(() => {
+        if (!element) return; // Check if element still exists
+
         const particle = document.createElement("span");
         const point = document.createElement("span");
         particle.classList.add("particle");
@@ -69,17 +73,25 @@ getActiveColor,
 
         point.classList.add("point");
         particle.appendChild(point);
-        element.appendChild(particle);
-        requestAnimationFrame(() => {
-          element.classList.add("active");
-        });
-        setTimeout(() => {
-          try {
-            element.removeChild(particle);
-          } catch {
-            // do nothing
-          }
-        }, t);
+
+        // Check if element still exists before appending
+        if (element && element.parentNode) {
+          element.appendChild(particle);
+          requestAnimationFrame(() => {
+            if (element && element.classList) {
+              element.classList.add("active");
+            }
+          });
+          setTimeout(() => {
+            try {
+              if (element && particle.parentNode === element) {
+                element.removeChild(particle);
+              }
+            } catch {
+              // do nothing
+            }
+          }, t);
+        }
       }, 30);
     }
   };
@@ -116,13 +128,21 @@ getActiveColor,
 
     if (filterRef.current) {
       const particles = filterRef.current.querySelectorAll(".particle");
-      particles.forEach((p) => filterRef.current.removeChild(p));
+      particles.forEach((p) => {
+        try {
+          filterRef.current.removeChild(p);
+        } catch {
+          // do nothing
+        }
+      });
     }
 
-
-    if (filterRef.current) {
-      makeParticles(filterRef.current);
-    }
+    // Small delay before creating new particles
+    setTimeout(() => {
+      if (filterRef.current) {
+        makeParticles(filterRef.current);
+      }
+    }, 50);
 
     // Call the external click handler
     if (onItemClick) {
@@ -142,14 +162,23 @@ getActiveColor,
 
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return;
-    const activeLi = navRef.current.querySelectorAll("li")[activeIndex];
-    if (activeLi) {
-      updateEffectPosition(activeLi);
-      // Trigger initial animation for the default active item
-      if (filterRef.current) {
-        makeParticles(filterRef.current);
+
+    // Use requestAnimationFrame for better timing
+    const initAnimation = () => {
+      const activeLi = navRef.current.querySelectorAll("li")[activeIndex];
+      if (activeLi) {
+        updateEffectPosition(activeLi);
+        // Trigger initial animation for the default active item
+        if (filterRef.current) {
+          makeParticles(filterRef.current);
+        }
       }
-    }
+    };
+
+    // Small delay to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      requestAnimationFrame(initAnimation);
+    }, 150);
 
     const resizeObserver = new ResizeObserver(() => {
       const currentActiveLi =
@@ -160,7 +189,10 @@ getActiveColor,
     });
 
     resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
+    return () => {
+      clearTimeout(timer);
+      resizeObserver.disconnect();
+    };
   }, [activeIndex]);
 
   return (
@@ -183,8 +215,8 @@ getActiveColor,
             z-index: 1;
           }
           .gooey-effect.filter {
-            filter: blur(7px) contrast(100) blur(0);
-            mix-blend-mode: lighten;
+            filter: blur(8px) contrast(120) saturate(1.2);
+            mix-blend-mode: normal;
             isolation: isolate;
           }
           .gooey-effect.filter::before {
@@ -192,25 +224,26 @@ getActiveColor,
             position: absolute;
             inset: -75px;
             z-index: -2;
-            background: black;
+            background: transparent;
             opacity: 0;
             pointer-events: none;
           }
           .gooey-effect.filter::after {
             content: "";
             position: absolute;
-            inset: 0 0 0 2rem;
-            background: white;
+            inset: 0 0 0 1rem;
+            background: var(--active-color, #3b82f6);
             transform: scale(0);
             opacity: 0;
             z-index: -1;
-            border-radius: 9999px;
-            animation: pill 0.3s ease both, fadeOutGlow 0.5s ease 2s forwards;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: pill 0.3s ease both, fadeOutGlow 0.3s ease 1s forwards;
           }
           @keyframes fadeOutGlow {
             to {
               opacity: 0;
-              transform: scale(0);
+              transform: scale(0.8);
             }
           }
           @keyframes pill {
@@ -288,7 +321,6 @@ getActiveColor,
           }
           .gooey-nav-item.active {
             color: var(--active-color, black) !important;
-            text-shadow: none;
             font-weight: 600 !important;
           }
           .gooey-nav-item.active svg {
@@ -311,7 +343,8 @@ getActiveColor,
             height: 1rem;
           }
           .gooey-nav-item.active .icon-container {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           }
           .gooey-nav-item.active svg {
             color: var(--active-color, black) !important;
@@ -319,18 +352,20 @@ getActiveColor,
           .gooey-nav-item.active::after {
             opacity: 1;
             transform: scale(1);
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--active-color, #3b82f6);
           }
           .gooey-nav-item::after {
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            background: transparent;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
             opacity: 0;
-            transform: scale(0);
+            transform: scale(0.95);
             transition: all 0.3s ease;
             z-index: -1;
+            backdrop-filter: blur(10px);
           }
           .gooey-nav-vertical .gooey-nav-item {
             margin-bottom: 4px;

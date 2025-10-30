@@ -4,7 +4,7 @@ import DarkModeToggle from './DarkModeToggle';
 import { Menu, X } from 'lucide-react';
 
 
-const Header = () => {
+const Header = ({ onToggleSidebar }) => {
     const { currentTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState(0);
@@ -58,6 +58,24 @@ const Header = () => {
         `}>
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
+                    {/* Sidebar Toggle Button at very left */}
+                    <button
+                        onClick={onToggleSidebar}
+                        className={`
+                            relative inline-flex items-center justify-center z-[100]
+                            w-8 h-8 rounded-full transition-all duration-300 ease-out
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                            hover:scale-110 active:scale-95 transform-gpu
+                            shadow-lg hover:shadow-xl border border-red-500
+                            bg-yellow-400 text-black font-bold
+                            animate-fade-in mr-4
+                        `}
+                        style={{ animationDelay: '0.1s' }}
+                        aria-label="Toggle sidebar"
+                    >
+                        ☰
+                    </button>
+
                     {/* Logo */}
                     <div className="flex-shrink-0 animate-fade-in">
                         <span
@@ -99,7 +117,7 @@ const Header = () => {
                         <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
                             <DarkModeToggle />
                         </div>
-                        
+
                         {/* Mobile menu button */}
                         <div className="md:hidden">
                             <button

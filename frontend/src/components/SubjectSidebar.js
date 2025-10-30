@@ -162,21 +162,18 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-48 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
-        transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 w-48 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-r border-gray-200/50 dark:border-gray-700/50
+        transform transition-transform duration-300 ease-in-out shadow-2xl
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `} style={{ touchAction: 'manipulation' }}>
         <div className="flex flex-col h-full">
           {/* Header with toggle button */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 relative">
+          <div className="p-4 border-b border-gray-200/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm relative">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                   Study Materials
                 </h2>
-                <p className="text-sm text-gray-700 dark:text-gray-400">
-                  HSC 2026 Preparation
-                </p>
               </div>
               <Button
                 variant="ghost"
@@ -193,17 +190,17 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
           <nav className="flex-1 overflow-y-auto p-4">
             {/* GooeyNav for Subject Navigation */}
             <div className="mb-6">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700" style={{ '--text-color': 'var(--sidebar-text-color, #374151)' }}>
+              <div className="bg-white/60 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-sm shadow-lg" style={{ '--text-color': 'var(--sidebar-text-color, #374151)' }}>
                 <GooeyNav
                   items={navItems}
                   initialActiveIndex={activeSubjectIndex}
                   onItemClick={handleGooeyNavClick}
                   getIcon={getIcon}
                   getActiveColor={getActiveColor}
-                  particleCount={10}
-                  particleDistances={[60, 5]}
-                  particleR={70}
-                  animationTime={400}
+                  particleCount={15}
+                  particleDistances={[60, 8]}
+                  particleR={80}
+                  animationTime={500}
                   timeVariance={150}
                   colors={[1, 2, 3, 4]}
                 />

@@ -67,7 +67,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const sidebarContext = React.useContext(SidebarContext);
-  const { handleToggleSidebar } = sidebarContext || {};
+  const { handleToggleSidebar, sidebarOpen } = sidebarContext || {};
 
   // Find the subject data
   const subject = studyMaterialsData.subjects.find(s => s.id.toString() === subjectId);
@@ -180,27 +180,43 @@ const SubjectPage = ({ onToggleSidebar }) => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
-      {/* Fixed Header Controls */}
-      <div className="fixed top-4 right-4 z-50">
-        <div className="flex items-center gap-2">
-          <DarkModeToggle />
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100 relative">
+
+      {/* Background Icons Texture */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute inset-0">
+          {/* Create multiple instances of each icon for denser texture */}
+          {[...Array(3)].map((_, multiplier) =>
+            backgroundIcons.map((IconComponent, index) => (
+              <div
+                key={`${multiplier}-${index}`}
+                className="absolute opacity-20 dark:opacity-30"
+                style={{
+                  left: `${10 + ((index + multiplier * backgroundIcons.length) * 12) % 80}%`,
+                  top: `${10 + ((index + multiplier * backgroundIcons.length) * 15) % 80}%`,
+                  transform: `rotate(${(index + multiplier * backgroundIcons.length) * 25}deg) scale(${0.8 + ((index + multiplier * backgroundIcons.length) % 4) * 0.2})`,
+                }}
+              >
+                <IconComponent
+                  className={`w-12 h-12 md:w-16 md:h-16 ${
+                    subjectColor === 'blue' ? 'text-blue-300' :
+                    subjectColor === 'purple' ? 'text-purple-300' :
+                    subjectColor === 'green' ? 'text-green-300' :
+                    subjectColor === 'orange' ? 'text-orange-300' :
+                    subjectColor === 'red' ? 'text-red-300' :
+                    subjectColor === 'teal' ? 'text-teal-300' :
+                    subjectColor === 'emerald' ? 'text-emerald-300' :
+                    'text-gray-300'
+                  }`}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
 
-      {/* Floating Action Button for Sidebar Toggle */}
-      <div className="fixed top-6 left-6 z-50">
-        <Button
-          onClick={() => console.log('FAB clicked, handleToggleSidebar:', handleToggleSidebar) || handleToggleSidebar?.()}
-          className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0"
-          size="sm"
-        >
-          <Menu className="w-6 h-6" />
-        </Button>
-      </div>
-
       {/* Header */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden z-10">
         <div className="relative bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row lg:items-center gap-6">
@@ -208,13 +224,32 @@ const SubjectPage = ({ onToggleSidebar }) => {
               <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 {/* Controls - hidden on mobile, visible on desktop */}
                 <div className="hidden lg:flex items-center gap-2 justify-end lg:justify-start">
+                  {/* Sidebar Toggle Button - Only show when sidebar is closed */}
+                  {!sidebarOpen && (
+                    <Button
+                      onClick={() => console.log('FAB clicked, handleToggleSidebar:', handleToggleSidebar) || handleToggleSidebar?.()}
+                      className="w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0"
+                      size="sm"
+                    >
+                      <Menu className="w-4 h-4" />
+                    </Button>
+                  )}
                   <DarkModeToggle />
                 </div>
                 <div className="flex items-center gap-4">
                   <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center bg-gray-100 dark:bg-gray-700"
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br ${
+                      subjectColor === 'blue' ? 'from-blue-500 to-blue-600' :
+                      subjectColor === 'purple' ? 'from-purple-500 to-purple-600' :
+                      subjectColor === 'green' ? 'from-green-500 to-green-600' :
+                      subjectColor === 'orange' ? 'from-orange-500 to-orange-600' :
+                      subjectColor === 'red' ? 'from-red-500 to-red-600' :
+                      subjectColor === 'teal' ? 'from-teal-500 to-teal-600' :
+                      subjectColor === 'emerald' ? 'from-emerald-500 to-emerald-600' :
+                      'from-gray-500 to-gray-600'
+                    } shadow-lg`}
                   >
-                    <div className="w-10 h-10 text-gray-600 dark:text-gray-300">
+                    <div className="w-10 h-10 text-white">
                       {React.createElement(getIcon(subject.icon), {
                         className: "w-full h-full"
                       })}
@@ -273,7 +308,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         {/* View Toggle */}
         <div className="flex justify-center mb-8">
           <Tabs value={activeView} onValueChange={setActiveView} className="w-full max-w-lg">

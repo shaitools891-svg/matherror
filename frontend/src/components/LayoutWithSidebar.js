@@ -22,13 +22,9 @@ const LayoutWithSidebar = ({ children }) => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  if (typeof children === 'function') {
-    return children({ onToggleSidebar: handleToggleSidebar });
-  }
-
   if (!showSidebar) {
     console.log('LayoutWithSidebar: showSidebar is false, returning children without layout');
-    return children;
+    return children({ onToggleSidebar: handleToggleSidebar });
   }
 
   console.log('LayoutWithSidebar: showSidebar is true, rendering layout with buttons');
@@ -46,18 +42,9 @@ const LayoutWithSidebar = ({ children }) => {
 
         {/* Main content */}
         <div className={`${sidebarOpen ? 'lg:ml-48' : 'lg:ml-0'} transition-all duration-300`}>
-          {children}
+          {children({ onToggleSidebar: handleToggleSidebar })}
         </div>
 
-        {/* Floating Action Button for Sidebar Toggle */}
-        <div className="fixed top-24 left-4 z-50">
-          <button
-            onClick={() => { console.log('Global FAB clicked, handleToggleSidebar:', handleToggleSidebar); if (handleToggleSidebar) handleToggleSidebar(); }}
-            className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border-0 flex items-center justify-center"
-          >
-            <Menu className="w-5 h-5" />
-          </button>
-        </div>
       </div>
     </SidebarContext.Provider>
   );
