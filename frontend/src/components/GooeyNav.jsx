@@ -2,17 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // GooeyNav Component
 const GooeyNav = ({
-items,
-animationTime = 600,
-particleCount = 15,
-particleDistances = [90, 10],
-particleR = 100,
-timeVariance = 300,
-colors = [1, 2, 3, 1, 2, 3, 1, 4],
-initialActiveIndex = 0,
-onItemClick,
-getIcon,
-getActiveColor,
+  items,
+  animationTime = 600,
+  particleCount = 15,
+  particleDistances = [90, 10],
+  particleR = 100,
+  timeVariance = 300,
+  colors = [1, 2, 3, 1, 2, 3, 1, 4],
+  initialActiveIndex = 0,
+  onItemClick,
+  getIcon,
+  getActiveColor,
+  getIconBgColor,
 }) => {
   const containerRef = useRef(null);
   const navRef = useRef(null);
@@ -206,6 +207,12 @@ getActiveColor,
             --color-3: #06b6d4;
             --color-4: #10b981;
           }
+          .dark {
+            --color-1: #1e40af;
+            --color-2: #6b21a8;
+            --color-3: #0891b2;
+            --color-4: #047857;
+          }
           .gooey-effect {
             position: absolute;
             opacity: 1;
@@ -338,6 +345,7 @@ getActiveColor,
             justify-content: center;
             margin-right: 0.75rem;
             transition: background-color 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
           }
           .gooey-nav-item svg {
             color: currentColor;
@@ -413,7 +421,7 @@ getActiveColor,
                   style={{ touchAction: 'manipulation', userSelect: 'none' }}
                 >
                   {getIcon && item.icon && (
-                    <div className="icon-container">
+                    <div className={`icon-container ${getIconBgColor ? getIconBgColor(item.subjectId) : ''}`}>
                       {getIcon(item.icon, "w-4 h-4")}
                     </div>
                   )}

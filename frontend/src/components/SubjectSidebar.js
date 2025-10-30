@@ -51,6 +51,21 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
     return colors[subjectId] || 'gray';
   };
 
+  // Get icon background color
+  const getIconBgColor = (subjectId) => {
+    if (!subjectId) return 'transparent'; // For HOME
+    const colorMap = {
+      1: 'bg-blue-500',    // Physics
+      2: 'bg-purple-500',  // Chemistry
+      3: 'bg-green-500',   // Mathematics
+      4: 'bg-orange-500',  // ICT
+      5: 'bg-red-500',     // Bangla
+      6: 'bg-teal-500',    // English
+      7: 'bg-emerald-500'  // Biology
+    };
+    return colorMap[subjectId] || 'bg-gray-500';
+  };
+
   // Get background color for active state
   const getActiveBgColor = (subjectColor) => {
     const colorMap = {
@@ -114,11 +129,12 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
 
   // Prepare nav items for GooeyNav
   const navItems = [
-    { label: 'HOME', href: '/', icon: 'FileText' },
+    { label: 'HOME', href: '/', icon: 'FileText', subjectId: null },
     ...studyMaterialsData.subjects.map(subject => ({
       label: subject.name,
       href: `/subject/${subject.id}`,
-      icon: subject.icon
+      icon: subject.icon,
+      subjectId: subject.id
     }))
   ];
 
@@ -197,6 +213,7 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
                   onItemClick={handleGooeyNavClick}
                   getIcon={getIcon}
                   getActiveColor={getActiveColor}
+                  getIconBgColor={getIconBgColor}
                   particleCount={15}
                   particleDistances={[60, 8]}
                   particleR={80}

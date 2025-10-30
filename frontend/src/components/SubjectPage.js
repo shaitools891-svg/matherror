@@ -186,7 +186,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0">
           {/* Create multiple instances of each icon for denser texture */}
-          {[...Array(8)].map((_, multiplier) =>
+          {[...Array(12)].map((_, multiplier) =>
             backgroundIcons.map((IconComponent, index) => (
               <div
                 key={`${multiplier}-${index}`}
