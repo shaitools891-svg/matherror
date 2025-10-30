@@ -190,7 +190,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
             backgroundIcons.map((IconComponent, index) => (
               <div
                 key={`${multiplier}-${index}`}
-                className="absolute opacity-25 dark:opacity-20"
+                className="absolute opacity-40 dark:opacity-20"
                 style={{
                   left: `${2 + ((index + multiplier * backgroundIcons.length) * 6) % 96}%`,
                   top: `${2 + ((index + multiplier * backgroundIcons.length) * 7) % 96}%`,
