@@ -136,7 +136,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
     acc + paper.chapters.reduce((chapterAcc, chapter) => chapterAcc + chapter.driveLinks.length, 0), 0);
   const totalVideos = subject.papers.reduce((acc, paper) =>
     acc + paper.chapters.reduce((chapterAcc, chapter) => chapterAcc + chapter.videoLinks.length, 0), 0);
-  const completionPercentage = Math.round(((totalPdfs + totalVideos) / (totalChapters * 2)) * 100) || 0;
+  const completionPercentage = Math.min(100, Math.round(((totalPdfs + totalVideos) / (totalChapters * 2)) * 100)) || 0;
 
   const handleLinkClick = (url, type, videoData = null) => {
     if (type === 'Video' && videoData) {
