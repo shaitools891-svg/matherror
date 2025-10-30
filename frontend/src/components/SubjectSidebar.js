@@ -54,16 +54,17 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
   // Get icon background color
   const getIconBgColor = (subjectId) => {
     if (!subjectId) return 'transparent'; // For HOME
+    const { theme } = useTheme();
     const colorMap = {
-      1: 'bg-blue-500',    // Physics
-      2: 'bg-purple-500',  // Chemistry
-      3: 'bg-green-500',   // Mathematics
-      4: 'bg-orange-500',  // ICT
-      5: 'bg-red-500',     // Bangla
-      6: 'bg-teal-500',    // English
-      7: 'bg-emerald-500'  // Biology
+      1: theme === 'dark' ? 'bg-blue-500/20' : 'bg-blue-500',    // Physics
+      2: theme === 'dark' ? 'bg-purple-500/20' : 'bg-purple-500',  // Chemistry
+      3: theme === 'dark' ? 'bg-green-500/20' : 'bg-green-500',   // Mathematics
+      4: theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-500',  // ICT
+      5: theme === 'dark' ? 'bg-red-500/20' : 'bg-red-500',     // Bangla
+      6: theme === 'dark' ? 'bg-teal-500/20' : 'bg-teal-500',    // English
+      7: theme === 'dark' ? 'bg-emerald-500/20' : 'bg-emerald-500'  // Biology
     };
-    return colorMap[subjectId] || 'bg-gray-500';
+    return colorMap[subjectId] || (theme === 'dark' ? 'bg-gray-500/20' : 'bg-gray-500');
   };
 
   // Get background color for active state

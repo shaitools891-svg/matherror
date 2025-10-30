@@ -353,11 +353,18 @@ const GooeyNav = ({
           .dark .gooey-nav-item .icon-container {
             background-color: rgba(255, 255, 255, 0.05);
           }
+          .gooey-nav-item .icon-container svg {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+          }
+          .dark .gooey-nav-item .icon-container svg {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+          }
           .gooey-nav-item svg {
             color: currentColor;
             transition: color 0.3s ease;
             width: 1rem;
             height: 1rem;
+            stroke-width: 1.5;
           }
           .gooey-nav-item.active .icon-container {
             background-color: rgba(255, 255, 255, 0.15);
@@ -366,6 +373,12 @@ const GooeyNav = ({
           .dark .gooey-nav-item.active .icon-container {
             background-color: rgba(255, 255, 255, 0.1);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+          }
+          .gooey-nav-item.active .icon-container svg {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+          }
+          .dark .gooey-nav-item.active .icon-container svg {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
           }
           .gooey-nav-item.active svg {
             color: var(--active-color, black) !important;
