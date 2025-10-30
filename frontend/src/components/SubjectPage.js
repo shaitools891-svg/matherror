@@ -347,7 +347,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
             const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
 
             return (
-              <Card key={paper.id} className="group border border-gray-200/50 dark:border-gray-700/50 shadow-lg bg-white/70 dark:bg-gray-800/70 backdrop-blur-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <Card key={paper.id} className="group border border-white/20 dark:border-gray-700/30 shadow-lg bg-white/10 dark:bg-gray-800/20 backdrop-blur-xl hover:shadow-xl transition-all duration-300 overflow-hidden">
                 <CardHeader className="relative">
                   <div
                     className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 cursor-pointer group-hover:bg-gray-50/50 dark:group-hover:bg-gray-700/50 transition-colors duration-200 p-4 rounded-lg"
@@ -396,7 +396,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
                       {paper.chapters.map((chapter, chapterIndex) => (
                         <Card
                           key={chapter.id}
-                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 shadow-lg bg-white/70 dark:bg-gray-800/70 backdrop-blur-md"
+                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-white/20 dark:border-gray-700/30 shadow-lg bg-white/10 dark:bg-gray-800/20 backdrop-blur-xl"
                           onClick={() => handleChapterClick(chapter, paper.name)}
                         >
                           <CardContent className="p-6">
