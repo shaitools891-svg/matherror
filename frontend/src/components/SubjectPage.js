@@ -267,25 +267,25 @@ const SubjectPage = ({ onToggleSidebar }) => {
 
                 {/* Statistics Cards - Compact */}
                 <div className="flex flex-wrap gap-2">
-                  <div className="bg-white/30 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-white/40 dark:border-gray-600/50 backdrop-blur-sm">
+                  <div className="bg-gray-200/50 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-gray-300/60 dark:border-gray-600/50 backdrop-blur-sm">
                     <div className="flex items-center gap-1">
                       <BookOpen className="w-3 h-3 text-gray-600 dark:text-gray-300" />
                       <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalPapers} Papers</span>
                     </div>
                   </div>
-                  <div className="bg-white/30 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-white/40 dark:border-gray-600/50 backdrop-blur-sm">
+                  <div className="bg-gray-200/50 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-gray-300/60 dark:border-gray-600/50 backdrop-blur-sm">
                     <div className="flex items-center gap-1">
                       <FileText className="w-3 h-3 text-gray-600 dark:text-gray-300" />
                       <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalChapters} Chapters</span>
                     </div>
                   </div>
-                  <div className="bg-white/30 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-white/40 dark:border-gray-600/50 backdrop-blur-sm">
+                  <div className="bg-gray-200/50 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-gray-300/60 dark:border-gray-600/50 backdrop-blur-sm">
                     <div className="flex items-center gap-1">
                       <Download className="w-3 h-3 text-gray-600 dark:text-gray-300" />
                       <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalPdfs} PDFs</span>
                     </div>
                   </div>
-                  <div className="bg-white/30 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-white/40 dark:border-gray-600/50 backdrop-blur-sm">
+                  <div className="bg-gray-200/50 dark:bg-gray-700/40 rounded-lg px-3 py-1 border border-gray-300/60 dark:border-gray-600/50 backdrop-blur-sm">
                     <div className="flex items-center gap-1">
                       <Video className="w-3 h-3 text-gray-600 dark:text-gray-300" />
                       <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{totalVideos} Videos</span>
@@ -347,7 +347,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
             const totalVideos = paper.chapters.reduce((acc, chapter) => acc + chapter.videoLinks.length, 0);
 
             return (
-              <Card key={paper.id} className="group border border-white/40 dark:border-gray-700/50 shadow-lg bg-white/30 dark:bg-gray-800/40 backdrop-blur-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <Card key={paper.id} className="group border border-gray-200/60 dark:border-gray-700/50 shadow-lg bg-gray-100/40 dark:bg-gray-800/40 backdrop-blur-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
                 <CardHeader className="relative">
                   <div
                     className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 cursor-pointer group-hover:bg-gray-50/50 dark:group-hover:bg-gray-700/50 transition-colors duration-200 p-4 rounded-lg"
@@ -396,7 +396,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
                       {paper.chapters.map((chapter, chapterIndex) => (
                         <Card
                           key={chapter.id}
-                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-white/40 dark:border-gray-700/50 shadow-lg bg-white/30 dark:bg-gray-800/40 backdrop-blur-sm"
+                          className="group cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-gray-200/60 dark:border-gray-700/50 shadow-lg bg-gray-100/40 dark:bg-gray-800/40 backdrop-blur-sm"
                           onClick={() => handleChapterClick(chapter, paper.name)}
                         >
                           <CardContent className="p-6">
@@ -436,7 +436,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
 
         {/* Help Text */}
         <div className="mt-12 text-center">
-          <div className="bg-white/30 dark:bg-gray-800/40 p-8 rounded-3xl max-w-3xl mx-auto border border-white/40 dark:border-gray-700/50 backdrop-blur-sm shadow-lg">
+          <div className="bg-gray-200/50 dark:bg-gray-800/40 p-8 rounded-3xl max-w-3xl mx-auto border border-gray-300/60 dark:border-gray-700/50 backdrop-blur-sm shadow-lg">
             <div className="flex items-center justify-center mb-4">
               <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-gray-600 dark:text-gray-300" />
