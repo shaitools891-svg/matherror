@@ -213,11 +213,14 @@ getActiveColor,
             display: grid;
             place-items: center;
             z-index: 1;
+            border-radius: 12px;
+            overflow: hidden;
           }
           .gooey-effect.filter {
-            filter: blur(8px) contrast(120) saturate(1.2);
+            filter: blur(6px) contrast(110) saturate(1.1);
             mix-blend-mode: normal;
             isolation: isolate;
+            overflow: hidden;
           }
           .gooey-effect.filter::before {
             content: "";
@@ -231,7 +234,7 @@ getActiveColor,
           .gooey-effect.filter::after {
             content: "";
             position: absolute;
-            inset: 0 0 0 1rem;
+            inset: 0;
             background: var(--active-color, #3b82f6);
             transform: scale(0);
             opacity: 0;
@@ -264,8 +267,8 @@ getActiveColor,
           .particle {
             --time: 5s;
             position: absolute;
-            top: calc(50% - 8px);
-            left: calc(50% - 8px);
+            top: calc(50% - 6px);
+            left: calc(50% - 6px);
             animation: particle calc(var(--time)) ease 1 -350ms;
           }
           .point {
@@ -354,6 +357,7 @@ getActiveColor,
             transform: scale(1);
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid var(--active-color, #3b82f6);
+            pointer-events: none;
           }
           .gooey-nav-item::after {
             content: "";
@@ -419,7 +423,7 @@ getActiveColor,
             ))}
           </ul>
         </nav>
-        <span className="gooey-effect filter" ref={filterRef} />
+        <span className="gooey-effect filter" ref={filterRef} style={{ width: '100%', height: '100%', borderRadius: '12px' }} />
       </div>
     </>
   );
