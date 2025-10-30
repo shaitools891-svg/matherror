@@ -186,14 +186,14 @@ const SubjectPage = ({ onToggleSidebar }) => {
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0">
           {/* Create multiple instances of each icon for denser texture */}
-          {[...Array(12)].map((_, multiplier) =>
+          {[...Array(20)].map((_, multiplier) =>
             backgroundIcons.map((IconComponent, index) => (
               <div
                 key={`${multiplier}-${index}`}
                 className="absolute opacity-40 dark:opacity-20"
                 style={{
-                  left: `${2 + ((index + multiplier * backgroundIcons.length) * 6) % 96}%`,
-                  top: `${2 + ((index + multiplier * backgroundIcons.length) * 7) % 96}%`,
+                  left: `${((index + multiplier * backgroundIcons.length) * 5) % 100}%`,
+                  top: `${((index + multiplier * backgroundIcons.length) * 5.2) % 100}%`,
                   transform: `rotate(${(index + multiplier * backgroundIcons.length) * 15}deg) scale(${0.4 + ((index + multiplier * backgroundIcons.length) % 6) * 0.1})`,
                 }}
               >
