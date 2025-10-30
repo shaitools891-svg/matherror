@@ -192,8 +192,8 @@ const SubjectPage = ({ onToggleSidebar }) => {
                 key={`${multiplier}-${index}`}
                 className="absolute opacity-40 dark:opacity-20"
                 style={{
-                  left: `${((index + multiplier * backgroundIcons.length) * 5) % 100}%`,
-                  top: `${((index + multiplier * backgroundIcons.length) * 5.2) % 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
                   transform: `rotate(${(index + multiplier * backgroundIcons.length) * 15}deg) scale(${0.4 + ((index + multiplier * backgroundIcons.length) % 6) * 0.1})`,
                 }}
               >
