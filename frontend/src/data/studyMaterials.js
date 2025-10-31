@@ -44,6 +44,18 @@ export const studyMaterialsData = {
                 {
                   name: "Vector fundamental -- ভবঘুরে ভেক্টর",
                   url: "https://www.youtube.com/live/9B_38dDQUoo?si=N-Qt22MfOdoX9tBk"
+                },
+                {
+                  name: "Part 1",
+                  url: "https://www.youtube.com/live/W_iQjiMVmtc?si=AmF9yUYq6avx5Y-M"
+                },
+                {
+                  name: "Part 2",
+                  url: "https://www.youtube.com/live/_TkMpFs5ihY?si=Bx62Ad-UddQlNHJp"
+                },
+                {
+                  name: "Part 3",
+                  url: "https://www.youtube.com/live/TYFTPRB-H-I?si=kE-jmBkfpaEDal2R"
                 }
               ]
             },
