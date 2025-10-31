@@ -249,7 +249,7 @@ export const studyMaterialsData = {
             },
             {
               id: 19,
-              title: "Chapter 7",
+              title: "Chapter 7: ত্রিকোণমিতি অনুশীলনী",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -276,7 +276,16 @@ export const studyMaterialsData = {
                   url: "https://drive.google.com/file/d/1W6yfmhJI2yuw-m3tBGFa3oRZ48zyxfCX/view?usp=sharing"
                 }
               ],
-              videoLinks: []
+              videoLinks: [
+                {
+                  name: "7.1",
+                  url: "https://youtu.be/xN9KLZ840Mo?si=3ZECIddtD8bnambK"
+                },
+                {
+                  name: "7.2",
+                  url: "https://youtu.be/EfD9o8-ZeN4?si=0u74GxypSc-0cZLf"
+                }
+              ]
             },
             {
               id: 20,
