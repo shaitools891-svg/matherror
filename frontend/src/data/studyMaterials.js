@@ -53,7 +53,7 @@ export const studyMaterialsData = {
             },
             {
               id: 4,
-              title: "নিউটনিয়ান বলবিদ্যা",
+              title: "অধ্যায় ৪ঃ নিউটনিয়ান বলবিদ্যা",
               driveLinks: [],
               videoLinks: [
                 {
@@ -64,7 +64,7 @@ export const studyMaterialsData = {
             },
             {
               id: 5,
-              title: "কাজ, শক্তি ও ক্ষমতা",
+              title: "অধ্যায় ৫ঃ কাজ, শক্তি ও ক্ষমতা",
               driveLinks: [],
               videoLinks: [
                 {
