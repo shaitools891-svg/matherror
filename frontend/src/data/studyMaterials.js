@@ -33,7 +33,7 @@ export const studyMaterialsData = {
             },
             {
               id: 2,
-              title: "Thermodynamics",
+              title: "ভেক্টর",
               driveLinks: [
                 {
                   name: "Heat and Temperature",
@@ -42,8 +42,8 @@ export const studyMaterialsData = {
               ],
               videoLinks: [
                 {
-                  name: "Thermodynamics Explained",
-                  url: "https://youtube.com/your-link-here"
+                  name: "Vector fundamental -- ভবঘুরে ভেক্টর",
+                  url: "https://www.youtube.com/live/9B_38dDQUoo?si=N-Qt22MfOdoX9tBk"
                 }
               ]
             },
