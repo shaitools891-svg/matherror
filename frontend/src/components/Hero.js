@@ -39,7 +39,7 @@ const Hero = () => {
                         style={{ animationDelay: '0.2s' }}
                     >
                         Comprehensive study materials, video lectures, and practice resources
-                        for HSC 27 students.
+                        for HSC 2027 students.
                     </p>
 
                     {/* CTA Buttons */}
@@ -84,7 +84,7 @@ const Hero = () => {
                             {
                                 icon: Target,
                                 title: 'Focused Learning',
-                                description: 'Targeted content for HSC 2026 examination'
+                                description: 'Targeted content for HSC 2027 examination'
                             }
                         ].map((feature, index) => (
                             <div
