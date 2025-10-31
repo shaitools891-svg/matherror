@@ -190,7 +190,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
             backgroundIcons.map((IconComponent, index) => (
               <div
                 key={`${multiplier}-${index}`}
-                className="absolute opacity-40 dark:opacity-20"
+                className="absolute opacity-40 dark:opacity-10"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -222,8 +222,8 @@ const SubjectPage = ({ onToggleSidebar }) => {
             <div className="flex flex-col lg:flex-row lg:items-center gap-4">
 
               <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                {/* Controls - hidden on mobile, visible on desktop */}
-                <div className="hidden lg:flex items-center gap-2 justify-end lg:justify-start">
+                {/* Controls - visible on all screens */}
+                <div className="flex items-center gap-2 justify-end lg:justify-start">
                   {/* Sidebar Toggle Button - Only show when sidebar is closed */}
                   {!sidebarOpen && (
                     <Button
