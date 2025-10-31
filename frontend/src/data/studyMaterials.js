@@ -14,7 +14,7 @@ export const studyMaterialsData = {
            
             {
               id: 1,
-              title: "ভেক্টর",
+              title: "অধ্যায় ২ঃ ভেক্টর",
               driveLinks: [
                 {
                   name: "Heat and Temperature",
@@ -42,7 +42,7 @@ export const studyMaterialsData = {
             },
             {
               id: 2,
-              title: "Chapter 6",
+              title: "অধ্যায় ৩ঃ গতিবিদ্যা",
               driveLinks: [],
               videoLinks: [
                 {
