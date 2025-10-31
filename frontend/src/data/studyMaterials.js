@@ -128,6 +128,10 @@ export const studyMaterialsData = {
                 {
                   name: "Chemistry-48",
                   url: "https://www.youtube.com/live/ozkjdRnfFns?si=ix8ZOzIhDrGGnSYj"
+                },
+                {
+                  name: "Utkorsho Playlist",
+                  url: "https://youtu.be/cz8Ck1j_2Qk?si=tnsyi4GuEk94Bew8"
                 }
               ]
             }
