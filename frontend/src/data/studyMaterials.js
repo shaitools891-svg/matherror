@@ -50,6 +50,17 @@ export const studyMaterialsData = {
                   url: "https://www.youtube.com/live/DxZp3hQKIBQ?si=9g1hpXVgQw7vSWxb"
                 }
               ]
+            },
+            {
+              id: 4,
+              title: "নিউটনিয়ান বলবিদ্যা",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "নিউটনিয়ান বলবিদ্যা",
+                  url: "https://youtu.be/DThcDA5IO5c?si=zh8cTDy9eYh8If3T"
+                }
+              ]
             }
           ]
         },
