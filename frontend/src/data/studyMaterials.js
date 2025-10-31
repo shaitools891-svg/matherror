@@ -110,6 +110,10 @@ export const studyMaterialsData = {
                 {
                   name: "Part 2",
                   url: "https://www.youtube.com/live/sk8hfbYuEac?si=3ILldQkSN_LRPX8n"
+                },
+                {
+                  name: "Part 3",
+                  url: "https://www.youtube.com/live/t0P128DmAgk?si=aIR47TbXI3op6xCq"
                 }
               ]
             },
