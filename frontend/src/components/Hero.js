@@ -38,8 +38,8 @@ const Hero = () => {
                         className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 animate-slide-up transition-colors duration-300"
                         style={{ animationDelay: '0.2s' }}
                     >
-                        Comprehensive study materials, video lectures, and practice resources 
-                        for HSC 2026 students.
+                        Comprehensive study materials, video lectures, and practice resources
+                        for HSC 27 students.
                     </p>
 
                     {/* CTA Buttons */}

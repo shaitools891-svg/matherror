@@ -446,7 +446,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
               Help Us Grow This Resource Library
             </h3>
             <p className="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-              Have study materials, PDFs, or educational videos to share? Your contributions help thousands of HSC 2026 students succeed.
+              Have study materials, PDFs, or educational videos to share? Your contributions help thousands of HSC 27 students succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-gray-800 hover:bg-gray-900 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-6 py-3">
