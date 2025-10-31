@@ -14,22 +14,8 @@ export const studyMaterialsData = {
             {
               id: 1,
               title: "Mechanics",
-              driveLinks: [
-                {
-                  name: "Chapter 1 - Motion",
-                  url: "https://drive.google.com/your-link-here"
-                },
-                {
-                  name: "Chapter 2 - Forces", 
-                  url: "https://drive.google.com/your-link-here"
-                }
-              ],
-              videoLinks: [
-                {
-                  name: "Motion Basics",
-                  url: "https://youtube.com/your-link-here"
-                }
-              ]
+              driveLinks: [],
+              videoLinks: []
             },
             {
               id: 2,
