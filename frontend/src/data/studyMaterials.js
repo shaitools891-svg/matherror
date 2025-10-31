@@ -72,6 +72,17 @@ export const studyMaterialsData = {
                   url: "https://youtu.be/j1Gvt-PRu3c?si=9wQvDCgPIwgkY_UK"
                 }
               ]
+            },
+            {
+              id: 8,
+              title: "পর্যাবৃত্ত গতি",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "পর্যাবৃত্ত গতি",
+                  url: "https://youtu.be/DfYz96h8HU4?si=QwScggwG-xl2NrF9"
+                }
+              ]
             }
           ]
         },
