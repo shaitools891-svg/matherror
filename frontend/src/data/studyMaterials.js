@@ -284,6 +284,18 @@ export const studyMaterialsData = {
                 {
                   name: "7.2",
                   url: "https://youtu.be/EfD9o8-ZeN4?si=0u74GxypSc-0cZLf"
+                },
+                {
+                  name: "7.3 part 1",
+                  url: "https://youtu.be/Gy75pWbiV_k?si=aKt52lUTvSbTXJVl"
+                },
+                {
+                  name: "7.3 part 2",
+                  url: "https://youtu.be/plYRk_VtnAA?si=A18yl2vvthUCRyiU"
+                },
+                {
+                  name: "7.3 part 3",
+                  url: "https://youtu.be/lGBka6IFOZc?si=9YuwKHoNbgj3Po4P"
                 }
               ]
             },
