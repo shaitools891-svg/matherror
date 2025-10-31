@@ -176,7 +176,7 @@ export const studyMaterialsData = {
             
             {
               id: 16,
-              title: "Chapter 1",
+              title: "অধ্যায় ১",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -196,7 +196,7 @@ export const studyMaterialsData = {
             },
             {
               id: 32,
-              title: "Chapter 2",
+              title: "অধ্যায় ২",
               driveLinks: [],
               videoLinks: [
                 {
@@ -211,7 +211,7 @@ export const studyMaterialsData = {
             },
             {
               id: 17,
-              title: "Chapter 3",
+              title: "অধ্যায় ৩",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -234,7 +234,7 @@ export const studyMaterialsData = {
             },
             {
               id: 18,
-              title: "Chapter 4",
+              title: "অধ্যায় ৪",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -249,7 +249,7 @@ export const studyMaterialsData = {
             },
             {
               id: 19,
-              title: "Chapter 7: ত্রিকোণমিতি অনুশীলনী",
+              title: "অধ্যায় ৭",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -301,7 +301,7 @@ export const studyMaterialsData = {
             },
             {
               id: 20,
-              title: "Chapter 9",
+              title: "অধ্যায় ৯",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -324,7 +324,7 @@ export const studyMaterialsData = {
             },
             {
               id: 21,
-              title: "Chapter 10",
+              title: "অধ্যায় ১০",
               driveLinks: [
                 {
                   name: "PDF 1",
@@ -671,21 +671,40 @@ export const studyMaterialsData = {
           chapters: [
             {
               id: 29,
-              title: "Ecology",
+              title: "Chapter 1",
               driveLinks: [],
               videoLinks: []
             },
             {
               id: 30,
-              title: "Evolution",
+              title: "Chapter 2",
               driveLinks: [],
               videoLinks: []
             },
             {
               id: 31,
-              title: "Human Physiology",
+              title: "Chapter 3",
               driveLinks: [],
               videoLinks: []
+            },
+            {
+              id: 32,
+              title: "অধ্যায়-০৪ : মানব শারীরতত্ত্বঃ রক্ত ও সঞ্চালন। Part-01",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "Part-01",
+                  url: "https://www.youtube.com/live/Y6YYBs8qu4w?si=S8xgpEXnw_1kL0lF"
+                },
+                {
+                  name: "Part-02",
+                  url: "https://www.youtube.com/live/GVP1Wev1TCA?si=OAGKVt_RRuuQvAK4"
+                },
+                {
+                  name: "Part-03",
+                  url: "https://youtu.be/HSkFC8k1sLA?si=7lnUufrlD8MxHCjP"
+                }
+              ]
             }
           ]
         }
