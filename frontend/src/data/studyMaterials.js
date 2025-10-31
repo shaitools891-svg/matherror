@@ -11,14 +11,9 @@ export const studyMaterialsData = {
           id: 1,
           name: "1st Paper",
           chapters: [
+           
             {
               id: 1,
-              title: "Mechanics",
-              driveLinks: [],
-              videoLinks: []
-            },
-            {
-              id: 2,
               title: "ভেক্টর",
               driveLinks: [
                 {
@@ -46,7 +41,7 @@ export const studyMaterialsData = {
               ]
             },
             {
-              id: 34,
+              id: 2,
               title: "Chapter 6",
               driveLinks: [],
               videoLinks: [
