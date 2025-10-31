@@ -61,6 +61,17 @@ export const studyMaterialsData = {
                   url: "https://youtu.be/DThcDA5IO5c?si=zh8cTDy9eYh8If3T"
                 }
               ]
+            },
+            {
+              id: 5,
+              title: "কাজ, শক্তি ও ক্ষমতা",
+              driveLinks: [],
+              videoLinks: [
+                {
+                  name: "কাজ, শক্তি ও ক্ষমতা",
+                  url: "https://youtu.be/j1Gvt-PRu3c?si=9wQvDCgPIwgkY_UK"
+                }
+              ]
             }
           ]
         },
