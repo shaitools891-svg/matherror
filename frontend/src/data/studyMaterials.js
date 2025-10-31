@@ -96,21 +96,20 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 3,
-          name: "1st Paper",
+          name: "রসায়ন ১ম পত্র",
           chapters: [
             {
               id: 5,
-              title: "Organic Chemistry",
-              driveLinks: [
-                {
-                  name: "Organic Compounds",
-                  url: "https://drive.google.com/your-link-here"
-                }
-              ],
+              title: "গুণগত রসায়ন",
+              driveLinks: [],
               videoLinks: [
                 {
-                  name: "Organic Chemistry Basics",
-                  url: "https://youtube.com/your-link-here"
+                  name: "Part 1",
+                  url: "https://www.youtube.com/live/Tw664yqGrSc?si=dj8HH8dwEO8JXy_s"
+                },
+                {
+                  name: "Part 2",
+                  url: "https://www.youtube.com/live/sk8hfbYuEac?si=3ILldQkSN_LRPX8n"
                 }
               ]
             },
@@ -583,7 +582,7 @@ export const studyMaterialsData = {
           chapters: [
             {
               id: 23,
-              title: "উচ্চারণের নিয়ম ও প্রতিবেদন লিখন",
+              title: "ব্যাকরণ ও নির্মিতি",
               driveLinks: [
                 {
                   name: "উচ্চারণের নিয়ম ও প্রতিবেদন লিখন",
