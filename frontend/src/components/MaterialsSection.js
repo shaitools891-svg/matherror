@@ -307,7 +307,7 @@ const MaterialsSection = () => {
               <h3 className="text-lg font-semibold">Latest Updates</h3>
             </div>
             <p className="text-blue-100">
-              🎉 Bangla 1st Paper materials added! More Bangla resources coming soon. Help us grow by sharing your study materials.
+              🎉 বাংলা ১ম পত্রের উপকরণ যোগ করা হয়েছে! আরও বাংলা রিসোর্স শীঘ্রই আসছে
             </p>
           </div>
         </div>

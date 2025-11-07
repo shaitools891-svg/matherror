@@ -13,11 +13,11 @@ const Footer = () => {
             fontWeight: 'normal',
             letterSpacing: '2px'
           }}>
-            Math ERROR
+            গণিত ত্রুটি
           </span> Official Website
         </p>
         <p className="mt-2 text-gray-300 dark:text-gray-400 transition-colors duration-300">
-          © 2025 Math ERROR. All rights reserved.
+          © ২০২৫ গণিত ত্রুটি. সর্বস্বত্ব সংরক্ষিত।
         </p>
       </div>
     </footer>
