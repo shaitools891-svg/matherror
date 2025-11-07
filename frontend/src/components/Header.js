@@ -141,7 +141,7 @@ const Header = ({ onToggleSidebar }) => {
                 </div>
 
                 {/* Mobile Navigation Menu */}
-         s ar       {isMenuOpen && (
+              {isMenuOpen && (
                     <div className="md:hidden animate-slide-down">
                         <div className="px-2 pt-2 pb-3 space-y-1 bg-white/70 dark:bg-gray-900/70 glass:bg-white/30 backdrop-blur-sm rounded-lg border border-gray-200/30 dark:border-gray-700/30 glass:border-white/30 mt-2 shadow-lg">
                             {navItems.map((item, index) => (
