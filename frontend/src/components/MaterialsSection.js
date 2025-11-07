@@ -324,7 +324,7 @@ const MaterialsSection = () => {
           {/* UPDATED: Custom GlassIcons with click handler */}
           <div className="mt-8 text-center">
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Click on any subject in the sidebar to view detailed materials
+              বিস্তারিত উপকরণ দেখতে সাইডবার থেকে যেকোনো বিষয়ে ক্লিক করুন
             </p>
           </div>
         </div>
