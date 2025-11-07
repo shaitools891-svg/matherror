@@ -23,7 +23,7 @@ const Hero = () => {
                 <div className="text-center">
                     {/* Main heading with animations */}
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
-                        <span 
+                        <span
                             className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
                         >
                             Study Materials
@@ -34,12 +34,11 @@ const Hero = () => {
                     </h1>
 
                     {/* Subtitle */}
-                    <p 
+                    <p
                         className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 animate-slide-up transition-colors duration-300"
                         style={{ animationDelay: '0.2s' }}
                     >
-                        Comprehensive study materials, video lectures, and practice resources
-                        for HSC 2027 students.
+                        HSC 2027 এর শিক্ষার্থীদের জন্য সম্পূর্ণ পড়াশোনার সামগ্রী, ভিডিও পাঠ এবং অনুশীলনী উপকরণ।
                     </p>
 
                     {/* CTA Buttons */}

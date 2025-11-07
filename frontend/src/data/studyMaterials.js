@@ -3,7 +3,7 @@ export const studyMaterialsData = {
   subjects: [
     {
       id: 1,
-      name: "Physics",
+      name: "পদার্থবিজ্ঞান",
       fullName: "HSC Physics",
       icon: "Atom",
       papers: [
@@ -118,7 +118,7 @@ export const studyMaterialsData = {
     },
     {
       id: 2,
-      name: "Chemistry",
+      name: "রসায়ন",
       fullName: "HSC Chemistry",
       icon: "FlaskConical",
       papers: [
@@ -198,7 +198,7 @@ export const studyMaterialsData = {
     },
     {
       id: 3,
-      name: "Mathematics",
+      name: "গণিত",
       fullName: "HSC Mathematics",
       icon: "Monitor",
       papers: [
@@ -412,7 +412,7 @@ export const studyMaterialsData = {
     },
     {
       id: 4,
-      name: "ICT",
+      name: "তথ্য ও যোগাযোগ প্রযুক্তি",
       fullName: "Information and Communication Technology",
       icon: "Calculator",
       papers: [
@@ -575,7 +575,7 @@ export const studyMaterialsData = {
     },
     {
       id: 5,
-      name: "Bangla",
+      name: "বাংলা",
       fullName: "HSC Bangla",
       icon: "BookOpen",
       papers: [
@@ -633,7 +633,7 @@ export const studyMaterialsData = {
     },
     {
       id: 6,
-      name: "English",
+      name: "ইংরেজি",
       fullName: "HSC English",
       icon: "Languages",
       papers: [
@@ -670,7 +670,7 @@ export const studyMaterialsData = {
     },
     {
       id: 7,
-      name: "Biology",
+      name: "জীববিজ্ঞান",
       fullName: "HSC Biology",
       icon: "Dna",
       papers: [
