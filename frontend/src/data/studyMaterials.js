@@ -9,7 +9,7 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 1,
-          name: "1st Paper",
+          name: "১ম পত্র",
           chapters: [
            
             {
@@ -88,7 +88,7 @@ export const studyMaterialsData = {
         },
         {
           id: 2,
-          name: "2nd Paper",
+          name: "২য় পত্র",
           chapters: [
             {
               id: 3,
@@ -124,7 +124,7 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 3,
-          name: "রসায়ন ১ম পত্র",
+          name: "১ম পত্র",
           chapters: [
             {
               id: 5,
@@ -168,7 +168,7 @@ export const studyMaterialsData = {
         },
         {
           id: 4,
-          name: "2nd Paper",
+          name: "২য় পত্র",
           chapters: [
             {
               id: 6,
@@ -204,7 +204,7 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 5,
-          name: "1st Paper",
+          name: "১ম পত্র",
           chapters: [
             
             {
@@ -382,7 +382,7 @@ export const studyMaterialsData = {
         },
         {
           id: 6,
-          name: "2nd Paper",
+          name: "২য় পত্র",
           chapters: [
             {
               id: 9,
@@ -581,7 +581,7 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 8,
-          name: "1st Paper",
+          name: "১ম পত্র",
           chapters: [
             {
               id: 22,
@@ -610,7 +610,7 @@ export const studyMaterialsData = {
         },
         {
           id: 9,
-          name: "2nd Paper",
+          name: "২য় পত্র",
           chapters: [
             {
               id: 23,
@@ -639,7 +639,7 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 10,
-          name: "1st Paper",
+          name: "১ম পত্র",
           chapters: [
             {
               id: 24,
@@ -656,7 +656,7 @@ export const studyMaterialsData = {
         },
         {
           id: 11,
-          name: "2nd Paper",
+          name: "২য় পত্র",
           chapters: [
             {
               id: 25,
@@ -676,7 +676,7 @@ export const studyMaterialsData = {
       papers: [
         {
           id: 12,
-          name: "1st Paper",
+          name: "১ম পত্র",
           chapters: [
             {
               id: 26,
@@ -700,7 +700,7 @@ export const studyMaterialsData = {
         },
         {
           id: 13,
-          name: "2nd Paper",
+          name: "২য় পত্র",
           chapters: [
             {
               id: 29,
