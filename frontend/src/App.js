@@ -15,6 +15,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './components/NotFound';
 import SubjectPage from './components/SubjectPage';
+import ChapterPage from './components/ChapterPage';
 import LayoutWithSidebar from './components/LayoutWithSidebar';
 
 // Scroll restoration component
@@ -142,11 +143,12 @@ function App() {
           <LayoutWithSidebar>
             {({ onToggleSidebar }) => (
               <Routes>
-                 <Route path="/" element={loading ? <AppLoading /> : <Home onToggleSidebar={onToggleSidebar} />} />
-                 <Route path="/subject/:subjectId" element={<SubjectPage onToggleSidebar={onToggleSidebar} />} />
-                 {/* Add other routes here if needed */}
-                 <Route path="*" element={<NotFound />} />
-               </Routes>
+                <Route path="/" element={loading ? <AppLoading /> : <Home onToggleSidebar={onToggleSidebar} />} />
+                <Route path="/subject/:subjectId" element={<SubjectPage onToggleSidebar={onToggleSidebar} />} />
+                <Route path="/subject/:subjectId/paper/:paperId/chapter/:chapterId" element={<ChapterPage onToggleSidebar={onToggleSidebar} />} />
+                {/* Add other routes here if needed */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             )}
           </LayoutWithSidebar>
         </div>
