@@ -208,6 +208,40 @@ code {
     }
 }
 
+/* Custom Bangla Fonts */
+@font-face {
+  font-family: 'AbuJMAkkas';
+  src: url('./fonts/Unicode/Li Abu J M Akkas Unicode.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AbuJMAkkas';
+  src: url('./fonts/Unicode/Li Abu J M Akkas Unicode Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MahfuzHimadri';
+  src: url('./fonts/Unicode/Li Mahfuz Himadri Unicode.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MahfuzHimadri';
+  src: url('./fonts/Unicode/Li Mahfuz Himadri Unicode Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Bangla text font */
+.bangla-text {
+  font-family: 'MahfuzHimadri', sans-serif;
+}
+
 /* ReactBits GooeyNav Keyframe Animations */
 @keyframes pill {
     to {

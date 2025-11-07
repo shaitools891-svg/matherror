@@ -353,7 +353,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
                         <CardTitle className="text-2xl text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                           {paper.name}
                         </CardTitle>
-                        <p className="text-gray-700 dark:text-gray-400 mt-1">
+                        <p className="text-gray-700 dark:text-gray-400 mt-1 bangla-text">
                           {totalChapters} chapters • {totalPdfs} PDFs • {totalVideos} videos
                         </p>
                       </div>
@@ -412,7 +412,7 @@ const SubjectPage = ({ onToggleSidebar }) => {
                               </div>
                             </div>
 
-                            <div className="mt-4 text-xs text-gray-500 dark:text-gray-500 text-center">
+                            <div className="mt-4 text-xs text-gray-500 dark:text-gray-500 text-center bangla-text">
                               Click to view materials
                             </div>
                           </CardContent>
@@ -434,10 +434,10 @@ const SubjectPage = ({ onToggleSidebar }) => {
                 <TrendingUp className="w-6 h-6 text-gray-600 dark:text-gray-300" />
               </div>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+            <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 bangla-text">
               Help Us Grow This Resource Library
             </h3>
-            <p className="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed bangla-text">
               Have study materials, PDFs, or educational videos to share? Your contributions help thousands of HSC 2027 students succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from './ui/button';
-import GooeyNav from './GooeyNav';
 import {
   Monitor,
   Atom,
@@ -139,16 +138,14 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
     }))
   ];
 
-  // Handle GooeyNav click
-  const handleGooeyNavClick = (item, index) => {
-    console.log('GooeyNav clicked:', item, index);
-    if (index === 0) {
+  // Handle navigation click
+  const handleNavClick = (subjectId) => {
+    if (subjectId === null) {
       navigate('/');
     } else {
-      const subjectId = studyMaterialsData.subjects[index - 1].id;
       navigate(`/subject/${subjectId}`);
     }
-    // Don't close sidebar on navigation
+    if (onClose) onClose();
   };
 
   // Update active index based on current location
@@ -180,7 +177,7 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
       {/* Sidebar */}
       <div className={`
         fixed inset-y-0 left-0 z-50 w-48 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-r border-gray-200/50 dark:border-gray-700/50
-        transform transition-transform duration-300 ease-in-out shadow-2xl
+        transform transition-transform duration-500 ease-out shadow-2xl
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `} style={{ touchAction: 'manipulation' }}>
         <div className="flex flex-col h-full">
@@ -205,26 +202,51 @@ const SubjectSidebar = ({ isOpen, onClose, onToggle }) => {
 
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto p-4">
-            {/* GooeyNav for Subject Navigation */}
+            {/* Subject Navigation */}
             <div className="mb-6">
-              <div className="bg-white/60 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-sm shadow-lg" style={{ '--text-color': 'var(--sidebar-text-color, #374151)' }}>
-                <GooeyNav
-                  items={navItems}
-                  initialActiveIndex={activeSubjectIndex}
-                  onItemClick={handleGooeyNavClick}
-                  getIcon={getIcon}
-                  getActiveColor={getActiveColor}
-                  getIconBgColor={getIconBgColor}
-                  particleCount={15}
-                  particleDistances={[60, 8]}
-                  particleR={80}
-                  animationTime={500}
-                  timeVariance={150}
-                  colors={[1, 2, 3, 4]}
-                />
+              <div className="space-y-2">
+                {/* Home */}
+                <button
+                  onClick={() => handleNavClick(null)}
+                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-all duration-200 ${
+                    isHomeActive()
+                      ? 'bg-blue-500 text-white shadow-md'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                    isHomeActive()
+                      ? 'bg-white/20'
+                      : 'bg-gray-100 dark:bg-gray-700'
+                  }`}>
+                    {getIcon('FileText', 'w-4 h-4')}
+                  </div>
+                  <span className="font-medium">HOME</span>
+                </button>
+
+                {/* Subjects */}
+                {studyMaterialsData.subjects.map((subject) => (
+                  <button
+                    key={subject.id}
+                    onClick={() => handleNavClick(subject.id)}
+                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-all duration-200 ${
+                      isActive(subject.id)
+                        ? `bg-${getSubjectColor(subject.id)}-500 text-white shadow-md`
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    }`}
+                  >
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                      isActive(subject.id)
+                        ? 'bg-white/20'
+                        : getIconBgColor(subject.id)
+                    }`} style={{ padding: '1px' }}>
+                      {getIcon(subject.icon, 'w-4 h-4')}
+                    </div>
+                    <span className="font-medium truncate text-base" style={{ fontFamily: 'AbuJMAkkas, sans-serif' }}>{subject.name}</span>
+                  </button>
+                ))}
               </div>
             </div>
-
           </nav>
 
         </div>

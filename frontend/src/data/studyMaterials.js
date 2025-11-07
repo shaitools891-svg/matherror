@@ -412,7 +412,7 @@ export const studyMaterialsData = {
     },
     {
       id: 4,
-      name: "তথ্য ও যোগাযোগ প্রযুক্তি",
+      name: "আইসিটি",
       fullName: "Information and Communication Technology",
       icon: "Calculator",
       papers: [

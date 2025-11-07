@@ -314,16 +314,16 @@ const MaterialsSection = () => {
 
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300 bangla-text">
             Study Materials
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300 bangla-text">
             Access comprehensive notes and video lectures for HSC 26 preparation
           </p>
 
           {/* UPDATED: Custom GlassIcons with click handler */}
           <div className="mt-8 text-center">
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 bangla-text text-lg">
               বিস্তারিত উপকরণ দেখতে সাইডবার থেকে যেকোনো বিষয়ে ক্লিক করুন
             </p>
           </div>
@@ -353,7 +353,7 @@ const MaterialsSection = () => {
             )}
           </div>
           {searchQuery && (
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 bangla-text">
               Found {filteredMaterials.length} result{filteredMaterials.length !== 1 ? 's' : ''} for "{searchQuery}"
             </p>
           )}
@@ -391,7 +391,7 @@ const MaterialsSection = () => {
         {/* Search Results View */}
         {isSearching && (
           <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Search Results</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 bangla-text">Search Results</h3>
             <div className="grid gap-3">
               {filteredMaterials.map((material, index) => (
                 <div
@@ -409,7 +409,7 @@ const MaterialsSection = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <h4 className="font-medium text-gray-800 dark:text-gray-100">{material.name}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 bangla-text">
                         {material.subject} • {material.paper} • {material.chapter}
                       </p>
                     </div>
@@ -426,7 +426,7 @@ const MaterialsSection = () => {
                 </div>
               ))}
               {filteredMaterials.length === 0 && (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                <div className="text-center py-8 text-gray-500 dark:text-gray-400 bangla-text">
                   No materials found matching your search.
                 </div>
               )}
@@ -626,10 +626,10 @@ const MaterialsSection = () => {
         {/* Help Text */}
         <div className="mt-12 text-center">
           <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl max-w-2xl mx-auto transition-colors duration-300">
-            <h3 className="font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+            <h3 className="font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 bangla-text">
               Share Your Resources
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+            <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300 bangla-text">
               Have a PDF (Google Drive) or YouTube video to add? Contact Shakib.
             </p>
           </div>
