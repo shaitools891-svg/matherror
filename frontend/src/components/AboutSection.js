@@ -45,8 +45,8 @@ const AboutSection = () => {
                   </svg>
                 )}
               </div>
-              <h2 className="text-2xl font-bold mb-2">Shakib</h2>
-              <p className="text-blue-100 mb-6">CSE Student</p>
+              <h2 className="text-2xl font-bold mb-2">শাকিব</h2>
+              <p className="text-blue-100 mb-6">CSE ছাত্র</p>
               <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 w-full max-w-xs">
                 <h3 className="font-semibold mb-3 text-center">Quick Info</h3>
                 <div className="space-y-2">
@@ -54,20 +54,20 @@ const AboutSection = () => {
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                     </svg>
-                    Free PDF Resources
+                    ফ্রি পিডিএফ রিসোর্স
                   </p>
                   <p className="text-sm flex items-center">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
                     </svg>
-                    Class Links
+                    ক্লাস লিঙ্ক
                   </p>
                   <p className="text-sm flex items-center">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                       <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
                     </svg>
-                    WhatsApp Group
+                    হোয়াটসঅ্যাপ গ্রুপ
                   </p>
                 </div>
               </div>
@@ -75,7 +75,7 @@ const AboutSection = () => {
             
             {/* Content Section */}
             <div className="md:w-3/5 p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">About Matherror</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">ম্যাথ এরর সম্পর্কে</h2>
               
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
@@ -85,7 +85,7 @@ const AboutSection = () => {
                     </svg>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300">
-                    I am Shakib, a student of Computer Science and Engineering (CSE).
+                    আমি শাকিব, কম্পিউটার সাইন্স অ্যান্ড ইঞ্জিনিয়ারিং (CSE) এর ছাত্র।
                   </p>
                 </div>
                 
@@ -96,7 +96,7 @@ const AboutSection = () => {
                     </svg>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300">
-                    The primary purpose behind creating this website is to consolidate all free PDF resources and important class links in one place. Often, these resources are difficult to find or get accidentally deleted.
+                    এই ওয়েবসাইট তৈরির প্রধান উদ্দেশ্য হলো সব ফ্রি পিডিএফ রিসোর্স এবং গুরুত্বপূর্ণ ক্লাস লিঙ্কগুলোকে এক জায়গায় একত্রিত করা। প্রায়ই এই রিসোর্সগুলো খুঁজে পাওয়া কঠিন হয়ে যায় বা দুর্ঘটনাক্রমে মুছে যায়।
                   </p>
                 </div>
                 
@@ -108,7 +108,7 @@ const AboutSection = () => {
                     </svg>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300">
-                    The website is named after one of my WhatsApp groups. There are plans to add more features in the future.
+                    ওয়েবসাইটের নামকরণ করা হয়েছে আমার একটি হোয়াটসঅ্যাপ গ্রুপের নাম থেকে। ভবিষ্যতে আরও ফিচার যোগ করার পরিকল্পনা আছে।
                   </p>
                 </div>
                 
@@ -119,7 +119,7 @@ const AboutSection = () => {
                     </svg>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300">
-                    As it is a static website, I am somewhat uncertain about how far I can take it, but I intend to keep trying, Insha'Allah.
+                    যেহেতু এটি একটি স্ট্যাটিক ওয়েবসাইট, তাই আমি কিছুটা অনিশ্চিত যে এটাকে কতদূর নিয়ে যেতে পারব, কিন্তু ইনশাআল্লাহ চেষ্টা করে যাব।
                   </p>
                 </div>
               </div>
@@ -131,8 +131,8 @@ const AboutSection = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Our Mission</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Making quality education accessible to every HSC student.</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">আমাদের লক্ষ্য</h3>
+                  <p className="text-gray-600 dark:text-gray-300">প্রতিটি এইচএসসি  শিক্ষার্থীদের জন্য মানসম্পন্ন শিক্ষা সহজলভ্য করা।</p>
                 </div>
                 
                 <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl transition-colors duration-300 hover:shadow-md">
@@ -141,8 +141,8 @@ const AboutSection = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">What We Offer</h3>
-                  <p className="text-gray-600 dark:text-gray-300">PDF notes, video lectures for more than 5 subjects.</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">আমরা যা অফার করি</h3>
+                  <p className="text-gray-600 dark:text-gray-300">প্রতিটি বিষয়ের জন্য পিডিএফ নোট, ভিডিও লেকচার।</p>
                 </div>
               </div>
             </div>
