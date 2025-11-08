@@ -11,6 +11,17 @@ export const studyMaterialsData = {
           id: 1,
           name: "১ম পত্র",
           chapters: [
+             {
+               id: 1,
+               title: "অধ্যায় ১ঃ ভৌত জগৎ ও পরিমাপ",
+               driveLinks: [],
+               videoLinks: [
+                 {
+                   name: "(ত্রুটি নিয়ে আলোচনা)",
+                   url: "https://youtu.be/g0tgNmwGP1A?si=jMko6X2XSahb-n6z"
+                 }
+               ]
+             },
            
             {
               id: 1,
@@ -46,8 +57,12 @@ export const studyMaterialsData = {
               driveLinks: [],
               videoLinks: [
                 {
-                  name: "Physics 46",
-                  url: "https://www.youtube.com/live/DxZp3hQKIBQ?si=9g1hpXVgQw7vSWxb"
+                  name: "গতিবিদ্যা ব্যাসিক",
+                  url: "https://youtu.be/RmHAiVCmgyQ?si=8YmeIq7gbkAFOxH3"
+                },
+                {
+                  name: "part 1 (গ্রাফ নিয়ে কথা)",
+                  url: "https://youtu.be/-7ecb8lU2V8?si=P_J1jjdedXO09P45"
                 }
               ]
             },
